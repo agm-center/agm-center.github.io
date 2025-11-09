@@ -1,0 +1,1221 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><!-- Force light theme before any rendering --><script>
+	// Set light theme immediately - runs before page renders
+	if (typeof localStorage !== 'undefined') {
+		localStorage.setItem('starlight-theme', 'light');
+	}
+	document.documentElement.setAttribute('data-theme', 'light');
+</script> <!-- Include Starlight's default head tags --><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Solver Comparison & Selection Guide | AGM Center</title><link rel="canonical" href="https://agm-center.github.io/documentation/kpg-run/formulations/solver-comparison/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.15.3"/><meta name="generator" content="Starlight v0.33.2"/><meta property="og:title" content="Solver Comparison &#38; Selection Guide"/><meta property="og:type" content="article"/><meta property="og:url" content="https://agm-center.github.io/documentation/kpg-run/formulations/solver-comparison/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Decision guide comparing all four optimization models to help choose the right solver for your analysis."/><meta property="og:site_name" content="AGM Center"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Decision guide comparing all four optimization models to help choose the right solver for your analysis."/><script>
+	// Set light mode before page renders to prevent system theme detection
+	(() => {
+		// Store light theme preference
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem('starlight-theme', 'light');
+		}
+		// Set theme immediately
+		document.documentElement.dataset.theme = 'light';
+	})();
+</script><link rel="stylesheet" href="/_astro/print.BL8QyxEA.css" media="print"><link rel="stylesheet" href="/_astro/index.D9kyTZ85.css">
+<link rel="stylesheet" href="/_astro/index.KfiKpAKc.css">
+<style>:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-avdet4wd){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-avdet4wd){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-avdet4wd){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-avdet4wd){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-avdet4wd){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-avdet4wd){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-avdet4wd){vertical-align:middle}
+.card-grid:where(.astro-zntqmydn){display:grid;grid-template-columns:100%;gap:1rem}.card-grid:where(.astro-zntqmydn)>*{margin-top:0!important}@media (min-width: 50rem){.card-grid:where(.astro-zntqmydn){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-zntqmydn){--stagger-height: 5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-zntqmydn)>*:nth-child(2n){transform:translateY(var(--stagger-height))}}
+.card:where(.astro-v5tidmuc){--sl-card-border: var(--sl-color-purple);--sl-card-bg: var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);padding:clamp(1rem,calc(.125rem + 3vw),2.5rem);flex-direction:column;gap:clamp(.5rem,calc(.125rem + 1vw),1rem)}.card:where(.astro-v5tidmuc):nth-child(4n+1){--sl-card-border: var(--sl-color-orange);--sl-card-bg: var(--sl-color-orange-low)}.card:where(.astro-v5tidmuc):nth-child(4n+3){--sl-card-border: var(--sl-color-green);--sl-card-bg: var(--sl-color-green-low)}.card:where(.astro-v5tidmuc):nth-child(4n+4){--sl-card-border: var(--sl-color-red);--sl-card-bg: var(--sl-color-red-low)}.card:where(.astro-v5tidmuc):nth-child(4n+5){--sl-card-border: var(--sl-color-blue);--sl-card-bg: var(--sl-color-blue-low)}.title:where(.astro-v5tidmuc){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);gap:1rem;align-items:center}.card:where(.astro-v5tidmuc) .icon:where(.astro-v5tidmuc){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);padding:.2em;border-radius:.25rem}.card:where(.astro-v5tidmuc) .body:where(.astro-v5tidmuc){margin:0;font-size:clamp(var(--sl-text-sm),calc(.5rem + 1vw),var(--sl-text-body))}
+svg:where(.astro-c6vsoqas){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1em;height:1em}
+.sl-steps{--bullet-size: calc(var(--sl-line-height) * 1rem);--bullet-margin: .375rem;list-style:none;counter-reset:steps-counter var(--sl-steps-start, 0);padding-inline-start:0}.sl-steps>li{counter-increment:steps-counter;position:relative;padding-inline-start:calc(var(--bullet-size) + 1rem);padding-bottom:1px;min-height:calc(var(--bullet-size) + var(--bullet-margin))}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);position:absolute;top:0;inset-inline-start:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);font-weight:600;text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);border-radius:99rem;box-shadow:inset 0 0 0 1px var(--sl-color-gray-5)}.sl-steps>li:after{--guide-width: 1px;content:"";position:absolute;top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2);width:var(--guide-width);background-color:var(--sl-color-hairline-light)}.sl-steps>li>:first-child{--lh: calc(1em * var(--sl-line-height));--shift-y: calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh: calc(1em * var(--sl-line-height-headings))}@supports (--prop: 1lh){.sl-steps>li>:first-child{--lh: 1lh}}
+.sl-link-button:where(.astro-xwgiixxa){align-items:center;border:1px solid transparent;border-radius:999rem;display:inline-flex;font-size:var(--sl-text-sm);gap:.5em;line-height:1.1875;outline-offset:.25rem;padding:.4375rem 1.125rem;text-decoration:none}.sl-link-button:where(.astro-xwgiixxa).primary{background:var(--sl-color-text-accent);border-color:var(--sl-color-text-accent);color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).primary:hover{color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).secondary{border-color:inherit;color:var(--sl-color-white)}.sl-link-button:where(.astro-xwgiixxa).minimal{color:var(--sl-color-white);padding-inline:0}.sl-link-button:where(.astro-xwgiixxa) svg{flex-shrink:0}@media (min-width: 50rem){.sl-link-button:where(.astro-xwgiixxa){font-size:var(--sl-text-base);padding:.9375rem 1.25rem}}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa){margin-inline-end:1rem}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa):not(:where(p *)){margin-block:1rem}
+</style><script type="module" src="/_astro/page.CAeE1Kiy.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><nav class="agm-nav astro-xrw5jr27" style="height: 72px;"> <div class="agm-nav-container astro-xrw5jr27"> <div class="agm-nav-content astro-xrw5jr27">  <a href="/" class="flex items-center gap-2 text-xl font-semibold no-underline flex-shrink-0 astro-xrw5jr27"> <span class="text-neutral-black astro-xrw5jr27">AGM</span> <span class="text-brand-primary astro-xrw5jr27">Center</span> <span class="text-neutral-black astro-xrw5jr27">.</span> </a>  <div class="hidden md:flex items-center gap-6 lg:gap-8 astro-xrw5jr27"> <a href="/about" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+About
+</a> <a href="/research" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Research
+</a> <a href="/learning" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Learning
+</a> <a href="/discussion" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Discussion
+</a> <a href="/gallery" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Gallery
+</a> <a href="/documentation/introduction" class="bg-brand-primary hover:bg-brand-primary-dark text-white px-6 py-2 rounded text-sm font-medium transition-colors no-underline astro-xrw5jr27">
+Documentation
+</a> </div>  <button id="mobile-menu-btn" class="md:hidden p-2 text-neutral-black hover:text-brand-primary transition-colors astro-xrw5jr27" aria-label="Toggle menu"> <svg class="w-6 h-6 astro-xrw5jr27" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" class="astro-xrw5jr27"></path> </svg> </button> </div> </div>  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-neutral-border astro-xrw5jr27"> <div class="px-6 py-4 space-y-3 astro-xrw5jr27"> <a href="/about" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+About
+</a> <a href="/research" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Research
+</a> <a href="/learning" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Learning
+</a> <a href="/discussion" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Discussion
+</a> <a href="/gallery" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Gallery
+</a> <a href="/documentation/introduction" class="block bg-brand-primary hover:bg-brand-primary-dark text-white px-6 py-2 rounded text-sm font-medium transition-colors no-underline text-center mt-3 astro-xrw5jr27">
+Documentation
+</a> </div> </div> </nav>  <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>{n?.classList.toggle("hidden")});</script></header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0cq0vgp" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/" aria-current="false" class="large astro-3ii7xxms"> <span class="astro-3ii7xxms">Introduction</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG Test System</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/data-specifications/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Data Specifications</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/network-structure/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Network Structure</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/profiles-timeseries/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Profiles &amp; Time Series</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/clustering-methodology/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Clustering Methodology</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/validation-results/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Validation Results</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG Run</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/getting-started/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Getting Started</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/installation/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Installation</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/user-interface/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">User Interface</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Formulations</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/ed/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Economic Dispatch</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/uc/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Unit Commitment</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/dcopf/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">DC Optimal Power Flow</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/acopf/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AC Optimal Power Flow</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/solver-comparison/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Solver Comparison</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG View</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-view/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-view/usage-guide/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Usage Guide</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-view/data-format/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Data Format</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="sl-flex social-icons astro-wu23bvmt"> <a href="https://github.com/withastro/starlight" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a> </div> <script>
+	// Force light mode and store preference
+	// This runs inline to prevent flash of dark content
+	if (typeof localStorage !== 'undefined') {
+		localStorage.setItem('starlight-theme', 'light');
+	}
+	document.documentElement.dataset.theme = 'light';
+</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <div class="sidebar-container astro-rl4sue7z">  <div class="search-minimal astro-rl4sue7z"> <site-search class="astro-rl4sue7z astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#quick-decision-tree" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Quick Decision Tree</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#comprehensive-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Comprehensive Comparison</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#feature-matrix" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Feature Matrix</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#computational-characteristics" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Computational Characteristics</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#accuracy--realism" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Accuracy &amp; Realism</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#detailed-model-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Detailed Model Comparison</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#economic-dispatch-ed" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Economic Dispatch (ED)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#unit-commitment-uc" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Unit Commitment (UC)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#dc-optimal-power-flow-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">DC Optimal Power Flow (DC-OPF)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#ac-optimal-power-flow-ac-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">AC Optimal Power Flow (AC-OPF)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#selection-by-application" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Selection by Application</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#research-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Research Applications</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#operational-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Operational Applications</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#workflow-recommendations" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Workflow Recommendations</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#standard-analysis-workflow" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Standard Analysis Workflow</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#solver-chaining" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Solver Chaining</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#computational-requirements" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Computational Requirements</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#problem-scaling" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Problem Scaling</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#hardware-recommendations" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Hardware Recommendations</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#solver-requirements" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Solver Requirements</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#cost-and-accuracy-trade-offs" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Cost and Accuracy Trade-offs</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#accuracy-ladder" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Accuracy Ladder</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#typical-error-ranges" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Typical Error Ranges</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#use-case-matrix" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Use Case Matrix</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#by-analysis-goal" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">By Analysis Goal</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#by-study-horizon" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">By Study Horizon</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#by-system-condition" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">By System Condition</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#solver-capabilities" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Solver Capabilities</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#what-each-model-can-answer" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">What Each Model Can Answer</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#combining-models" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Combining Models</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#hybrid-approaches" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Hybrid Approaches</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#sequential-solution" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Sequential Solution</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#speed-vs-accuracy" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Speed vs. Accuracy</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#pareto-frontier" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Pareto Frontier</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#scenario-analysis" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Scenario Analysis</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#best-practices" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Best Practices</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#model-selection-checklist" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Model Selection Checklist</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#validation-strategy" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Validation Strategy</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#summary-table" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Summary Table</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#at-a-glance" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">At a Glance</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#example-study-design" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Example Study Design</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#case-study-coal-retirement-analysis" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Case Study: Coal Retirement Analysis</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#quick-decision-tree" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Quick Decision Tree</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#comprehensive-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Comprehensive Comparison</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#feature-matrix" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Feature Matrix</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#computational-characteristics" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Computational Characteristics</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#accuracy--realism" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Accuracy &amp; Realism</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#detailed-model-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Detailed Model Comparison</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#economic-dispatch-ed" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Economic Dispatch (ED)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#unit-commitment-uc" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Unit Commitment (UC)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#dc-optimal-power-flow-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">DC Optimal Power Flow (DC-OPF)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#ac-optimal-power-flow-ac-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">AC Optimal Power Flow (AC-OPF)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#selection-by-application" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Selection by Application</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#research-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Research Applications</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#operational-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Operational Applications</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#workflow-recommendations" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Workflow Recommendations</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#standard-analysis-workflow" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Standard Analysis Workflow</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#solver-chaining" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Solver Chaining</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#computational-requirements" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Computational Requirements</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#problem-scaling" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Problem Scaling</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#hardware-recommendations" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Hardware Recommendations</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#solver-requirements" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Solver Requirements</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#cost-and-accuracy-trade-offs" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Cost and Accuracy Trade-offs</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#accuracy-ladder" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Accuracy Ladder</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#typical-error-ranges" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Typical Error Ranges</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#use-case-matrix" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Use Case Matrix</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#by-analysis-goal" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">By Analysis Goal</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#by-study-horizon" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">By Study Horizon</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#by-system-condition" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">By System Condition</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#solver-capabilities" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Solver Capabilities</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#what-each-model-can-answer" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">What Each Model Can Answer</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#combining-models" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Combining Models</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#hybrid-approaches" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Hybrid Approaches</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#sequential-solution" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Sequential Solution</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#speed-vs-accuracy" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Speed vs. Accuracy</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#pareto-frontier" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Pareto Frontier</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#scenario-analysis" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Scenario Analysis</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#best-practices" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Best Practices</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#model-selection-checklist" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Model Selection Checklist</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#validation-strategy" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Validation Strategy</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#summary-table" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Summary Table</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#at-a-glance" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">At a Glance</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#example-study-design" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Example Study Design</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#case-study-coal-retirement-analysis" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Case Study: Coal Retirement Analysis</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Solver Comparison &amp; Selection Guide</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <h1 id="solver-comparison--selection-guide">Solver Comparison &#x26; Selection Guide</h1>
+<p>Choosing the right optimization model is critical for balancing accuracy, computational speed, and analysis goals. This guide helps you select among ED, UC, DC-OPF, and AC-OPF.</p>
+<h2 id="quick-decision-tree">Quick Decision Tree</h2>
+<pre class="mermaid" dir="ltr">flowchart TD
+    A[Start] --> B{Need<br>commitment<br>decisions?}
+    
+    B -->|Yes| C{Network<br>constraints<br>matter?}
+    B -->|No| D{Network<br>constraints<br>matter?}
+    
+    C -->|Yes| E[UC + OPF<br>Chained]
+    C -->|No| F[Unit<br>Commitment]
+    
+    D -->|Yes| G{Voltage/reactive<br>critical?}
+    D -->|No| H[Economic<br>Dispatch]
+    
+    G -->|Yes| I[AC Optimal<br>Power Flow]
+    G -->|No| J[DC Optimal<br>Power Flow]
+    </pre>
+<h2 id="comprehensive-comparison">Comprehensive Comparison</h2>
+<h3 id="feature-matrix">Feature Matrix</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Problem Type</strong></td><td>LP/QP</td><td>MIP</td><td>LP/QP</td><td>NLP</td></tr><tr><td><strong>Network Model</strong></td><td>None</td><td>None</td><td>DC (linearized)</td><td><strong>AC (full)</strong></td></tr><tr><td><strong>Time Periods</strong></td><td>Single</td><td><strong>Multiple (24+)</strong></td><td>Single</td><td>Single</td></tr><tr><td><strong>Commitment Decisions</strong></td><td>✗</td><td><strong>✓ Binary</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Transmission Limits</strong></td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr><tr><td><strong>Voltage Constraints</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Reactive Power</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Transmission Losses</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Startup Costs</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Ramping Limits</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Min Up/Down Time</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Reserve Requirements</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr></tbody></table>
+<h3 id="computational-characteristics">Computational Characteristics</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Variables</strong></td><td>~100</td><td>~18,000</td><td>~500</td><td>~800</td></tr><tr><td><strong>Integer Variables</strong></td><td>0</td><td>~9,000</td><td>0</td><td>0</td></tr><tr><td><strong>Constraints</strong></td><td>~300</td><td>~30,000</td><td>~1,500</td><td>~2,000</td></tr><tr><td><strong>Nonlinear</strong></td><td>No</td><td>No</td><td>No</td><td><strong>Yes</strong></td></tr><tr><td><strong>Typical Time (KPG193)</strong></td><td>&#x3C; 0.5s</td><td>30-120s</td><td>0.3-0.5s</td><td>2-8s</td></tr><tr><td><strong>Scalability</strong></td><td>Excellent</td><td>Poor</td><td>Excellent</td><td>Good</td></tr><tr><td><strong>Memory</strong></td><td>Low</td><td>High</td><td>Low</td><td>Medium</td></tr></tbody></table>
+<h3 id="accuracy--realism">Accuracy &#x26; Realism</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Cost Accuracy</strong></td><td>★</td><td>★★</td><td>★★★</td><td>★★★★★</td></tr><tr><td><strong>Operational Realism</strong></td><td>★</td><td>★★★★★</td><td>★★</td><td>★★★★</td></tr><tr><td><strong>Physical Feasibility</strong></td><td>★</td><td>★★</td><td>★★★</td><td>★★★★★</td></tr><tr><td><strong>Market Representation</strong></td><td>★★</td><td>★★★★</td><td>★★★★★</td><td>★★★★</td></tr></tbody></table>
+<p><strong>Legend:</strong> ★ = Poor, ★★★ = Medium, ★★★★★ = Excellent</p>
+<h2 id="detailed-model-comparison">Detailed Model Comparison</h2>
+<h3 id="economic-dispatch-ed">Economic Dispatch (ED)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: Demand, Costs] --> B[ED Solver<br>LP/QP]
+    B --> C[Output: Dispatch]
+    
+    D[Ignores:<br>- Network<br>- Time<br>- Commitment]
+    </pre>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>✓ Extremely fast (&#x3C; 0.5s)</li>
+<li>✓ Always converges</li>
+<li>✓ Easy to understand</li>
+<li>✓ Good for teaching</li>
+<li>✓ Merit order analysis</li>
+</ul>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>✗ No network constraints</li>
+<li>✗ May be infeasible in reality</li>
+<li>✗ Cost is lower bound only</li>
+<li>✗ No temporal dynamics</li>
+</ul>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Screening studies</li>
+<li>Fuel cost sensitivity</li>
+<li>Technology comparisons</li>
+<li>Educational purposes</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/ed">→ ED Details</a></strong></p>
+<hr>
+<h3 id="unit-commitment-uc">Unit Commitment (UC)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: 24h Profile] --> B[UC Solver<br>MIP]
+    B --> C[Output: Schedule]
+    
+    D[Includes:<br>- Commitment u<sub>it</sub><br>- Startup costs<br>- Ramping<br>- Reserves]
+    
+    E[Ignores:<br>- Network<br>- Voltage<br>- Reactive]
+    </pre>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>✓ Realistic scheduling</li>
+<li>✓ Startup/shutdown costs</li>
+<li>✓ Temporal constraints</li>
+<li>✓ Reserve provision</li>
+<li>✓ Day-ahead markets</li>
+</ul>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>✗ No network constraints</li>
+<li>✗ Slow (MIP)</li>
+<li>✗ May not be AC feasible</li>
+<li>✗ High memory usage</li>
+</ul>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Day-ahead planning</li>
+<li>Generator scheduling</li>
+<li>Cycling cost analysis</li>
+<li>Reserve studies</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/uc">→ UC Details</a></strong></p>
+<hr>
+<h3 id="dc-optimal-power-flow-dc-opf">DC Optimal Power Flow (DC-OPF)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: Network, Demand] --> B[DC-OPF Solver<br>LP]
+    B --> C[Output: Dispatch + Flows]
+    
+    D[Includes:<br>- Transmission limits<br>- Power flow<br>- LMPs<br>- Congestion]
+    
+    E[Ignores:<br>- Voltage<br>- Reactive Q<br>- Losses]
+    </pre>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>✓ Network-aware</li>
+<li>✓ Fast (LP)</li>
+<li>✓ Locational prices (LMPs)</li>
+<li>✓ Congestion analysis</li>
+<li>✓ Always converges</li>
+</ul>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>✗ Voltage fixed V=1</li>
+<li>✗ No reactive power</li>
+<li>✗ Ignores losses (2-3% error)</li>
+<li>✗ DC approximation errors</li>
+</ul>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Market clearing</li>
+<li>LMP calculation</li>
+<li>Congestion studies</li>
+<li>Large-scale analysis</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/dcopf">→ DC-OPF Details</a></strong></p>
+<hr>
+<h3 id="ac-optimal-power-flow-ac-opf">AC Optimal Power Flow (AC-OPF)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: Full Network] --> B[AC-OPF Solver<br>NLP]
+    B --> C[Output: Complete Solution]
+    
+    D[Includes:<br>- Full AC flow<br>- Voltages V<sub>b</sub><br>- Reactive Q<sub>i</sub><br>- Losses]
+    
+    E[Challenges:<br>- Nonlinear<br>- Local optima<br>- May not converge]
+    </pre>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>✓ Complete physics</li>
+<li>✓ Voltage and reactive</li>
+<li>✓ Accurate losses</li>
+<li>✓ True feasibility</li>
+<li>✓ Highest accuracy</li>
+</ul>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>✗ Slower (NLP)</li>
+<li>✗ May not converge</li>
+<li>✗ Local optima possible</li>
+<li>✗ Sensitive to initialization</li>
+</ul>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>Feasibility validation</li>
+<li>Voltage studies</li>
+<li>Reactive planning</li>
+<li>Detailed operations</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/acopf">→ AC-OPF Details</a></strong></p>
+<h2 id="selection-by-application">Selection by Application</h2>
+<h3 id="research-applications">Research Applications</h3>
+<p><strong>Decarbonization Studies</strong></p>
+<ul>
+<li><strong>Primary:</strong> UC (capture cycling costs)</li>
+<li><strong>Secondary:</strong> DC-OPF (transmission needs)</li>
+<li><strong>Validation:</strong> AC-OPF (feasibility check)</li>
+</ul>
+<p><strong>Renewable Integration</strong></p>
+<ul>
+<li><strong>Primary:</strong> UC (ramping, reserves)</li>
+<li><strong>Secondary:</strong> DC-OPF (congestion from variable generation)</li>
+<li><strong>Detailed:</strong> AC-OPF (voltage impact)</li>
+</ul>
+<p><strong>Transmission Planning</strong></p>
+<ul>
+<li><strong>Primary:</strong> DC-OPF (congestion, LMPs)</li>
+<li><strong>Validation:</strong> AC-OPF (true flow limits)</li>
+<li><strong>Optional:</strong> UC (temporal patterns)</li>
+</ul>
+<p><strong>Market Design</strong></p>
+<ul>
+<li><strong>Primary:</strong> DC-OPF (locational pricing)</li>
+<li><strong>UC:</strong> Day-ahead commitment</li>
+<li><strong>Validation:</strong> AC-OPF (deliverability)</li>
+</ul>
+<h3 id="operational-applications">Operational Applications</h3>
+<p><strong>Day-Ahead Markets</strong></p>
+<ul>
+<li><strong>Stage 1:</strong> UC (commitment schedule)</li>
+<li><strong>Stage 2:</strong> DC-OPF (dispatch + LMPs)</li>
+<li><strong>Post-analysis:</strong> AC-OPF (feasibility)</li>
+</ul>
+<p><strong>Real-Time Dispatch</strong></p>
+<ul>
+<li><strong>Primary:</strong> AC-OPF (must be feasible)</li>
+<li><strong>Backup:</strong> DC-OPF (if AC fails)</li>
+</ul>
+<p><strong>Congestion Management</strong></p>
+<ul>
+<li><strong>Primary:</strong> DC-OPF (identify constraints)</li>
+<li><strong>Validation:</strong> AC-OPF (verify relief)</li>
+</ul>
+<h2 id="workflow-recommendations">Workflow Recommendations</h2>
+<h3 id="standard-analysis-workflow">Standard Analysis Workflow</h3>
+<pre class="mermaid" dir="ltr">flowchart TB
+    A[Define Study] --> B{Multi-period?}
+    
+    B -->|Yes| C[Start with UC]
+    B -->|No| D[Start with ED/DC-OPF]
+    
+    C --> E[Run UC<br>24h commitment]
+    D --> F[Run DC-OPF<br>Snapshot]
+    
+    E --> G[Fix commitment]
+    G --> H[Run DC-OPF<br>With commitment]
+    
+    F --> I{Results<br>reasonable?}
+    H --> I
+    
+    I -->|Yes| J[Run AC-OPF<br>Validate]
+    I -->|No| K[Debug<br>Iterate]
+    
+    J --> L{AC<br>feasible?}
+    
+    L -->|Yes| M[Done]
+    L -->|No| N[Adjust<br>Parameters]
+    
+    N --> E
+    K --> A
+    </pre>
+<h3 id="solver-chaining">Solver Chaining</h3>
+<p><strong>Typical sequence:</strong></p>
+<ol>
+<li><strong>UC</strong> (24 hours) → Get commitment schedule</li>
+<li><strong>DC-OPF</strong> (each hour) → Get dispatch with commitment</li>
+<li><strong>AC-OPF</strong> (critical hours) → Validate feasibility</li>
+</ol>
+<p><strong>Implementation:</strong></p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.ppgh1.css"><script type="module" src="/_astro/ec.p1z7b.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="julia"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># Step 1: Solve UC</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">uc_result </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">solve_uc</span><span style="--0:#D6DEEB;--1:#403F53">(network, demand_profile, horizon</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#F78C6C;--1:#AA0982">24</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">commitment </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> uc_result[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">commitment</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]  </span><span style="--0:#919F9F;--1:#5F636F"># u[i,t]</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># Step 2: Solve DC-OPF for each hour</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">dc_results </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> []</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">for</span><span style="--0:#D6DEEB;--1:#403F53"> t </span><span style="--0:#7FDBCA;--1:#096E72">in</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#7FDBCA;--1:#096E72">:</span><span style="--0:#F78C6C;--1:#AA0982">24</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F"># Fix commitment from UC</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">dc_result </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">solve_dcopf</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">network,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">hour</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">t,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">commitment</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">commitment[:, t]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">push!</span><span style="--0:#D6DEEB;--1:#403F53">(dc_results, dc_result)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">end</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># Step 3: Validate with AC-OPF at peak hour</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">peak_hour </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">argmax</span><span style="--0:#D6DEEB;--1:#403F53">(demand_profile)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">ac_result </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">solve_acopf</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">network,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">hour</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">peak_hour,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">commitment</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">commitment[:, peak_hour],</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">warm_start</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">dc_results[peak_hour]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F"># Check feasibility</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> ac_result[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">termination_status</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">] </span><span style="--0:#7FDBCA;--1:#096E72">==</span><span style="--0:#D6DEEB;--1:#403F53"> LOCALLY_SOLVED</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">✓ Schedule is AC feasible</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">else</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">@warn</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">AC infeasibility detected - adjust UC</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">end</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="# Step 1: Solve UCuc_result = solve_uc(network, demand_profile, horizon=24)commitment = uc_result[&#x22;commitment&#x22;]  # u[i,t]# Step 2: Solve DC-OPF for each hourdc_results = []for t in 1:24    # Fix commitment from UC    dc_result = solve_dcopf(        network,        hour=t,        commitment=commitment[:, t]    )    push!(dc_results, dc_result)end# Step 3: Validate with AC-OPF at peak hourpeak_hour = argmax(demand_profile)ac_result = solve_acopf(    network,    hour=peak_hour,    commitment=commitment[:, peak_hour],    warm_start=dc_results[peak_hour])# Check feasibilityif ac_result[&#x22;termination_status&#x22;] == LOCALLY_SOLVED    println(&#x22;✓ Schedule is AC feasible&#x22;)else    @warn &#x22;AC infeasibility detected - adjust UC&#x22;end"><div></div></button></div></figure></div>
+<h2 id="computational-requirements">Computational Requirements</h2>
+<h3 id="problem-scaling">Problem Scaling</h3>
+<p><strong>For KPG193:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>Variables</th><th>Constraints</th><th>Nonlinear</th><th>Integer</th><th>Time</th><th>Memory</th></tr></thead><tbody><tr><td><strong>ED</strong></td><td>122</td><td>~300</td><td>0</td><td>0</td><td>0.3s</td><td>10 MB</td></tr><tr><td><strong>UC (24h)</strong></td><td>17,568</td><td>30,000</td><td>0</td><td>8,784</td><td>45s</td><td>500 MB</td></tr><tr><td><strong>DC-OPF</strong></td><td>722</td><td>1,814</td><td>0</td><td>0</td><td>0.4s</td><td>50 MB</td></tr><tr><td><strong>AC-OPF</strong></td><td>844</td><td>2,028</td><td>1,428</td><td>0</td><td>4.5s</td><td>100 MB</td></tr></tbody></table>
+<h3 id="hardware-recommendations">Hardware Recommendations</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>CPU</th><th>RAM</th><th>Storage</th><th>Notes</th></tr></thead><tbody><tr><td><strong>ED</strong></td><td>Any</td><td>2 GB</td><td>Minimal</td><td>Runs on laptop</td></tr><tr><td><strong>UC</strong></td><td>Multi-core</td><td>8 GB</td><td>100 MB</td><td>Benefits from parallel</td></tr><tr><td><strong>DC-OPF</strong></td><td>Modern</td><td>4 GB</td><td>50 MB</td><td>Fast on any system</td></tr><tr><td><strong>AC-OPF</strong></td><td>Modern</td><td>8 GB</td><td>100 MB</td><td>May benefit from better CPU</td></tr></tbody></table>
+<h3 id="solver-requirements">Solver Requirements</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>Recommended Solver</th><th>License</th><th>Alternative</th></tr></thead><tbody><tr><td><strong>ED</strong></td><td>Ipopt</td><td>Free</td><td>Gurobi, HiGHS</td></tr><tr><td><strong>UC</strong></td><td><strong>Gurobi</strong></td><td>Academic*</td><td>CPLEX, SCIP</td></tr><tr><td><strong>DC-OPF</strong></td><td><strong>Gurobi</strong></td><td>Academic*</td><td>HiGHS, Ipopt</td></tr><tr><td><strong>AC-OPF</strong></td><td><strong>Ipopt</strong></td><td>Free</td><td>KNITRO</td></tr></tbody></table>
+<p>*Free for academic use</p>
+<h2 id="cost-and-accuracy-trade-offs">Cost and Accuracy Trade-offs</h2>
+<h3 id="accuracy-ladder">Accuracy Ladder</h3>
+<pre class="mermaid" dir="ltr">graph LR
+    A[ED<br>Lower Bound] -->|+Network| B[DC-OPF<br>Better]
+    B -->|+Losses/Voltage| C[AC-OPF<br>Most Accurate]
+    
+    D[UC<br>+Temporal] -->|+Network| E[UC+DC-OPF<br>Realistic]
+    E -->|+AC| F[UC+AC-OPF<br>Production Grade]
+    </pre>
+<h3 id="typical-error-ranges">Typical Error Ranges</h3>
+<p><strong>Cost errors (relative to AC-OPF + UC):</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>Error Range</th><th>Reason</th></tr></thead><tbody><tr><td><strong>ED only</strong></td><td>-5% to -15%</td><td>No network, no commitment</td></tr><tr><td><strong>UC only</strong></td><td>-2% to -5%</td><td>No network constraints</td></tr><tr><td><strong>DC-OPF only</strong></td><td>-2% to -3%</td><td>No losses, no commitment</td></tr><tr><td><strong>UC + DC-OPF</strong></td><td>-1% to -2%</td><td>No losses/voltage</td></tr><tr><td><strong>AC-OPF only</strong></td><td>-2% to -5%</td><td>No commitment costs</td></tr><tr><td><strong>UC + AC-OPF</strong></td><td><strong>0%</strong> (reference)</td><td>Complete model</td></tr></tbody></table>
+<p><strong>Dispatch errors:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Model</th><th>P Dispatch Error</th><th>Q Dispatch</th><th>Voltage Error</th></tr></thead><tbody><tr><td><strong>ED</strong></td><td>±10-30%</td><td>N/A</td><td>N/A</td></tr><tr><td><strong>UC</strong></td><td>±5-15%</td><td>N/A</td><td>N/A</td></tr><tr><td><strong>DC-OPF</strong></td><td>±2-5%</td><td>N/A</td><td>Assumed 1.0</td></tr><tr><td><strong>AC-OPF</strong></td><td><strong>±0-1%</strong></td><td>✓ Accurate</td><td><strong>±0-1%</strong></td></tr></tbody></table>
+<h2 id="use-case-matrix">Use Case Matrix</h2>
+<h3 id="by-analysis-goal">By Analysis Goal</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Goal</th><th>Recommended Model(s)</th><th>Why</th></tr></thead><tbody><tr><td><strong>Fuel cost sensitivity</strong></td><td>ED</td><td>Fast, captures cost relationships</td></tr><tr><td><strong>Technology comparison</strong></td><td>ED or UC</td><td>Focus on generation economics</td></tr><tr><td><strong>Day-ahead markets</strong></td><td>UC + DC-OPF</td><td>Commitment + locational prices</td></tr><tr><td><strong>Congestion analysis</strong></td><td>DC-OPF</td><td>Fast, identifies bottlenecks</td></tr><tr><td><strong>Voltage stability</strong></td><td>AC-OPF</td><td>Requires voltage modeling</td></tr><tr><td><strong>Renewable integration</strong></td><td>UC</td><td>Captures ramping/reserves</td></tr><tr><td><strong>Transmission planning</strong></td><td>DC-OPF + AC-OPF</td><td>Identify + validate investments</td></tr><tr><td><strong>Real-time operations</strong></td><td>AC-OPF</td><td>Must be AC feasible</td></tr><tr><td><strong>Storage sizing</strong></td><td>UC</td><td>Temporal arbitrage</td></tr><tr><td><strong>Carbon policy</strong></td><td>UC + DC-OPF</td><td>Captures dispatch changes</td></tr></tbody></table>
+<h3 id="by-study-horizon">By Study Horizon</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Horizon</th><th>Primary Model</th><th>Secondary</th><th>Validation</th></tr></thead><tbody><tr><td><strong>Single hour</strong></td><td>DC-OPF</td><td>AC-OPF</td><td>-</td></tr><tr><td><strong>Day (24h)</strong></td><td>UC</td><td>DC-OPF per hour</td><td>AC-OPF peak</td></tr><tr><td><strong>Week</strong></td><td>UC</td><td>DC-OPF samples</td><td>AC-OPF critical</td></tr><tr><td><strong>Month</strong></td><td>UC (representative days)</td><td>DC-OPF</td><td>AC-OPF select</td></tr><tr><td><strong>Year</strong></td><td>UC (clustering)</td><td>DC-OPF scenarios</td><td>AC-OPF validation</td></tr></tbody></table>
+<h3 id="by-system-condition">By System Condition</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Condition</th><th>Model Choice</th><th>Reason</th></tr></thead><tbody><tr><td><strong>Low load</strong></td><td>ED or DC-OPF</td><td>Minimal congestion</td></tr><tr><td><strong>Peak load</strong></td><td>DC-OPF or AC-OPF</td><td>Congestion likely</td></tr><tr><td><strong>High renewables</strong></td><td>UC + DC-OPF</td><td>Ramping + curtailment</td></tr><tr><td><strong>Contingency</strong></td><td>AC-OPF</td><td>Voltage critical</td></tr><tr><td><strong>Normal operations</strong></td><td>DC-OPF</td><td>Balance of speed/accuracy</td></tr></tbody></table>
+<h2 id="solver-capabilities">Solver Capabilities</h2>
+<h3 id="what-each-model-can-answer">What Each Model Can Answer</h3>
+<h4 id="economic-dispatch-ed-1">Economic Dispatch (ED)</h4>
+<p><strong>Questions ED can answer:</strong></p>
+<ul>
+<li>✓ What is the minimum possible generation cost?</li>
+<li>✓ Which generators should run based on merit order?</li>
+<li>✓ What is the system marginal price?</li>
+<li>✓ How do fuel prices affect dispatch?</li>
+</ul>
+<p><strong>Questions ED cannot answer:</strong></p>
+<ul>
+<li>✗ Is the dispatch AC feasible?</li>
+<li>✗ Are transmission lines overloaded?</li>
+<li>✗ What are the locational prices?</li>
+<li>✗ How should units be scheduled over time?</li>
+</ul>
+<h4 id="unit-commitment-uc-1">Unit Commitment (UC)</h4>
+<p><strong>Questions UC can answer:</strong></p>
+<ul>
+<li>✓ Which units should be online each hour?</li>
+<li>✓ When should units start up and shut down?</li>
+<li>✓ What are the total cycling costs?</li>
+<li>✓ Are reserve requirements met?</li>
+<li>✓ How much ramping capability is needed?</li>
+</ul>
+<p><strong>Questions UC cannot answer:</strong></p>
+<ul>
+<li>✗ Are there transmission constraints?</li>
+<li>✗ What are locational prices?</li>
+<li>✗ Is reactive power adequate?</li>
+<li>✗ Are voltages within limits?</li>
+</ul>
+<h4 id="dc-optimal-power-flow-dc-opf-1">DC Optimal Power Flow (DC-OPF)</h4>
+<p><strong>Questions DC-OPF can answer:</strong></p>
+<ul>
+<li>✓ Which transmission lines are congested?</li>
+<li>✓ What are locational marginal prices?</li>
+<li>✓ Where should new transmission be built?</li>
+<li>✓ How much does congestion cost?</li>
+<li>✓ What is the optimal dispatch with network?</li>
+</ul>
+<p><strong>Questions DC-OPF cannot answer:</strong></p>
+<ul>
+<li>✗ Are voltages acceptable?</li>
+<li>✗ Is reactive power sufficient?</li>
+<li>✗ What are the transmission losses?</li>
+<li>✗ How should units be scheduled over time?</li>
+</ul>
+<h4 id="ac-optimal-power-flow-ac-opf-1">AC Optimal Power Flow (AC-OPF)</h4>
+<p><strong>Questions AC-OPF can answer:</strong></p>
+<ul>
+<li>✓ Is the dispatch truly feasible?</li>
+<li>✓ What are the actual voltages?</li>
+<li>✓ How much reactive power is needed?</li>
+<li>✓ What are the transmission losses?</li>
+<li>✓ Are generator capability curves violated?</li>
+</ul>
+<p><strong>Questions AC-OPF cannot answer:</strong></p>
+<ul>
+<li>✗ How should units be scheduled? (single period)</li>
+<li>✗ What are startup costs? (no commitment)</li>
+</ul>
+<h2 id="combining-models">Combining Models</h2>
+<h3 id="hybrid-approaches">Hybrid Approaches</h3>
+<pre class="mermaid" dir="ltr">flowchart TB
+    subgraph "Approach 1: UC then OPF"
+        A1[UC<br>Multi-period] --> A2[Fix u<sub>it</sub>]
+        A2 --> A3[DC-OPF<br>Each hour]
+        A3 --> A4[AC-OPF<br>Validation]
+    end
+    
+    subgraph "Approach 2: Iterative"
+        B1[DC-OPF] --> B2[Check AC<br>Feasibility]
+        B2 -->|Fail| B3[Adjust<br>Constraints]
+        B3 --> B1
+        B2 -->|Pass| B4[Accept]
+    end
+    
+    subgraph "Approach 3: Decomposition"
+        C1[Master: UC] --> C2[Subproblem:<br>AC-OPF]
+        C2 --> C3[Cuts]
+        C3 --> C1
+    end
+    </pre>
+<h3 id="sequential-solution">Sequential Solution</h3>
+<p><strong>Example: Day-ahead market</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="julia"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">function</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">solve_day_ahead</span><span style="--0:#D6DEEB;--1:#403F53">(network, profiles; validate_ac</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#82AAFF;--1:#3B61B0">true</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F"># Stage 1: Unit commitment (24 hours)</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Stage 1: Solving UC...</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">uc_result </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">solve_uc</span><span style="--0:#D6DEEB;--1:#403F53">(network, profiles, horizon</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#F78C6C;--1:#AA0982">24</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">commitment </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> uc_result[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">commitment</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">UC Cost: </span><span style="--0:#EF787F;--1:#A64348">$(uc_result</span><span style="--0:#D6DEEB;--1:#403F53">[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">objective</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]</span><span style="--0:#C792EA;--1:#8844AE">/</span><span style="--0:#F78C6C;--1:#AA0982">1e6</span><span style="--0:#EF787F;--1:#A64348">)</span><span style="--0:#ECC48D;--1:#984E4D"> M KRW</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Units online: </span><span style="--0:#EF787F;--1:#A64348">$(</span><span style="--0:#C5E478;--1:#3B61B0">sum</span><span style="--0:#EF787F;--1:#A64348">(commitment, dims</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#EF787F;--1:#A64348">))</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F"># Stage 2: DC-OPF for each hour</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#F78C6C;--1:#AA0982">\n</span><span style="--0:#ECC48D;--1:#984E4D">Stage 2: Solving DC-OPF...</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">dc_results </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> []</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">for</span><span style="--0:#D6DEEB;--1:#403F53"> t </span><span style="--0:#7FDBCA;--1:#096E72">in</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#7FDBCA;--1:#096E72">:</span><span style="--0:#F78C6C;--1:#AA0982">24</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">dc_result </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">solve_dcopf</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">            </span></span><span style="--0:#D6DEEB;--1:#403F53">network,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">            </span></span><span style="--0:#D6DEEB;--1:#403F53">hour</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">t,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">            </span></span><span style="--0:#D6DEEB;--1:#403F53">commitment</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">commitment[:, t],</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">            </span></span><span style="--0:#D6DEEB;--1:#403F53">demand</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">profiles[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">demand</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">][:, t]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#C5E478;--1:#3B61B0">push!</span><span style="--0:#D6DEEB;--1:#403F53">(dc_results, dc_result)</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">end</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">dc_total_cost </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">sum</span><span style="--0:#D6DEEB;--1:#403F53">(r[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">objective</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">] </span><span style="--0:#C792EA;--1:#8844AE">for</span><span style="--0:#D6DEEB;--1:#403F53"> r </span><span style="--0:#7FDBCA;--1:#096E72">in</span><span style="--0:#D6DEEB;--1:#403F53"> dc_results)</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">DC-OPF Cost: </span><span style="--0:#EF787F;--1:#A64348">$(dc_total_cost</span><span style="--0:#C792EA;--1:#8844AE">/</span><span style="--0:#F78C6C;--1:#AA0982">1e6</span><span style="--0:#EF787F;--1:#A64348">)</span><span style="--0:#ECC48D;--1:#984E4D"> M KRW</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F"># Stage 3: AC validation for critical hours</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> validate_ac</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#F78C6C;--1:#AA0982">\n</span><span style="--0:#ECC48D;--1:#984E4D">Stage 3: AC-OPF Validation...</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">        </span></span><span style="--0:#D6DEEB;--1:#403F53">critical_hours </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> [</span><span style="--0:#C5E478;--1:#3B61B0">argmax</span><span style="--0:#D6DEEB;--1:#403F53">(profiles[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">demand</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]), </span><span style="--0:#F78C6C;--1:#AA0982">12</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#F78C6C;--1:#AA0982">18</span><span style="--0:#D6DEEB;--1:#403F53">]</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#C792EA;--1:#8844AE">for</span><span style="--0:#D6DEEB;--1:#403F53"> t </span><span style="--0:#7FDBCA;--1:#096E72">in</span><span style="--0:#D6DEEB;--1:#403F53"> critical_hours</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">            </span></span><span style="--0:#D6DEEB;--1:#403F53">ac_result </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">solve_acopf</span><span style="--0:#D6DEEB;--1:#403F53">(</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">                </span></span><span style="--0:#D6DEEB;--1:#403F53">network,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">                </span></span><span style="--0:#D6DEEB;--1:#403F53">hour</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">t,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">                </span></span><span style="--0:#D6DEEB;--1:#403F53">commitment</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">commitment[:, t],</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">                </span></span><span style="--0:#D6DEEB;--1:#403F53">warm_start</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">dc_results[t]</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">            </span></span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent">            </span><span style="--0:#C792EA;--1:#8844AE">if</span><span style="--0:#D6DEEB;--1:#403F53"> ac_result[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">termination_status</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">] </span><span style="--0:#7FDBCA;--1:#096E72">!=</span><span style="--0:#D6DEEB;--1:#403F53"> LOCALLY_SOLVED</span></div></div><div class="ec-line"><div class="code"><span class="indent">                </span><span style="--0:#C5E478;--1:#3B61B0">@warn</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Hour </span><span style="--0:#EF787F;--1:#A64348">$t</span><span style="--0:#ECC48D;--1:#984E4D">: AC-OPF failed to converge</span><span style="--0:#D9F5DD;--1:#111111">"</span></div></div><div class="ec-line"><div class="code"><span class="indent">            </span><span style="--0:#C792EA;--1:#8844AE">else</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">                </span></span><span style="--0:#D6DEEB;--1:#403F53">v_min </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">minimum</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">values</span><span style="--0:#D6DEEB;--1:#403F53">(ac_result[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">bus_V</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]))</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">                </span></span><span style="--0:#D6DEEB;--1:#403F53">v_max </span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C5E478;--1:#3B61B0">maximum</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#C5E478;--1:#3B61B0">values</span><span style="--0:#D6DEEB;--1:#403F53">(ac_result[</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">bus_V</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">]))</span></div></div><div class="ec-line"><div class="code"><span class="indent">                </span><span style="--0:#C5E478;--1:#3B61B0">println</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">Hour </span><span style="--0:#EF787F;--1:#A64348">$t</span><span style="--0:#ECC48D;--1:#984E4D">: AC feasible, V ∈ [</span><span style="--0:#EF787F;--1:#A64348">$v_min</span><span style="--0:#ECC48D;--1:#984E4D">, </span><span style="--0:#EF787F;--1:#A64348">$v_max</span><span style="--0:#ECC48D;--1:#984E4D">]</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">)</span></div></div><div class="ec-line"><div class="code"><span class="indent">            </span><span style="--0:#C792EA;--1:#8844AE">end</span></div></div><div class="ec-line"><div class="code"><span class="indent">        </span><span style="--0:#C792EA;--1:#8844AE">end</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">end</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#C792EA;--1:#8844AE">return</span><span style="--0:#D6DEEB;--1:#403F53"> (uc</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">uc_result, dc</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">dc_results, commitment</span><span style="--0:#7FDBCA;--1:#096E72">=</span><span style="--0:#D6DEEB;--1:#403F53">commitment)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">end</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="function solve_day_ahead(network, profiles; validate_ac=true)    # Stage 1: Unit commitment (24 hours)    println(&#x22;Stage 1: Solving UC...&#x22;)    uc_result = solve_uc(network, profiles, horizon=24)    commitment = uc_result[&#x22;commitment&#x22;]    println(&#x22;UC Cost: $(uc_result[&#x22;objective&#x22;]/1e6) M KRW&#x22;)    println(&#x22;Units online: $(sum(commitment, dims=1))&#x22;)    # Stage 2: DC-OPF for each hour    println(&#x22;\nStage 2: Solving DC-OPF...&#x22;)    dc_results = []    for t in 1:24        dc_result = solve_dcopf(            network,            hour=t,            commitment=commitment[:, t],            demand=profiles[&#x22;demand&#x22;][:, t]        )        push!(dc_results, dc_result)    end    dc_total_cost = sum(r[&#x22;objective&#x22;] for r in dc_results)    println(&#x22;DC-OPF Cost: $(dc_total_cost/1e6) M KRW&#x22;)    # Stage 3: AC validation for critical hours    if validate_ac        println(&#x22;\nStage 3: AC-OPF Validation...&#x22;)        critical_hours = [argmax(profiles[&#x22;demand&#x22;]), 12, 18]        for t in critical_hours            ac_result = solve_acopf(                network,                hour=t,                commitment=commitment[:, t],                warm_start=dc_results[t]            )            if ac_result[&#x22;termination_status&#x22;] != LOCALLY_SOLVED                @warn &#x22;Hour $t: AC-OPF failed to converge&#x22;            else                v_min = minimum(values(ac_result[&#x22;bus_V&#x22;]))                v_max = maximum(values(ac_result[&#x22;bus_V&#x22;]))                println(&#x22;Hour $t: AC feasible, V ∈ [$v_min, $v_max]&#x22;)            end        end    end    return (uc=uc_result, dc=dc_results, commitment=commitment)end"><div></div></button></div></figure></div>
+<h2 id="speed-vs-accuracy">Speed vs. Accuracy</h2>
+<h3 id="pareto-frontier">Pareto Frontier</h3>
+<pre class="mermaid" dir="ltr">graph TD
+    A["Trade-off Space"]
+    
+    B[ED<br>Fastest, Least Accurate]
+    C[DC-OPF<br>Fast, Medium Accuracy]
+    D[UC<br>Slow, Good Temporal]
+    E[AC-OPF<br>Medium, High Accuracy]
+    F[UC+AC-OPF<br>Slowest, Best Overall]
+    
+    B --> C
+    C --> E
+    D --> F
+    </pre>
+<h3 id="scenario-analysis">Scenario Analysis</h3>
+<p><strong>For large-scale studies:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Scenarios</th><th>Model Choice</th><th>Time Estimate</th></tr></thead><tbody><tr><td><strong>10 scenarios</strong></td><td>AC-OPF</td><td>~1 minute</td></tr><tr><td><strong>100 scenarios</strong></td><td>DC-OPF</td><td>~1 minute</td></tr><tr><td><strong>1,000 scenarios</strong></td><td>ED</td><td>~30 seconds</td></tr><tr><td><strong>10,000 scenarios</strong></td><td>ED (parallelized)</td><td>~5 minutes</td></tr></tbody></table>
+<p><strong>Strategy:</strong> Start with ED/DC-OPF for screening, then AC-OPF for detailed analysis of interesting cases.</p>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="model-selection-checklist">Model Selection Checklist</h3>
+<p><strong>Ask yourself:</strong></p>
+<ol>
+<li>
+<p><strong>Time horizon?</strong></p>
+<ul>
+<li>Single period → OPF</li>
+<li>Multiple periods → UC</li>
+</ul>
+</li>
+<li>
+<p><strong>Network important?</strong></p>
+<ul>
+<li>No → ED/UC</li>
+<li>Yes → DC-OPF/AC-OPF</li>
+</ul>
+</li>
+<li>
+<p><strong>Voltage critical?</strong></p>
+<ul>
+<li>No → DC-OPF</li>
+<li>Yes → AC-OPF</li>
+</ul>
+</li>
+<li>
+<p><strong>Speed requirement?</strong></p>
+<ul>
+<li>Fast → ED/DC-OPF</li>
+<li>Moderate → AC-OPF</li>
+<li>Can wait → UC</li>
+</ul>
+</li>
+<li>
+<p><strong>Accuracy need?</strong></p>
+<ul>
+<li>Approximate → ED/DC-OPF</li>
+<li>High → AC-OPF</li>
+<li>Complete → UC + AC-OPF</li>
+</ul>
+</li>
+</ol>
+<h3 id="validation-strategy">Validation Strategy</h3>
+<pre class="mermaid" dir="ltr">flowchart LR
+    A[Simplest Model] --> B[Run &#x26; Analyze]
+    B --> C{Need more<br>accuracy?}
+    C -->|Yes| D[Next Complex Model]
+    C -->|No| E[Done]
+    D --> B
+    
+    F[ED] --> G[DC-OPF]
+    G --> H[AC-OPF]
+    
+    I[UC] --> J[UC + DC-OPF]
+    J --> K[UC + AC-OPF]
+    </pre>
+<p><strong>Progressive refinement:</strong></p>
+<ol>
+<li>Start simple (ED or DC-OPF)</li>
+<li>Check if results reasonable</li>
+<li>Add complexity if needed</li>
+<li>Validate with more accurate model</li>
+<li>Iterate until confidence achieved</li>
+</ol>
+<h2 id="summary-table">Summary Table</h2>
+<h3 id="at-a-glance">At a Glance</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Criterion</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Complexity</strong></td><td>★</td><td>★★★★★</td><td>★★</td><td>★★★★</td></tr><tr><td><strong>Speed</strong></td><td>★★★★★</td><td>★</td><td>★★★★★</td><td>★★★</td></tr><tr><td><strong>Accuracy</strong></td><td>★</td><td>★★</td><td>★★★</td><td>★★★★★</td></tr><tr><td><strong>Ease of Use</strong></td><td>★★★★★</td><td>★★</td><td>★★★★</td><td>★★</td></tr><tr><td><strong>Scalability</strong></td><td>★★★★★</td><td>★★</td><td>★★★★★</td><td>★★★</td></tr><tr><td><strong>Physical Realism</strong></td><td>★</td><td>★★★★</td><td>★★★</td><td>★★★★★</td></tr><tr><td><strong>Market Relevance</strong></td><td>★★</td><td>★★★★★</td><td>★★★★★</td><td>★★★</td></tr></tbody></table>
+<p><strong>Legend:</strong> ★ = Poor, ★★★ = Good, ★★★★★ = Excellent</p>
+<h2 id="example-study-design">Example Study Design</h2>
+<h3 id="case-study-coal-retirement-analysis">Case Study: Coal Retirement Analysis</h3>
+<p><strong>Research question:</strong> How does retiring 5 coal plants affect costs and operations?</p>
+<p><strong>Recommended approach:</strong></p>
+<pre class="mermaid" dir="ltr">flowchart TB
+    A[Baseline: All plants] --> B[Run UC<br>Representative days]
+    C[Scenario: 5 plants retired] --> D[Run UC<br>Same days]
+    
+    B --> E[Compare commitment<br>patterns]
+    D --> E
+    
+    E --> F[Identify<br>critical hours]
+    
+    F --> G[Run AC-OPF<br>Validate feasibility]
+    
+    G --> H{Voltage<br>issues?}
+    
+    H -->|Yes| I[Analyze voltage<br>support needs]
+    H -->|No| J[Run DC-OPF<br>Analyze congestion]
+    
+    I --> K[Final Report]
+    J --> K
+    </pre>
+<p><strong>Models used:</strong> UC (temporal), AC-OPF (voltage validation), DC-OPF (congestion)</p>
+<p><strong>Rationale:</strong></p>
+<ul>
+<li>UC captures increased cycling of remaining units</li>
+<li>AC-OPF validates voltage feasibility without coal plants</li>
+<li>DC-OPF identifies transmission bottlenecks</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>
+<p><strong>Learn each model:</strong></p>
+<ul>
+<li><a href="/documentation/kpg-run/formulations/ed">Economic Dispatch →</a></li>
+<li><a href="/documentation/kpg-run/formulations/uc">Unit Commitment →</a></li>
+<li><a href="/documentation/kpg-run/formulations/dcopf">DC Optimal Power Flow →</a></li>
+<li><a href="/documentation/kpg-run/formulations/acopf">AC Optimal Power Flow →</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Start using KPG Run:</strong> <a href="/documentation/kpg-run/getting-started">Getting Started →</a></p>
+</li>
+<li>
+<p><strong>See complete workflows:</strong> <a href="/documentation/workflows">Integration Examples →</a></p>
+</li>
+</ul> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/documentation/kpg-run/formulations/acopf/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">AC Optimal Power Flow</span> </span> </a> <a href="/documentation/kpg-view/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Overview</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>

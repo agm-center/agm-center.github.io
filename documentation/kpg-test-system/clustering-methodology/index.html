@@ -1,0 +1,731 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><!-- Force light theme before any rendering --><script>
+	// Set light theme immediately - runs before page renders
+	if (typeof localStorage !== 'undefined') {
+		localStorage.setItem('starlight-theme', 'light');
+	}
+	document.documentElement.setAttribute('data-theme', 'light');
+</script> <!-- Include Starlight's default head tags --><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Clustering Methodology | AGM Center</title><link rel="canonical" href="https://agm-center.github.io/documentation/kpg-test-system/clustering-methodology/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.15.3"/><meta name="generator" content="Starlight v0.33.2"/><meta property="og:title" content="Clustering Methodology"/><meta property="og:type" content="article"/><meta property="og:url" content="https://agm-center.github.io/documentation/kpg-test-system/clustering-methodology/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Synthetic grid generation approach, clustering techniques, and data processing strategy for KPG 193."/><meta property="og:site_name" content="AGM Center"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Synthetic grid generation approach, clustering techniques, and data processing strategy for KPG 193."/><script>
+	// Set light mode before page renders to prevent system theme detection
+	(() => {
+		// Store light theme preference
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem('starlight-theme', 'light');
+		}
+		// Set theme immediately
+		document.documentElement.dataset.theme = 'light';
+	})();
+</script><link rel="stylesheet" href="/_astro/print.BL8QyxEA.css" media="print"><link rel="stylesheet" href="/_astro/index.D9kyTZ85.css">
+<link rel="stylesheet" href="/_astro/index.KfiKpAKc.css">
+<style>:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-avdet4wd){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-avdet4wd){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-avdet4wd){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-avdet4wd){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-avdet4wd){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-avdet4wd){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-avdet4wd){vertical-align:middle}
+.card-grid:where(.astro-zntqmydn){display:grid;grid-template-columns:100%;gap:1rem}.card-grid:where(.astro-zntqmydn)>*{margin-top:0!important}@media (min-width: 50rem){.card-grid:where(.astro-zntqmydn){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-zntqmydn){--stagger-height: 5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-zntqmydn)>*:nth-child(2n){transform:translateY(var(--stagger-height))}}
+.card:where(.astro-v5tidmuc){--sl-card-border: var(--sl-color-purple);--sl-card-bg: var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);padding:clamp(1rem,calc(.125rem + 3vw),2.5rem);flex-direction:column;gap:clamp(.5rem,calc(.125rem + 1vw),1rem)}.card:where(.astro-v5tidmuc):nth-child(4n+1){--sl-card-border: var(--sl-color-orange);--sl-card-bg: var(--sl-color-orange-low)}.card:where(.astro-v5tidmuc):nth-child(4n+3){--sl-card-border: var(--sl-color-green);--sl-card-bg: var(--sl-color-green-low)}.card:where(.astro-v5tidmuc):nth-child(4n+4){--sl-card-border: var(--sl-color-red);--sl-card-bg: var(--sl-color-red-low)}.card:where(.astro-v5tidmuc):nth-child(4n+5){--sl-card-border: var(--sl-color-blue);--sl-card-bg: var(--sl-color-blue-low)}.title:where(.astro-v5tidmuc){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);gap:1rem;align-items:center}.card:where(.astro-v5tidmuc) .icon:where(.astro-v5tidmuc){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);padding:.2em;border-radius:.25rem}.card:where(.astro-v5tidmuc) .body:where(.astro-v5tidmuc){margin:0;font-size:clamp(var(--sl-text-sm),calc(.5rem + 1vw),var(--sl-text-body))}
+svg:where(.astro-c6vsoqas){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1em;height:1em}
+.sl-steps{--bullet-size: calc(var(--sl-line-height) * 1rem);--bullet-margin: .375rem;list-style:none;counter-reset:steps-counter var(--sl-steps-start, 0);padding-inline-start:0}.sl-steps>li{counter-increment:steps-counter;position:relative;padding-inline-start:calc(var(--bullet-size) + 1rem);padding-bottom:1px;min-height:calc(var(--bullet-size) + var(--bullet-margin))}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);position:absolute;top:0;inset-inline-start:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);font-weight:600;text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);border-radius:99rem;box-shadow:inset 0 0 0 1px var(--sl-color-gray-5)}.sl-steps>li:after{--guide-width: 1px;content:"";position:absolute;top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2);width:var(--guide-width);background-color:var(--sl-color-hairline-light)}.sl-steps>li>:first-child{--lh: calc(1em * var(--sl-line-height));--shift-y: calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh: calc(1em * var(--sl-line-height-headings))}@supports (--prop: 1lh){.sl-steps>li>:first-child{--lh: 1lh}}
+.sl-link-button:where(.astro-xwgiixxa){align-items:center;border:1px solid transparent;border-radius:999rem;display:inline-flex;font-size:var(--sl-text-sm);gap:.5em;line-height:1.1875;outline-offset:.25rem;padding:.4375rem 1.125rem;text-decoration:none}.sl-link-button:where(.astro-xwgiixxa).primary{background:var(--sl-color-text-accent);border-color:var(--sl-color-text-accent);color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).primary:hover{color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).secondary{border-color:inherit;color:var(--sl-color-white)}.sl-link-button:where(.astro-xwgiixxa).minimal{color:var(--sl-color-white);padding-inline:0}.sl-link-button:where(.astro-xwgiixxa) svg{flex-shrink:0}@media (min-width: 50rem){.sl-link-button:where(.astro-xwgiixxa){font-size:var(--sl-text-base);padding:.9375rem 1.25rem}}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa){margin-inline-end:1rem}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa):not(:where(p *)){margin-block:1rem}
+</style><script type="module" src="/_astro/page.CAeE1Kiy.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><nav class="agm-nav astro-xrw5jr27" style="height: 72px;"> <div class="agm-nav-container astro-xrw5jr27"> <div class="agm-nav-content astro-xrw5jr27">  <a href="/" class="flex items-center gap-2 text-xl font-semibold no-underline flex-shrink-0 astro-xrw5jr27"> <span class="text-neutral-black astro-xrw5jr27">AGM</span> <span class="text-brand-primary astro-xrw5jr27">Center</span> <span class="text-neutral-black astro-xrw5jr27">.</span> </a>  <div class="hidden md:flex items-center gap-6 lg:gap-8 astro-xrw5jr27"> <a href="/about" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+About
+</a> <a href="/research" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Research
+</a> <a href="/learning" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Learning
+</a> <a href="/discussion" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Discussion
+</a> <a href="/gallery" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Gallery
+</a> <a href="/documentation/introduction" class="bg-brand-primary hover:bg-brand-primary-dark text-white px-6 py-2 rounded text-sm font-medium transition-colors no-underline astro-xrw5jr27">
+Documentation
+</a> </div>  <button id="mobile-menu-btn" class="md:hidden p-2 text-neutral-black hover:text-brand-primary transition-colors astro-xrw5jr27" aria-label="Toggle menu"> <svg class="w-6 h-6 astro-xrw5jr27" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" class="astro-xrw5jr27"></path> </svg> </button> </div> </div>  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-neutral-border astro-xrw5jr27"> <div class="px-6 py-4 space-y-3 astro-xrw5jr27"> <a href="/about" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+About
+</a> <a href="/research" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Research
+</a> <a href="/learning" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Learning
+</a> <a href="/discussion" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Discussion
+</a> <a href="/gallery" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Gallery
+</a> <a href="/documentation/introduction" class="block bg-brand-primary hover:bg-brand-primary-dark text-white px-6 py-2 rounded text-sm font-medium transition-colors no-underline text-center mt-3 astro-xrw5jr27">
+Documentation
+</a> </div> </div> </nav>  <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>{n?.classList.toggle("hidden")});</script></header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0cq0vgp" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/" aria-current="false" class="large astro-3ii7xxms"> <span class="astro-3ii7xxms">Introduction</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG Test System</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/data-specifications/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Data Specifications</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/network-structure/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Network Structure</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/profiles-timeseries/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Profiles &amp; Time Series</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/clustering-methodology/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Clustering Methodology</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-test-system/validation-results/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Validation Results</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG Run</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/getting-started/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Getting Started</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/installation/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Installation</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/user-interface/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">User Interface</span>  </a> </li><li class="astro-3ii7xxms"> <details class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Formulations</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/ed/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Economic Dispatch</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/uc/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Unit Commitment</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/dcopf/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">DC Optimal Power Flow</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/acopf/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AC Optimal Power Flow</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-run/formulations/solver-comparison/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Solver Comparison</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG View</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/documentation/kpg-view/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-view/usage-guide/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Usage Guide</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/documentation/kpg-view/data-format/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Data Format</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="sl-flex social-icons astro-wu23bvmt"> <a href="https://github.com/withastro/starlight" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a> </div> <script>
+	// Force light mode and store preference
+	// This runs inline to prevent flash of dark content
+	if (typeof localStorage !== 'undefined') {
+		localStorage.setItem('starlight-theme', 'light');
+	}
+	document.documentElement.dataset.theme = 'light';
+</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <div class="sidebar-container astro-rl4sue7z">  <div class="search-minimal astro-rl4sue7z"> <site-search class="astro-rl4sue7z astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#motivation-for-synthetic-data" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Motivation for Synthetic Data</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#data-collection" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Data Collection</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#clustering-approach" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Clustering Approach</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#clustering-method" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Clustering Method</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#population-weighted-allocation" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Population-Weighted Allocation</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#data-processing-and-allocation" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Data Processing and Allocation</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#system-characteristics-preserved" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">System Characteristics Preserved</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#validation" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Validation</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#limitations-and-caveats" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Limitations and Caveats</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#comparison-to-other-test-systems" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Comparison to Other Test Systems</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#references" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">References</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#motivation-for-synthetic-data" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Motivation for Synthetic Data</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#data-collection" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Data Collection</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#clustering-approach" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Clustering Approach</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#clustering-method" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Clustering Method</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#population-weighted-allocation" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Population-Weighted Allocation</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#data-processing-and-allocation" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Data Processing and Allocation</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#system-characteristics-preserved" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">System Characteristics Preserved</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#validation" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Validation</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#limitations-and-caveats" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Limitations and Caveats</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#comparison-to-other-test-systems" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Comparison to Other Test Systems</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#references" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">References</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Clustering Methodology</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <h1 id="clustering-methodology">Clustering Methodology</h1>
+<p>The KPG 193 is a <strong>synthetic</strong> power grid test system developed using open-source data and spatial clustering techniques. This page explains the methodology behind its construction, as detailed in Song &#x26; Kim (2024).</p>
+<h2 id="motivation-for-synthetic-data">Motivation for Synthetic Data</h2>
+<pre class="mermaid" dir="ltr">flowchart TB
+    A[Actual Grid Data] --> B{Access Barriers}
+    
+    B --> C[Security Concerns<br>Critical infrastructure<br>protection]
+    B --> D[Commercial Sensitivity<br>Generation costs<br>Contracts]
+    B --> E[Limited Availability<br>No public detailed<br>network data]
+    
+    C --> F[Cannot Share<br>Proprietary Info]
+    D --> F
+    E --> F
+    
+    F --> G[Solution:<br>Synthetic Test System]
+    
+    G --> H[Open Access<br>Free for research]
+    G --> I[Reproducible<br>Consistent baseline]
+    G --> J[Shareable<br>No confidentiality<br>issues]
+    </pre>
+<p><strong>Challenges with actual grid data in Korea:</strong></p>
+<ol>
+<li><strong>National security:</strong> Detailed power grid information classified as critical infrastructure</li>
+<li><strong>Commercial sensitivity:</strong> Generator costs, fuel contracts, market strategies are proprietary</li>
+<li><strong>Data unavailability:</strong> Network topology not publicly disclosed</li>
+<li><strong>Legal restrictions:</strong> Cannot freely share or publish sensitive grid information</li>
+<li><strong>Dynamic changes:</strong> Real grid evolves continuously, making reproducibility difficult</li>
+</ol>
+<p><strong>Benefits of synthetic data:</strong></p>
+<ol>
+<li><strong>Open access:</strong> Free to use, modify, and share for research</li>
+<li><strong>Reproducible:</strong> Consistent dataset for comparing research results</li>
+<li><strong>Well-documented:</strong> All parameters and methods publicly described</li>
+<li><strong>Legally shareable:</strong> No confidentiality or security restrictions</li>
+<li><strong>Scenario flexibility:</strong> Easy to modify for future grid studies</li>
+</ol>
+<h2 id="data-collection">Data Collection</h2>
+<p>The KPG 193 was constructed using exclusively publicly available data sources for the reference year <strong>2022</strong>.</p>
+<pre class="mermaid" dir="ltr">flowchart LR
+    A[OpenStreetMap<br>OSM] --> F[Network<br>Topology]
+    B[KEPCO Reports<br>Public Statistics] --> G[Generation<br>Capacity]
+    C[Municipal Data<br>230 Regions] --> H[Demand<br>Distribution]
+    D[Energy Agency<br>Statistics] --> I[Renewable<br>Capacity]
+    E[KMA LDAPS<br>Weather Service] --> J[Meteorological<br>Data]
+    
+    F --> K[KPG 193<br>Test System]
+    G --> K
+    H --> K
+    I --> K
+    J --> K
+    </pre>
+<p><strong>Network topology (OpenStreetMap):</strong></p>
+<p><strong>Extracted elements:</strong></p>
+<ul>
+<li><strong>Power lines:</strong> Overhead transmission lines (<code dir="auto">power=line</code>)</li>
+<li><strong>Power cables:</strong> Underground transmission cables (<code dir="auto">power=cable</code>)</li>
+<li><strong>Substations:</strong> High-voltage substations (<code dir="auto">power=substation</code>)</li>
+<li><strong>Voltage levels:</strong> 765 kV, 345 kV, 154 kV classifications</li>
+<li><strong>Line parameters:</strong> Voltage ratings, number of circuits</li>
+</ul>
+<p><strong>Extraction method:</strong></p>
+<ul>
+<li>Overpass API queries for Korean power infrastructure</li>
+<li>Filtering by voltage level (≥154 kV transmission)</li>
+<li>Topology validation and correction</li>
+</ul>
+<p><strong>Limitations of OSM data:</strong></p>
+<ul>
+<li>Update schedule uncertain (may lag real grid changes)</li>
+<li>Some topology errors or missing connections</li>
+<li>Line parameters estimated from standard values</li>
+</ul>
+<p><strong>Line parameter calculation:</strong></p>
+<p>Standard conductor coefficients from manufacturer catalogs used to compute:</p>
+<ul>
+<li><strong>Resistance (R):</strong> Based on conductor type and voltage level</li>
+<li><strong>Reactance (X):</strong> Calculated from line geometry</li>
+<li><strong>Susceptance (B):</strong> Computed from capacitance</li>
+<li><strong>Thermal ratings:</strong> Typical values for voltage class</li>
+</ul>
+<p>Reference: Grigsby (2007), <em>Electric Power Generation, Transmission, and Distribution</em></p>
+<p><strong>Conventional generators:</strong></p>
+<p><strong>Available information:</strong></p>
+<ul>
+<li>Total installed capacity by technology (Coal, LNG, Nuclear)</li>
+<li>Approximate unit sizes and counts</li>
+<li>Regional distribution (province level)</li>
+<li>Plant names and general locations</li>
+</ul>
+<p><strong>Generator characteristics:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Technology</th><th>Data Source</th><th>Parameters Estimated</th></tr></thead><tbody><tr><td><strong>Coal</strong></td><td>Public capacity statistics</td><td>Min/max output, ramp rates, startup costs</td></tr><tr><td><strong>LNG</strong></td><td>Public capacity statistics</td><td>Min/max output, ramp rates, startup costs</td></tr><tr><td><strong>Nuclear</strong></td><td>Public unit information</td><td>Capacity, inflexibility (95% Pmin)</td></tr></tbody></table>
+<p>Cost parameters derived from:</p>
+<ul>
+<li>Literature values for Korean generators</li>
+<li>Typical heat rates by technology</li>
+<li>Fuel price data (publicly reported)</li>
+</ul>
+<p><strong>Renewable generators:</strong></p>
+<p><strong>Municipal-level data (230 segments):</strong></p>
+<ul>
+<li>Solar PV installed capacity by municipality</li>
+<li>Wind farm capacity by municipality</li>
+<li>Small hydro capacity by municipality</li>
+<li>Installation counts and size distribution</li>
+</ul>
+<p><strong>Dataset:</strong> KEA supply statistics (2022), cumulative installed capacity by region</p>
+<p><strong>Weather data:</strong></p>
+<p><strong>LDAPS (Local Data Assimilation and Prediction System):</strong></p>
+<ul>
+<li>Operational weather forecasting model</li>
+<li>Spatial resolution: ~5 km grid</li>
+<li>Temporal resolution: Hourly</li>
+<li>Coverage: Full year 2022</li>
+</ul>
+<p><strong>Variables extracted:</strong></p>
+<ul>
+<li><strong>Temperature:</strong> 2-meter air temperature (K)</li>
+<li><strong>Wind speed:</strong> Wind velocity at 93m hub height (m/s)</li>
+<li><strong>Wind components:</strong> U (east-west) and V (north-south) vectors</li>
+<li><strong>Radiation:</strong> Net downward longwave flux (W/m²)</li>
+</ul>
+<p>These variables used to generate renewable generation profiles.</p>
+<p><strong>Electrical load:</strong></p>
+<p><strong>Available data:</strong></p>
+<ul>
+<li>Municipal-level hourly electricity consumption (230 municipalities)</li>
+<li>Full year 2022 (8,760 hours)</li>
+<li>Disaggregated by city/county/district</li>
+</ul>
+<p><strong>Dataset:</strong> KPX hourly electricity sales volume by region (2022)</p>
+<p><strong>Characteristics:</strong></p>
+<ul>
+<li>Strong summer peak (air conditioning)</li>
+<li>Concentrated in Seoul metropolitan area (~40% of load)</li>
+<li>Industrial demand base in southeastern regions</li>
+</ul>
+<h2 id="clustering-approach">Clustering Approach</h2>
+<p>The core innovation of KPG 193 is the <strong>spatial clustering strategy</strong> that reduces complexity while preserving system characteristics.</p>
+<pre class="mermaid" dir="ltr">flowchart LR
+    A[Municipal Data<br>230 regions] --> B{Too Many<br>for Tractability}
+    
+    B --> C[Need Aggregation<br>But preserve<br>characteristics]
+    
+    C --> D[Clustering Solution]
+    
+    D --> E[193 Buses<br>Computationally<br>tractable]
+    </pre>
+<p><strong>Problem:</strong></p>
+<ul>
+<li>Demand and renewable data available for 230 municipalities</li>
+<li>Creating 230-bus system would be computationally expensive</li>
+<li>Need to aggregate while maintaining:
+<ul>
+<li>Geographic distribution</li>
+<li>Load patterns</li>
+<li>Generation locations</li>
+<li>Transmission structure</li>
+</ul>
+</li>
+</ul>
+<p><strong>Solution:</strong> Cluster based on utility company regional structure</p>
+<h2 id="clustering-method">Clustering Method</h2>
+<p><strong>Key insight:</strong> Use Korea Electric Power Corporation (KEPCO) regional office locations</p>
+<p>Korea Electric Power Corporation (KEPCO) divides the country into regional offices for operations. These divisions naturally reflect:</p>
+<ul>
+<li>Service territory boundaries</li>
+<li>Load density patterns</li>
+<li>Maintenance and operations zones</li>
+<li>Transmission network structure</li>
+</ul>
+<p><strong>KEPCO regional offices:</strong></p>
+<ul>
+<li>Approximately 200 regional offices nationwide</li>
+<li>Each office serves a defined geographic area</li>
+<li>Offices located at key substations</li>
+<li>Distribution follows population and load density</li>
+</ul>
+<p><strong>Clustering procedure:</strong></p>
+<ol>
+<li><strong>Identify KEPCO office locations</strong> from public organizational data</li>
+<li><strong>Assign each municipality</strong> to its nearest KEPCO office</li>
+<li><strong>Aggregate demand and renewable capacity</strong> to office locations</li>
+<li><strong>Validate clustering</strong> against population distribution</li>
+</ol>
+<p>This approach naturally creates denser clustering in high-load areas (Seoul) and sparser clustering in rural regions.</p>
+<p><strong>Clustering algorithm:</strong></p>
+<pre class="mermaid" dir="ltr">flowchart TB
+    A[230 Municipalities<br>Demand &#x26; Renewables] --> B[Identify<br>KEPCO Office<br>Locations]
+    
+    C[Population Data<br>by Municipality] --> B
+    
+    B --> D[Assign Municipalities<br>to Nearest Office]
+    
+    D --> E[Aggregate Data<br>to Office Locations]
+    
+    E --> F[Validate with<br>Population Weights]
+    
+    F --> G[193 Buses<br>Preserves Spatial<br>Distribution]
+    </pre>
+<p><strong>Step 1: Office location identification</strong></p>
+<ul>
+<li>KEPCO maintains ~200 regional offices</li>
+<li>Locations obtained from KEPCO organizational data</li>
+<li>Geographic coordinates from address data</li>
+<li>Filtered to major transmission-connected offices</li>
+</ul>
+<p><strong>Step 2: Municipal assignment</strong></p>
+<ul>
+<li>Each of 230 municipalities assigned to nearest office</li>
+<li>Distance calculated using geographic coordinates (haversine formula)</li>
+<li>Multiple municipalities may aggregate to one office</li>
+<li>High-load municipalities may map to dedicated buses</li>
+</ul>
+<p><strong>Step 3: Data aggregation</strong></p>
+<p>For each cluster (KEPCO office location):</p>
+<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -3.043ex;" xmlns="http://www.w3.org/2000/svg" width="44.957ex" height="5.192ex" role="img" focusable="false" viewBox="0 -950 19870.9 2294.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-N-44" d="M130 622Q123 629 119 631T103 634T60 637H27V683H228Q399 682 419 682T461 676Q504 667 546 641T626 573T685 470T708 336Q708 210 634 116T442 3Q429 1 228 0H27V46H60Q102 47 111 49T130 61V622ZM593 338Q593 439 571 501T493 602Q439 637 355 637H322H294Q238 637 234 628Q231 624 231 344Q231 62 232 59Q233 49 248 48T339 46H350Q456 46 515 95Q561 133 577 191T593 338Z"></path><path id="MJX-1-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-1-TEX-N-6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-1-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-1-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-1-TEX-N-64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path><path id="MJX-1-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-1-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-1-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-1-TEX-N-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path id="MJX-1-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-1-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-LO-2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path><path id="MJX-1-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-1-TEX-N-70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z"></path><path id="MJX-1-TEX-N-20" d=""></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mtext"><use data-c="44" xlink:href="#MJX-1-TEX-N-44"></use><use data-c="65" xlink:href="#MJX-1-TEX-N-65" transform="translate(764,0)"></use><use data-c="6D" xlink:href="#MJX-1-TEX-N-6D" transform="translate(1208,0)"></use><use data-c="61" xlink:href="#MJX-1-TEX-N-61" transform="translate(2041,0)"></use><use data-c="6E" xlink:href="#MJX-1-TEX-N-6E" transform="translate(2541,0)"></use><use data-c="64" xlink:href="#MJX-1-TEX-N-64" transform="translate(3097,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(3686,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="63" xlink:href="#MJX-1-TEX-N-63"></use><use data-c="6C" xlink:href="#MJX-1-TEX-N-6C" transform="translate(444,0)"></use><use data-c="75" xlink:href="#MJX-1-TEX-N-75" transform="translate(722,0)"></use><use data-c="73" xlink:href="#MJX-1-TEX-N-73" transform="translate(1278,0)"></use><use data-c="74" xlink:href="#MJX-1-TEX-N-74" transform="translate(1672,0)"></use><use data-c="65" xlink:href="#MJX-1-TEX-N-65" transform="translate(2061,0)"></use><use data-c="72" xlink:href="#MJX-1-TEX-N-72" transform="translate(2505,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(6062.3,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="munder" transform="translate(7118,0)"><g data-mml-node="mo" transform="translate(2917.1,0)"><use data-c="2211" xlink:href="#MJX-1-TEX-LO-2211"></use></g><g data-mml-node="TeXAtom" transform="translate(0,-1107.7) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="6D" xlink:href="#MJX-1-TEX-N-6D"></use><use data-c="75" xlink:href="#MJX-1-TEX-N-75" transform="translate(833,0)"></use><use data-c="6E" xlink:href="#MJX-1-TEX-N-6E" transform="translate(1389,0)"></use><use data-c="69" xlink:href="#MJX-1-TEX-N-69" transform="translate(1945,0)"></use><use data-c="63" xlink:href="#MJX-1-TEX-N-63" transform="translate(2223,0)"></use><use data-c="69" xlink:href="#MJX-1-TEX-N-69" transform="translate(2667,0)"></use><use data-c="70" xlink:href="#MJX-1-TEX-N-70" transform="translate(2945,0)"></use><use data-c="61" xlink:href="#MJX-1-TEX-N-61" transform="translate(3501,0)"></use><use data-c="6C" xlink:href="#MJX-1-TEX-N-6C" transform="translate(4001,0)"></use><use data-c="69" xlink:href="#MJX-1-TEX-N-69" transform="translate(4279,0)"></use><use data-c="74" xlink:href="#MJX-1-TEX-N-74" transform="translate(4557,0)"></use><use data-c="69" xlink:href="#MJX-1-TEX-N-69" transform="translate(4946,0)"></use><use data-c="65" xlink:href="#MJX-1-TEX-N-65" transform="translate(5224,0)"></use><use data-c="73" xlink:href="#MJX-1-TEX-N-73" transform="translate(5668,0)"></use><use data-c="20" xlink:href="#MJX-1-TEX-N-20" transform="translate(6062,0)"></use><use data-c="69" xlink:href="#MJX-1-TEX-N-69" transform="translate(6312,0)"></use><use data-c="6E" xlink:href="#MJX-1-TEX-N-6E" transform="translate(6590,0)"></use><use data-c="20" xlink:href="#MJX-1-TEX-N-20" transform="translate(7146,0)"></use><use data-c="63" xlink:href="#MJX-1-TEX-N-63" transform="translate(7396,0)"></use><use data-c="6C" xlink:href="#MJX-1-TEX-N-6C" transform="translate(7840,0)"></use><use data-c="75" xlink:href="#MJX-1-TEX-N-75" transform="translate(8118,0)"></use><use data-c="73" xlink:href="#MJX-1-TEX-N-73" transform="translate(8674,0)"></use><use data-c="74" xlink:href="#MJX-1-TEX-N-74" transform="translate(9068,0)"></use><use data-c="65" xlink:href="#MJX-1-TEX-N-65" transform="translate(9457,0)"></use><use data-c="72" xlink:href="#MJX-1-TEX-N-72" transform="translate(9901,0)"></use></g></g></g><g data-mml-node="msub" transform="translate(14563,0)"><g data-mml-node="mtext"><use data-c="44" xlink:href="#MJX-1-TEX-N-44"></use><use data-c="65" xlink:href="#MJX-1-TEX-N-65" transform="translate(764,0)"></use><use data-c="6D" xlink:href="#MJX-1-TEX-N-6D" transform="translate(1208,0)"></use><use data-c="61" xlink:href="#MJX-1-TEX-N-61" transform="translate(2041,0)"></use><use data-c="6E" xlink:href="#MJX-1-TEX-N-6E" transform="translate(2541,0)"></use><use data-c="64" xlink:href="#MJX-1-TEX-N-64" transform="translate(3097,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(3686,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="6D" xlink:href="#MJX-1-TEX-N-6D"></use><use data-c="75" xlink:href="#MJX-1-TEX-N-75" transform="translate(833,0)"></use><use data-c="6E" xlink:href="#MJX-1-TEX-N-6E" transform="translate(1389,0)"></use><use data-c="69" xlink:href="#MJX-1-TEX-N-69" transform="translate(1945,0)"></use></g></g></g></g></g></svg></mjx-container>
+<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -3.043ex;" xmlns="http://www.w3.org/2000/svg" width="49.604ex" height="5.192ex" role="img" focusable="false" viewBox="0 -950 21924.9 2294.9" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-N-52" d="M130 622Q123 629 119 631T103 634T60 637H27V683H202H236H300Q376 683 417 677T500 648Q595 600 609 517Q610 512 610 501Q610 468 594 439T556 392T511 361T472 343L456 338Q459 335 467 332Q497 316 516 298T545 254T559 211T568 155T578 94Q588 46 602 31T640 16H645Q660 16 674 32T692 87Q692 98 696 101T712 105T728 103T732 90Q732 59 716 27T672 -16Q656 -22 630 -22Q481 -16 458 90Q456 101 456 163T449 246Q430 304 373 320L363 322L297 323H231V192L232 61Q238 51 249 49T301 46H334V0H323Q302 3 181 3Q59 3 38 0H27V46H60Q102 47 111 49T130 61V622ZM491 499V509Q491 527 490 539T481 570T462 601T424 623T362 636Q360 636 340 636T304 637H283Q238 637 234 628Q231 624 231 492V360H289Q390 360 434 378T489 456Q491 467 491 499Z"></path><path id="MJX-2-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-2-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-2-TEX-N-77" d="M90 368Q84 378 76 380T40 385H18V431H24L43 430Q62 430 84 429T116 428Q206 428 221 431H229V385H215Q177 383 177 368Q177 367 221 239L265 113L339 328L333 345Q323 374 316 379Q308 384 278 385H258V431H264Q270 428 348 428Q439 428 454 431H461V385H452Q404 385 404 369Q404 366 418 324T449 234T481 143L496 100L537 219Q579 341 579 347Q579 363 564 373T530 385H522V431H529Q541 428 624 428Q692 428 698 431H703V385H697Q696 385 691 385T682 384Q635 377 619 334L559 161Q546 124 528 71Q508 12 503 1T487 -11H479Q460 -11 456 -4Q455 -3 407 133L361 267Q359 263 266 -4Q261 -11 243 -11H238Q225 -11 220 -3L90 368Z"></path><path id="MJX-2-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-2-TEX-N-62" d="M307 -11Q234 -11 168 55L158 37Q156 34 153 28T147 17T143 10L138 1L118 0H98V298Q98 599 97 603Q94 622 83 628T38 637H20V660Q20 683 22 683L32 684Q42 685 61 686T98 688Q115 689 135 690T165 693T176 694H179V543Q179 391 180 391L183 394Q186 397 192 401T207 411T228 421T254 431T286 439T323 442Q401 442 461 379T522 216Q522 115 458 52T307 -11ZM182 98Q182 97 187 90T196 79T206 67T218 55T233 44T250 35T271 29T295 26Q330 26 363 46T412 113Q424 148 424 212Q424 287 412 323Q385 405 300 405Q270 405 239 390T188 347L182 339V98Z"></path><path id="MJX-2-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-2-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-2-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-2-TEX-N-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path id="MJX-2-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-2-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-2-TEX-LO-2211" d="M60 948Q63 950 665 950H1267L1325 815Q1384 677 1388 669H1348L1341 683Q1320 724 1285 761Q1235 809 1174 838T1033 881T882 898T699 902H574H543H251L259 891Q722 258 724 252Q725 250 724 246Q721 243 460 -56L196 -356Q196 -357 407 -357Q459 -357 548 -357T676 -358Q812 -358 896 -353T1063 -332T1204 -283T1307 -196Q1328 -170 1348 -124H1388Q1388 -125 1381 -145T1356 -210T1325 -294L1267 -449L666 -450Q64 -450 61 -448Q55 -446 55 -439Q55 -437 57 -433L590 177Q590 178 557 222T452 366T322 544L56 909L55 924Q55 945 60 948Z"></path><path id="MJX-2-TEX-N-6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-2-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-2-TEX-N-70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z"></path><path id="MJX-2-TEX-N-20" d=""></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mtext"><use data-c="52" xlink:href="#MJX-2-TEX-N-52"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(736,0)"></use><use data-c="6E" xlink:href="#MJX-2-TEX-N-6E" transform="translate(1180,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(1736,0)"></use><use data-c="77" xlink:href="#MJX-2-TEX-N-77" transform="translate(2180,0)"></use><use data-c="61" xlink:href="#MJX-2-TEX-N-61" transform="translate(2902,0)"></use><use data-c="62" xlink:href="#MJX-2-TEX-N-62" transform="translate(3402,0)"></use><use data-c="6C" xlink:href="#MJX-2-TEX-N-6C" transform="translate(3958,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(4236,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(4713,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="63" xlink:href="#MJX-2-TEX-N-63"></use><use data-c="6C" xlink:href="#MJX-2-TEX-N-6C" transform="translate(444,0)"></use><use data-c="75" xlink:href="#MJX-2-TEX-N-75" transform="translate(722,0)"></use><use data-c="73" xlink:href="#MJX-2-TEX-N-73" transform="translate(1278,0)"></use><use data-c="74" xlink:href="#MJX-2-TEX-N-74" transform="translate(1672,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(2061,0)"></use><use data-c="72" xlink:href="#MJX-2-TEX-N-72" transform="translate(2505,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(7089.3,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g><g data-mml-node="munder" transform="translate(8145,0)"><g data-mml-node="mo" transform="translate(2917.1,0)"><use data-c="2211" xlink:href="#MJX-2-TEX-LO-2211"></use></g><g data-mml-node="TeXAtom" transform="translate(0,-1107.7) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="6D" xlink:href="#MJX-2-TEX-N-6D"></use><use data-c="75" xlink:href="#MJX-2-TEX-N-75" transform="translate(833,0)"></use><use data-c="6E" xlink:href="#MJX-2-TEX-N-6E" transform="translate(1389,0)"></use><use data-c="69" xlink:href="#MJX-2-TEX-N-69" transform="translate(1945,0)"></use><use data-c="63" xlink:href="#MJX-2-TEX-N-63" transform="translate(2223,0)"></use><use data-c="69" xlink:href="#MJX-2-TEX-N-69" transform="translate(2667,0)"></use><use data-c="70" xlink:href="#MJX-2-TEX-N-70" transform="translate(2945,0)"></use><use data-c="61" xlink:href="#MJX-2-TEX-N-61" transform="translate(3501,0)"></use><use data-c="6C" xlink:href="#MJX-2-TEX-N-6C" transform="translate(4001,0)"></use><use data-c="69" xlink:href="#MJX-2-TEX-N-69" transform="translate(4279,0)"></use><use data-c="74" xlink:href="#MJX-2-TEX-N-74" transform="translate(4557,0)"></use><use data-c="69" xlink:href="#MJX-2-TEX-N-69" transform="translate(4946,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(5224,0)"></use><use data-c="73" xlink:href="#MJX-2-TEX-N-73" transform="translate(5668,0)"></use><use data-c="20" xlink:href="#MJX-2-TEX-N-20" transform="translate(6062,0)"></use><use data-c="69" xlink:href="#MJX-2-TEX-N-69" transform="translate(6312,0)"></use><use data-c="6E" xlink:href="#MJX-2-TEX-N-6E" transform="translate(6590,0)"></use><use data-c="20" xlink:href="#MJX-2-TEX-N-20" transform="translate(7146,0)"></use><use data-c="63" xlink:href="#MJX-2-TEX-N-63" transform="translate(7396,0)"></use><use data-c="6C" xlink:href="#MJX-2-TEX-N-6C" transform="translate(7840,0)"></use><use data-c="75" xlink:href="#MJX-2-TEX-N-75" transform="translate(8118,0)"></use><use data-c="73" xlink:href="#MJX-2-TEX-N-73" transform="translate(8674,0)"></use><use data-c="74" xlink:href="#MJX-2-TEX-N-74" transform="translate(9068,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(9457,0)"></use><use data-c="72" xlink:href="#MJX-2-TEX-N-72" transform="translate(9901,0)"></use></g></g></g><g data-mml-node="msub" transform="translate(15590,0)"><g data-mml-node="mtext"><use data-c="52" xlink:href="#MJX-2-TEX-N-52"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(736,0)"></use><use data-c="6E" xlink:href="#MJX-2-TEX-N-6E" transform="translate(1180,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(1736,0)"></use><use data-c="77" xlink:href="#MJX-2-TEX-N-77" transform="translate(2180,0)"></use><use data-c="61" xlink:href="#MJX-2-TEX-N-61" transform="translate(2902,0)"></use><use data-c="62" xlink:href="#MJX-2-TEX-N-62" transform="translate(3402,0)"></use><use data-c="6C" xlink:href="#MJX-2-TEX-N-6C" transform="translate(3958,0)"></use><use data-c="65" xlink:href="#MJX-2-TEX-N-65" transform="translate(4236,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(4713,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="6D" xlink:href="#MJX-2-TEX-N-6D"></use><use data-c="75" xlink:href="#MJX-2-TEX-N-75" transform="translate(833,0)"></use><use data-c="6E" xlink:href="#MJX-2-TEX-N-6E" transform="translate(1389,0)"></use><use data-c="69" xlink:href="#MJX-2-TEX-N-69" transform="translate(1945,0)"></use></g></g></g></g></g></svg></mjx-container>
+<p><strong>Step 4: Validation</strong></p>
+<p>Verify that clustered data preserves:</p>
+<ul>
+<li>Total system demand</li>
+<li>Regional demand distribution</li>
+<li>Renewable capacity by technology</li>
+<li>Peak demand patterns</li>
+</ul>
+<h3 id="population-weighted-allocation">Population-Weighted Allocation</h3>
+<p>Where direct allocation wasn’t available, population data used to distribute loads:</p>
+<p><strong>Population data source:</strong> Statistics Korea (2023 Census)</p>
+<p><strong>Allocation formula:</strong></p>
+<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -2.089ex;" xmlns="http://www.w3.org/2000/svg" width="49.769ex" height="5.236ex" role="img" focusable="false" viewBox="0 -1391.1 21998 2314.3" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-N-44" d="M130 622Q123 629 119 631T103 634T60 637H27V683H228Q399 682 419 682T461 676Q504 667 546 641T626 573T685 470T708 336Q708 210 634 116T442 3Q429 1 228 0H27V46H60Q102 47 111 49T130 61V622ZM593 338Q593 439 571 501T493 602Q439 637 355 637H322H294Q238 637 234 628Q231 624 231 344Q231 62 232 59Q233 49 248 48T339 46H350Q456 46 515 95Q561 133 577 191T593 338Z"></path><path id="MJX-3-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-3-TEX-N-6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-3-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-3-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-3-TEX-N-64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path><path id="MJX-3-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-3-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-3-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-3-TEX-N-73" d="M295 316Q295 356 268 385T190 414Q154 414 128 401Q98 382 98 349Q97 344 98 336T114 312T157 287Q175 282 201 278T245 269T277 256Q294 248 310 236T342 195T359 133Q359 71 321 31T198 -10H190Q138 -10 94 26L86 19L77 10Q71 4 65 -1L54 -11H46H42Q39 -11 33 -5V74V132Q33 153 35 157T45 162H54Q66 162 70 158T75 146T82 119T101 77Q136 26 198 26Q295 26 295 104Q295 133 277 151Q257 175 194 187T111 210Q75 227 54 256T33 318Q33 357 50 384T93 424T143 442T187 447H198Q238 447 268 432L283 424L292 431Q302 440 314 448H322H326Q329 448 335 442V310L329 304H301Q295 310 295 316Z"></path><path id="MJX-3-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-3-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-3-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-3-TEX-N-54" d="M36 443Q37 448 46 558T55 671V677H666V671Q667 666 676 556T685 443V437H645V443Q645 445 642 478T631 544T610 593Q593 614 555 625Q534 630 478 630H451H443Q417 630 414 618Q413 616 413 339V63Q420 53 439 50T528 46H558V0H545L361 3Q186 1 177 0H164V46H194Q264 46 283 49T309 63V339V550Q309 620 304 625T271 630H244H224Q154 630 119 601Q101 585 93 554T81 486T76 443V437H36V443Z"></path><path id="MJX-3-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-3-TEX-N-20" d=""></path><path id="MJX-3-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-3-TEX-N-50" d="M130 622Q123 629 119 631T103 634T60 637H27V683H214Q237 683 276 683T331 684Q419 684 471 671T567 616Q624 563 624 489Q624 421 573 372T451 307Q429 302 328 301H234V181Q234 62 237 58Q245 47 304 46H337V0H326Q305 3 182 3Q47 3 38 0H27V46H60Q102 47 111 49T130 61V622ZM507 488Q507 514 506 528T500 564T483 597T450 620T397 635Q385 637 307 637H286Q237 637 234 628Q231 624 231 483V342H302H339Q390 342 423 349T481 382Q507 411 507 488Z"></path><path id="MJX-3-TEX-N-70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z"></path><path id="MJX-3-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mtext"><use data-c="44" xlink:href="#MJX-3-TEX-N-44"></use><use data-c="65" xlink:href="#MJX-3-TEX-N-65" transform="translate(764,0)"></use><use data-c="6D" xlink:href="#MJX-3-TEX-N-6D" transform="translate(1208,0)"></use><use data-c="61" xlink:href="#MJX-3-TEX-N-61" transform="translate(2041,0)"></use><use data-c="6E" xlink:href="#MJX-3-TEX-N-6E" transform="translate(2541,0)"></use><use data-c="64" xlink:href="#MJX-3-TEX-N-64" transform="translate(3097,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(3686,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="63" xlink:href="#MJX-3-TEX-N-63"></use><use data-c="6C" xlink:href="#MJX-3-TEX-N-6C" transform="translate(444,0)"></use><use data-c="75" xlink:href="#MJX-3-TEX-N-75" transform="translate(722,0)"></use><use data-c="73" xlink:href="#MJX-3-TEX-N-73" transform="translate(1278,0)"></use><use data-c="74" xlink:href="#MJX-3-TEX-N-74" transform="translate(1672,0)"></use><use data-c="65" xlink:href="#MJX-3-TEX-N-65" transform="translate(2061,0)"></use><use data-c="72" xlink:href="#MJX-3-TEX-N-72" transform="translate(2505,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(6062.3,0)"><use data-c="3D" xlink:href="#MJX-3-TEX-N-3D"></use></g><g data-mml-node="mtext" transform="translate(7118,0)"><use data-c="54" xlink:href="#MJX-3-TEX-N-54"></use><use data-c="6F" xlink:href="#MJX-3-TEX-N-6F" transform="translate(722,0)"></use><use data-c="74" xlink:href="#MJX-3-TEX-N-74" transform="translate(1222,0)"></use><use data-c="61" xlink:href="#MJX-3-TEX-N-61" transform="translate(1611,0)"></use><use data-c="6C" xlink:href="#MJX-3-TEX-N-6C" transform="translate(2111,0)"></use><use data-c="20" xlink:href="#MJX-3-TEX-N-20" transform="translate(2389,0)"></use><use data-c="44" xlink:href="#MJX-3-TEX-N-44" transform="translate(2639,0)"></use><use data-c="65" xlink:href="#MJX-3-TEX-N-65" transform="translate(3403,0)"></use><use data-c="6D" xlink:href="#MJX-3-TEX-N-6D" transform="translate(3847,0)"></use><use data-c="61" xlink:href="#MJX-3-TEX-N-61" transform="translate(4680,0)"></use><use data-c="6E" xlink:href="#MJX-3-TEX-N-6E" transform="translate(5180,0)"></use><use data-c="64" xlink:href="#MJX-3-TEX-N-64" transform="translate(5736,0)"></use></g><g data-mml-node="mo" transform="translate(13632.3,0)"><use data-c="D7" xlink:href="#MJX-3-TEX-N-D7"></use></g><g data-mml-node="mfrac" transform="translate(14632.5,0)"><g data-mml-node="msub" transform="translate(220,697.1)"><g data-mml-node="mtext"><use data-c="50" xlink:href="#MJX-3-TEX-N-50"></use><use data-c="6F" xlink:href="#MJX-3-TEX-N-6F" transform="translate(681,0)"></use><use data-c="70" xlink:href="#MJX-3-TEX-N-70" transform="translate(1181,0)"></use><use data-c="75" xlink:href="#MJX-3-TEX-N-75" transform="translate(1737,0)"></use><use data-c="6C" xlink:href="#MJX-3-TEX-N-6C" transform="translate(2293,0)"></use><use data-c="61" xlink:href="#MJX-3-TEX-N-61" transform="translate(2571,0)"></use><use data-c="74" xlink:href="#MJX-3-TEX-N-74" transform="translate(3071,0)"></use><use data-c="69" xlink:href="#MJX-3-TEX-N-69" transform="translate(3460,0)"></use><use data-c="6F" xlink:href="#MJX-3-TEX-N-6F" transform="translate(3738,0)"></use><use data-c="6E" xlink:href="#MJX-3-TEX-N-6E" transform="translate(4238,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(4827,-229.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="63" xlink:href="#MJX-3-TEX-N-63"></use><use data-c="6C" xlink:href="#MJX-3-TEX-N-6C" transform="translate(444,0)"></use><use data-c="75" xlink:href="#MJX-3-TEX-N-75" transform="translate(722,0)"></use><use data-c="73" xlink:href="#MJX-3-TEX-N-73" transform="translate(1278,0)"></use><use data-c="74" xlink:href="#MJX-3-TEX-N-74" transform="translate(1672,0)"></use><use data-c="65" xlink:href="#MJX-3-TEX-N-65" transform="translate(2061,0)"></use><use data-c="72" xlink:href="#MJX-3-TEX-N-72" transform="translate(2505,0)"></use></g></g></g><g data-mml-node="msub" transform="translate(517.3,-686)"><g data-mml-node="mtext"><use data-c="50" xlink:href="#MJX-3-TEX-N-50"></use><use data-c="6F" xlink:href="#MJX-3-TEX-N-6F" transform="translate(681,0)"></use><use data-c="70" xlink:href="#MJX-3-TEX-N-70" transform="translate(1181,0)"></use><use data-c="75" xlink:href="#MJX-3-TEX-N-75" transform="translate(1737,0)"></use><use data-c="6C" xlink:href="#MJX-3-TEX-N-6C" transform="translate(2293,0)"></use><use data-c="61" xlink:href="#MJX-3-TEX-N-61" transform="translate(2571,0)"></use><use data-c="74" xlink:href="#MJX-3-TEX-N-74" transform="translate(3071,0)"></use><use data-c="69" xlink:href="#MJX-3-TEX-N-69" transform="translate(3460,0)"></use><use data-c="6F" xlink:href="#MJX-3-TEX-N-6F" transform="translate(3738,0)"></use><use data-c="6E" xlink:href="#MJX-3-TEX-N-6E" transform="translate(4238,0)"></use></g><g data-mml-node="TeXAtom" transform="translate(4827,-229.4) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="74" xlink:href="#MJX-3-TEX-N-74"></use><use data-c="6F" xlink:href="#MJX-3-TEX-N-6F" transform="translate(389,0)"></use><use data-c="74" xlink:href="#MJX-3-TEX-N-74" transform="translate(889,0)"></use><use data-c="61" xlink:href="#MJX-3-TEX-N-61" transform="translate(1278,0)"></use><use data-c="6C" xlink:href="#MJX-3-TEX-N-6C" transform="translate(1778,0)"></use></g></g></g><rect width="7125.5" height="60" x="120" y="220"></rect></g></g></g></svg></mjx-container>
+<p>This approach reasonable for residential and commercial loads, which correlate strongly with population.</p>
+<h2 id="data-processing-and-allocation">Data Processing and Allocation</h2>
+<p><strong>Demand profile allocation:</strong></p>
+<ol>
+<li><strong>Municipal hourly profiles</strong> (230 × 8760 hours) from KPX data</li>
+<li><strong>Aggregate to clusters</strong> based on KEPCO office assignment</li>
+<li><strong>Preserve temporal patterns</strong> (hourly, daily, seasonal variations)</li>
+<li><strong>Scale to match</strong> annual energy consumption statistics</li>
+</ol>
+<p><strong>Validation:</strong></p>
+<ul>
+<li>Peak demand matches reported system peak (~90 GW)</li>
+<li>Seasonal patterns consistent with Korean grid (summer peak)</li>
+<li>Daily profiles show realistic morning and evening peaks</li>
+</ul>
+<p><strong>Weather data allocation:</strong></p>
+<ol>
+<li><strong>LDAPS grid points</strong> (~5 km resolution) across Korea</li>
+<li><strong>Map to bus locations</strong> (nearest grid point or spatial interpolation)</li>
+<li><strong>Extract hourly time series</strong> for all 8760 hours</li>
+<li><strong>Variables:</strong> Temperature, wind speed, radiation</li>
+</ol>
+<p>Each of 193 buses assigned weather data from nearest LDAPS grid point, creating bus-specific microclimates.</p>
+<p><strong>Renewable generation profile generation:</strong></p>
+<p><strong>Solar PV model:</strong></p>
+<ol>
+<li>Solar irradiance from LDAPS radiation data</li>
+<li>PV conversion efficiency (typical ~15-20%)</li>
+<li>Temperature derating (panel efficiency vs. temperature)</li>
+<li>Tilt and orientation assumptions (south-facing, optimal tilt)</li>
+</ol>
+<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -0.65ex;" xmlns="http://www.w3.org/2000/svg" width="50.405ex" height="2.347ex" role="img" focusable="false" viewBox="0 -750 22279.2 1037.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-4-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-4-TEX-N-50" d="M130 622Q123 629 119 631T103 634T60 637H27V683H214Q237 683 276 683T331 684Q419 684 471 671T567 616Q624 563 624 489Q624 421 573 372T451 307Q429 302 328 301H234V181Q234 62 237 58Q245 47 304 46H337V0H326Q305 3 182 3Q47 3 38 0H27V46H60Q102 47 111 49T130 61V622ZM507 488Q507 514 506 528T500 564T483 597T450 620T397 635Q385 637 307 637H286Q237 637 234 628Q231 624 231 483V342H302H339Q390 342 423 349T481 382Q507 411 507 488Z"></path><path id="MJX-4-TEX-N-56" d="M114 620Q113 621 110 624T107 627T103 630T98 632T91 634T80 635T67 636T48 637H19V683H28Q46 680 152 680Q273 680 294 683H305V637H284Q223 634 223 620Q223 618 313 372T404 126L490 358Q575 588 575 597Q575 616 554 626T508 637H503V683H512Q527 680 627 680Q718 680 724 683H730V637H723Q648 637 627 596Q627 595 515 291T401 -14Q396 -22 382 -22H374H367Q353 -22 348 -14Q346 -12 231 303Q114 617 114 620Z"></path><path id="MJX-4-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-4-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-4-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-4-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-4-TEX-N-49" d="M328 0Q307 3 180 3T32 0H21V46H43Q92 46 106 49T126 60Q128 63 128 342Q128 620 126 623Q122 628 118 630T96 635T43 637H21V683H32Q53 680 180 680T328 683H339V637H317Q268 637 254 634T234 623Q232 620 232 342Q232 63 234 60Q238 55 242 53T264 48T317 46H339V0H328Z"></path><path id="MJX-4-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-4-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-4-TEX-N-64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path><path id="MJX-4-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-4-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-4-TEX-N-63" d="M370 305T349 305T313 320T297 358Q297 381 312 396Q317 401 317 402T307 404Q281 408 258 408Q209 408 178 376Q131 329 131 219Q131 137 162 90Q203 29 272 29Q313 29 338 55T374 117Q376 125 379 127T395 129H409Q415 123 415 120Q415 116 411 104T395 71T366 33T318 2T249 -11Q163 -11 99 53T34 214Q34 318 99 383T250 448T370 421T404 357Q404 334 387 320Z"></path><path id="MJX-4-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-4-TEX-N-D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"></path><path id="MJX-4-TEX-I-1D702" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q156 442 175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336V326Q503 302 439 53Q381 -182 377 -189Q364 -216 332 -216Q319 -216 310 -208T299 -186Q299 -177 358 57L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-4-TEX-I-1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path><path id="MJX-4-TEX-N-70" d="M36 -148H50Q89 -148 97 -134V-126Q97 -119 97 -107T97 -77T98 -38T98 6T98 55T98 106Q98 140 98 177T98 243T98 296T97 335T97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 61 434T98 436Q115 437 135 438T165 441T176 442H179V416L180 390L188 397Q247 441 326 441Q407 441 464 377T522 216Q522 115 457 52T310 -11Q242 -11 190 33L182 40V-45V-101Q182 -128 184 -134T195 -145Q216 -148 244 -148H260V-194H252L228 -193Q205 -192 178 -192T140 -191Q37 -191 28 -194H20V-148H36ZM424 218Q424 292 390 347T305 402Q234 402 182 337V98Q222 26 294 26Q345 26 384 80T424 218Z"></path><path id="MJX-4-TEX-N-6C" d="M42 46H56Q95 46 103 60V68Q103 77 103 91T103 124T104 167T104 217T104 272T104 329Q104 366 104 407T104 482T104 542T103 586T103 603Q100 622 89 628T44 637H26V660Q26 683 28 683L38 684Q48 685 67 686T104 688Q121 689 141 690T171 693T182 694H185V379Q185 62 186 60Q190 52 198 49Q219 46 247 46H263V0H255L232 1Q209 2 183 2T145 3T107 3T57 1L34 0H26V46H42Z"></path><path id="MJX-4-TEX-I-1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path><path id="MJX-4-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-4-TEX-N-6D" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q351 442 364 440T387 434T406 426T421 417T432 406T441 395T448 384T452 374T455 366L457 361L460 365Q463 369 466 373T475 384T488 397T503 410T523 422T546 432T572 439T603 442Q729 442 740 329Q741 322 741 190V104Q741 66 743 59T754 49Q775 46 803 46H819V0H811L788 1Q764 2 737 2T699 3Q596 3 587 0H579V46H595Q656 46 656 62Q657 64 657 200Q656 335 655 343Q649 371 635 385T611 402T585 404Q540 404 506 370Q479 343 472 315T464 232V168V108Q464 78 465 68T468 55T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-4-TEX-I-1D447" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-4-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="50" xlink:href="#MJX-4-TEX-N-50"></use><use data-c="56" xlink:href="#MJX-4-TEX-N-56" transform="translate(681,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(1736.9,0)"><use data-c="28" xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2125.9,0)"><use data-c="1D461" xlink:href="#MJX-4-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(2486.9,0)"><use data-c="29" xlink:href="#MJX-4-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(3153.6,0)"><use data-c="3D" xlink:href="#MJX-4-TEX-N-3D"></use></g><g data-mml-node="mtext" transform="translate(4209.4,0)"><use data-c="49" xlink:href="#MJX-4-TEX-N-49"></use><use data-c="72" xlink:href="#MJX-4-TEX-N-72" transform="translate(361,0)"></use><use data-c="72" xlink:href="#MJX-4-TEX-N-72" transform="translate(753,0)"></use><use data-c="61" xlink:href="#MJX-4-TEX-N-61" transform="translate(1145,0)"></use><use data-c="64" xlink:href="#MJX-4-TEX-N-64" transform="translate(1645,0)"></use><use data-c="69" xlink:href="#MJX-4-TEX-N-69" transform="translate(2201,0)"></use><use data-c="61" xlink:href="#MJX-4-TEX-N-61" transform="translate(2479,0)"></use><use data-c="6E" xlink:href="#MJX-4-TEX-N-6E" transform="translate(2979,0)"></use><use data-c="63" xlink:href="#MJX-4-TEX-N-63" transform="translate(3535,0)"></use><use data-c="65" xlink:href="#MJX-4-TEX-N-65" transform="translate(3979,0)"></use></g><g data-mml-node="mo" transform="translate(8632.4,0)"><use data-c="28" xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(9021.4,0)"><use data-c="1D461" xlink:href="#MJX-4-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(9382.4,0)"><use data-c="29" xlink:href="#MJX-4-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(9993.6,0)"><use data-c="D7" xlink:href="#MJX-4-TEX-N-D7"></use></g><g data-mml-node="msub" transform="translate(10993.9,0)"><g data-mml-node="mi"><use data-c="1D702" xlink:href="#MJX-4-TEX-I-1D702"></use></g><g data-mml-node="TeXAtom" transform="translate(530,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="50" xlink:href="#MJX-4-TEX-N-50"></use><use data-c="56" xlink:href="#MJX-4-TEX-N-56" transform="translate(681,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(12808,0)"><use data-c="D7" xlink:href="#MJX-4-TEX-N-D7"></use></g><g data-mml-node="msub" transform="translate(13808.2,0)"><g data-mml-node="mi"><use data-c="1D434" xlink:href="#MJX-4-TEX-I-1D434"></use></g><g data-mml-node="TeXAtom" transform="translate(783,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="70" xlink:href="#MJX-4-TEX-N-70"></use><use data-c="61" xlink:href="#MJX-4-TEX-N-61" transform="translate(556,0)"></use><use data-c="6E" xlink:href="#MJX-4-TEX-N-6E" transform="translate(1056,0)"></use><use data-c="65" xlink:href="#MJX-4-TEX-N-65" transform="translate(1612,0)"></use><use data-c="6C" xlink:href="#MJX-4-TEX-N-6C" transform="translate(2056,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(16513.8,0)"><use data-c="D7" xlink:href="#MJX-4-TEX-N-D7"></use></g><g data-mml-node="msub" transform="translate(17514,0)"><g data-mml-node="mi"><use data-c="1D453" xlink:href="#MJX-4-TEX-I-1D453"></use></g><g data-mml-node="TeXAtom" transform="translate(523,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="74" xlink:href="#MJX-4-TEX-N-74"></use><use data-c="65" xlink:href="#MJX-4-TEX-N-65" transform="translate(389,0)"></use><use data-c="6D" xlink:href="#MJX-4-TEX-N-6D" transform="translate(833,0)"></use><use data-c="70" xlink:href="#MJX-4-TEX-N-70" transform="translate(1666,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(19658.2,0)"><use data-c="28" xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(20047.2,0)"><use data-c="1D447" xlink:href="#MJX-4-TEX-I-1D447"></use></g><g data-mml-node="mo" transform="translate(20751.2,0)"><use data-c="28" xlink:href="#MJX-4-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(21140.2,0)"><use data-c="1D461" xlink:href="#MJX-4-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(21501.2,0)"><use data-c="29" xlink:href="#MJX-4-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(21890.2,0)"><use data-c="29" xlink:href="#MJX-4-TEX-N-29"></use></g></g></g></svg></mjx-container>
+<p><strong>Wind power model:</strong></p>
+<ol>
+<li>Wind speed at hub height (93m) from LDAPS</li>
+<li>Power curve model (cubic relationship in linear region)</li>
+<li>Cut-in speed: 3 m/s</li>
+<li>Rated speed: 12 m/s</li>
+<li>Cut-out speed: 25 m/s</li>
+</ol>
+<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -4.408ex;" xmlns="http://www.w3.org/2000/svg" width="49.041ex" height="9.946ex" role="img" focusable="false" viewBox="0 -2448.1 21675.9 4396.3" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-5-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-5-TEX-N-77" d="M90 368Q84 378 76 380T40 385H18V431H24L43 430Q62 430 84 429T116 428Q206 428 221 431H229V385H215Q177 383 177 368Q177 367 221 239L265 113L339 328L333 345Q323 374 316 379Q308 384 278 385H258V431H264Q270 428 348 428Q439 428 454 431H461V385H452Q404 385 404 369Q404 366 418 324T449 234T481 143L496 100L537 219Q579 341 579 347Q579 363 564 373T530 385H522V431H529Q541 428 624 428Q692 428 698 431H703V385H697Q696 385 691 385T682 384Q635 377 619 334L559 161Q546 124 528 71Q508 12 503 1T487 -11H479Q460 -11 456 -4Q455 -3 407 133L361 267Q359 263 266 -4Q261 -11 243 -11H238Q225 -11 220 -3L90 368Z"></path><path id="MJX-5-TEX-N-69" d="M69 609Q69 637 87 653T131 669Q154 667 171 652T188 609Q188 579 171 564T129 549Q104 549 87 564T69 609ZM247 0Q232 3 143 3Q132 3 106 3T56 1L34 0H26V46H42Q70 46 91 49Q100 53 102 60T104 102V205V293Q104 345 102 359T88 378Q74 385 41 385H30V408Q30 431 32 431L42 432Q52 433 70 434T106 436Q123 437 142 438T171 441T182 442H185V62Q190 52 197 50T232 46H255V0H247Z"></path><path id="MJX-5-TEX-N-6E" d="M41 46H55Q94 46 102 60V68Q102 77 102 91T102 122T103 161T103 203Q103 234 103 269T102 328V351Q99 370 88 376T43 385H25V408Q25 431 27 431L37 432Q47 433 65 434T102 436Q119 437 138 438T167 441T178 442H181V402Q181 364 182 364T187 369T199 384T218 402T247 421T285 437Q305 442 336 442Q450 438 463 329Q464 322 464 190V104Q464 66 466 59T477 49Q498 46 526 46H542V0H534L510 1Q487 2 460 2T422 3Q319 3 310 0H302V46H318Q379 46 379 62Q380 64 380 200Q379 335 378 343Q372 371 358 385T334 402T308 404Q263 404 229 370Q202 343 195 315T187 232V168V108Q187 78 188 68T191 55T200 49Q221 46 249 46H265V0H257L234 1Q210 2 183 2T145 3Q42 3 33 0H25V46H41Z"></path><path id="MJX-5-TEX-N-64" d="M376 495Q376 511 376 535T377 568Q377 613 367 624T316 637H298V660Q298 683 300 683L310 684Q320 685 339 686T376 688Q393 689 413 690T443 693T454 694H457V390Q457 84 458 81Q461 61 472 55T517 46H535V0Q533 0 459 -5T380 -11H373V44L365 37Q307 -11 235 -11Q158 -11 96 50T34 215Q34 315 97 378T244 442Q319 442 376 393V495ZM373 342Q328 405 260 405Q211 405 173 369Q146 341 139 305T131 211Q131 155 138 120T173 59Q203 26 251 26Q322 26 373 103V342Z"></path><path id="MJX-5-TEX-N-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path id="MJX-5-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-5-TEX-N-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path id="MJX-5-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-5-TEX-S4-23A7" d="M712 899L718 893V876V865Q718 854 704 846Q627 793 577 710T510 525Q510 524 509 521Q505 493 504 349Q504 345 504 334Q504 277 504 240Q504 -2 503 -4Q502 -8 494 -9T444 -10Q392 -10 390 -9Q387 -8 386 -5Q384 5 384 230Q384 262 384 312T383 382Q383 481 392 535T434 656Q510 806 664 892L677 899H712Z"></path><path id="MJX-5-TEX-S4-23A9" d="M718 -893L712 -899H677L666 -893Q542 -825 468 -714T385 -476Q384 -466 384 -282Q384 3 385 5L389 9Q392 10 444 10Q486 10 494 9T503 4Q504 2 504 -239V-310V-366Q504 -470 508 -513T530 -609Q546 -657 569 -698T617 -767T661 -812T699 -843T717 -856T718 -876V-893Z"></path><path id="MJX-5-TEX-S4-23A8" d="M389 1159Q391 1160 455 1160Q496 1160 498 1159Q501 1158 502 1155Q504 1145 504 924Q504 691 503 682Q494 549 425 439T243 259L229 250L243 241Q349 175 421 66T503 -182Q504 -191 504 -424Q504 -600 504 -629T499 -659H498Q496 -660 444 -660T390 -659Q387 -658 386 -655Q384 -645 384 -425V-282Q384 -176 377 -116T342 10Q325 54 301 92T255 155T214 196T183 222T171 232Q170 233 170 250T171 268Q171 269 191 284T240 331T300 407T354 524T383 679Q384 691 384 925Q384 1152 385 1155L389 1159Z"></path><path id="MJX-5-TEX-S4-23AA" d="M384 150V266Q384 304 389 309Q391 310 455 310Q496 310 498 309Q502 308 503 298Q504 283 504 150Q504 32 504 12T499 -9H498Q496 -10 444 -10T390 -9Q386 -8 385 2Q384 17 384 150Z"></path><path id="MJX-5-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-5-TEX-I-1D463" d="M173 380Q173 405 154 405Q130 405 104 376T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Q21 294 29 316T53 368T97 419T160 441Q202 441 225 417T249 361Q249 344 246 335Q246 329 231 291T200 202T182 113Q182 86 187 69Q200 26 250 26Q287 26 319 60T369 139T398 222T409 277Q409 300 401 317T383 343T365 361T357 383Q357 405 376 424T417 443Q436 443 451 425T467 367Q467 340 455 284T418 159T347 40T241 -11Q177 -11 139 22Q102 54 102 117Q102 148 110 181T151 298Q173 362 173 380Z"></path><path id="MJX-5-TEX-N-3C" d="M694 -11T694 -19T688 -33T678 -40Q671 -40 524 29T234 166L90 235Q83 240 83 250Q83 261 91 266Q664 540 678 540Q681 540 687 534T694 519T687 505Q686 504 417 376L151 250L417 124Q686 -4 687 -5Q694 -11 694 -19Z"></path><path id="MJX-5-TEX-N-A0" d=""></path><path id="MJX-5-TEX-N-6F" d="M28 214Q28 309 93 378T250 448Q340 448 405 380T471 215Q471 120 407 55T250 -10Q153 -10 91 57T28 214ZM250 30Q372 30 372 193V225V250Q372 272 371 288T364 326T348 362T317 390T268 410Q263 411 252 411Q222 411 195 399Q152 377 139 338T126 246V226Q126 130 145 91Q177 30 250 30Z"></path><path id="MJX-5-TEX-N-72" d="M36 46H50Q89 46 97 60V68Q97 77 97 91T98 122T98 161T98 203Q98 234 98 269T98 328L97 351Q94 370 83 376T38 385H20V408Q20 431 22 431L32 432Q42 433 60 434T96 436Q112 437 131 438T160 441T171 442H174V373Q213 441 271 441H277Q322 441 343 419T364 373Q364 352 351 337T313 322Q288 322 276 338T263 372Q263 381 265 388T270 400T273 405Q271 407 250 401Q234 393 226 386Q179 341 179 207V154Q179 141 179 127T179 101T180 81T180 66V61Q181 59 183 57T188 54T193 51T200 49T207 48T216 47T225 47T235 46T245 46H276V0H267Q249 3 140 3Q37 3 28 0H20V46H36Z"></path><path id="MJX-5-TEX-N-3E" d="M84 520Q84 528 88 533T96 539L99 540Q106 540 253 471T544 334L687 265Q694 260 694 250T687 235Q685 233 395 96L107 -40H101Q83 -38 83 -20Q83 -19 83 -17Q82 -10 98 -1Q117 9 248 71Q326 108 378 132L626 250L378 368Q90 504 86 509Q84 513 84 520Z"></path><path id="MJX-5-TEX-N-75" d="M383 58Q327 -10 256 -10H249Q124 -10 105 89Q104 96 103 226Q102 335 102 348T96 369Q86 385 36 385H25V408Q25 431 27 431L38 432Q48 433 67 434T105 436Q122 437 142 438T172 441T184 442H187V261Q188 77 190 64Q193 49 204 40Q224 26 264 26Q290 26 311 35T343 58T363 90T375 120T379 144Q379 145 379 161T380 201T380 248V315Q380 361 370 372T320 385H302V431Q304 431 378 436T457 442H464V264Q464 84 465 81Q468 61 479 55T524 46H542V0Q540 0 467 -5T390 -11H383V58Z"></path><path id="MJX-5-TEX-N-74" d="M27 422Q80 426 109 478T141 600V615H181V431H316V385H181V241Q182 116 182 100T189 68Q203 29 238 29Q282 29 292 100Q293 108 293 146V181H333V146V134Q333 57 291 17Q264 -10 221 -10Q187 -10 162 2T124 33T105 68T98 100Q97 107 97 248V385H18V422H27Z"></path><path id="MJX-5-TEX-N-61" d="M137 305T115 305T78 320T63 359Q63 394 97 421T218 448Q291 448 336 416T396 340Q401 326 401 309T402 194V124Q402 76 407 58T428 40Q443 40 448 56T453 109V145H493V106Q492 66 490 59Q481 29 455 12T400 -6T353 12T329 54V58L327 55Q325 52 322 49T314 40T302 29T287 17T269 6T247 -2T221 -8T190 -11Q130 -11 82 20T34 107Q34 128 41 147T68 188T116 225T194 253T304 268H318V290Q318 324 312 340Q290 411 215 411Q197 411 181 410T156 406T148 403Q170 388 170 359Q170 334 154 320ZM126 106Q126 75 150 51T209 26Q247 26 276 49T315 109Q317 116 318 175Q318 233 317 233Q309 233 296 232T251 223T193 203T147 166T126 106Z"></path><path id="MJX-5-TEX-N-65" d="M28 218Q28 273 48 318T98 391T163 433T229 448Q282 448 320 430T378 380T406 316T415 245Q415 238 408 231H126V216Q126 68 226 36Q246 30 270 30Q312 30 342 62Q359 79 369 104L379 128Q382 131 395 131H398Q415 131 415 121Q415 117 412 108Q393 53 349 21T250 -11Q155 -11 92 58T28 218ZM333 275Q322 403 238 411H236Q228 411 220 410T195 402T166 381T143 340T127 274V267H333V275Z"></path><path id="MJX-5-TEX-LO-28" d="M180 96T180 250T205 541T266 770T353 944T444 1069T527 1150H555Q561 1144 561 1141Q561 1137 545 1120T504 1072T447 995T386 878T330 721T288 513T272 251Q272 133 280 56Q293 -87 326 -209T399 -405T475 -531T536 -609T561 -640Q561 -643 555 -649H527Q483 -612 443 -568T353 -443T266 -270T205 -41Z"></path><path id="MJX-5-TEX-N-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path id="MJX-5-TEX-LO-29" d="M35 1138Q35 1150 51 1150H56H69Q113 1113 153 1069T243 944T330 771T391 541T416 250T391 -40T330 -270T243 -443T152 -568T69 -649H56Q43 -649 39 -647T35 -637Q65 -607 110 -548Q283 -316 316 56Q324 133 324 251Q324 368 316 445Q278 877 48 1123Q36 1137 35 1138Z"></path><path id="MJX-5-TEX-N-33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path><path id="MJX-5-TEX-N-2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-5-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="77" xlink:href="#MJX-5-TEX-N-77"></use><use data-c="69" xlink:href="#MJX-5-TEX-N-69" transform="translate(722,0)"></use><use data-c="6E" xlink:href="#MJX-5-TEX-N-6E" transform="translate(1000,0)"></use><use data-c="64" xlink:href="#MJX-5-TEX-N-64" transform="translate(1556,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2218.4,0)"><use data-c="28" xlink:href="#MJX-5-TEX-N-28"></use></g><g data-mml-node="mi" transform="translate(2607.4,0)"><use data-c="1D461" xlink:href="#MJX-5-TEX-I-1D461"></use></g><g data-mml-node="mo" transform="translate(2968.4,0)"><use data-c="29" xlink:href="#MJX-5-TEX-N-29"></use></g><g data-mml-node="mo" transform="translate(3635.2,0)"><use data-c="3D" xlink:href="#MJX-5-TEX-N-3D"></use></g><g data-mml-node="mrow" transform="translate(4691,0)"><g data-mml-node="mo"><use data-c="23A7" xlink:href="#MJX-5-TEX-S4-23A7" transform="translate(0,1549.1)"></use><use data-c="23A9" xlink:href="#MJX-5-TEX-S4-23A9" transform="translate(0,-1049.1)"></use><use data-c="23A8" xlink:href="#MJX-5-TEX-S4-23A8" transform="translate(0,0)"></use><svg width="889" height="579.1" y="1060" x="0" viewBox="0 102.1 889 579.1"><use data-c="23AA" xlink:href="#MJX-5-TEX-S4-23AA" transform="scale(1,2.848)"></use></svg><svg width="889" height="579.1" y="-1139.1" x="0" viewBox="0 102.1 889 579.1"><use data-c="23AA" xlink:href="#MJX-5-TEX-S4-23AA" transform="scale(1,2.848)"></use></svg></g><g data-mml-node="mtable" transform="translate(889,0)"><g data-mml-node="mtr" transform="translate(0,1698.1)"><g data-mml-node="mtd"><g data-mml-node="mn"><use data-c="30" xlink:href="#MJX-5-TEX-N-30"></use></g></g><g data-mml-node="mtd" transform="translate(8319.4,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(762.8,0)"><use data-c="3C" xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="msub" transform="translate(1818.6,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="69" xlink:href="#MJX-5-TEX-N-69"></use><use data-c="6E" xlink:href="#MJX-5-TEX-N-6E" transform="translate(278,0)"></use></g></g></g><g data-mml-node="mtext" transform="translate(2976.3,0)"><use data-c="A0" xlink:href="#MJX-5-TEX-N-A0"></use><use data-c="6F" xlink:href="#MJX-5-TEX-N-6F" transform="translate(250,0)"></use><use data-c="72" xlink:href="#MJX-5-TEX-N-72" transform="translate(750,0)"></use><use data-c="A0" xlink:href="#MJX-5-TEX-N-A0" transform="translate(1142,0)"></use></g><g data-mml-node="mi" transform="translate(4368.3,0)"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(5131.1,0)"><use data-c="3E" xlink:href="#MJX-5-TEX-N-3E"></use></g><g data-mml-node="msub" transform="translate(6186.8,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="6F" xlink:href="#MJX-5-TEX-N-6F"></use><use data-c="75" xlink:href="#MJX-5-TEX-N-75" transform="translate(500,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(1056,0)"></use></g></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-98.6)"><g data-mml-node="mtd"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-5-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="72" xlink:href="#MJX-5-TEX-N-72"></use><use data-c="61" xlink:href="#MJX-5-TEX-N-61" transform="translate(392,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(892,0)"></use><use data-c="65" xlink:href="#MJX-5-TEX-N-65" transform="translate(1281,0)"></use><use data-c="64" xlink:href="#MJX-5-TEX-N-64" transform="translate(1725,0)"></use></g></g></g><g data-mml-node="msup" transform="translate(2337.9,0)"><g data-mml-node="mrow"><g data-mml-node="mo" transform="translate(0 -0.5)"><use data-c="28" xlink:href="#MJX-5-TEX-LO-28"></use></g><g data-mml-node="mfrac" transform="translate(597,0)"><g data-mml-node="mrow" transform="translate(819.6,446.1) scale(0.707)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(485,0)"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(1263,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="69" xlink:href="#MJX-5-TEX-N-69"></use><use data-c="6E" xlink:href="#MJX-5-TEX-N-6E" transform="translate(278,0)"></use></g></g></g></g><g data-mml-node="mrow" transform="translate(220,-345) scale(0.707)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="72" xlink:href="#MJX-5-TEX-N-72"></use><use data-c="61" xlink:href="#MJX-5-TEX-N-61" transform="translate(392,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(892,0)"></use><use data-c="65" xlink:href="#MJX-5-TEX-N-65" transform="translate(1281,0)"></use><use data-c="64" xlink:href="#MJX-5-TEX-N-64" transform="translate(1725,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2180.9,0)"><use data-c="2212" xlink:href="#MJX-5-TEX-N-2212"></use></g><g data-mml-node="msub" transform="translate(2958.9,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="69" xlink:href="#MJX-5-TEX-N-69"></use><use data-c="6E" xlink:href="#MJX-5-TEX-N-6E" transform="translate(278,0)"></use></g></g></g></g><rect width="3110.9" height="60" x="120" y="220"></rect></g><g data-mml-node="mo" transform="translate(3947.9,0) translate(0 -0.5)"><use data-c="29" xlink:href="#MJX-5-TEX-LO-29"></use></g></g><g data-mml-node="mn" transform="translate(4577.9,876.6) scale(0.707)"><use data-c="33" xlink:href="#MJX-5-TEX-N-33"></use></g></g></g><g data-mml-node="mtd" transform="translate(8319.4,0)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="69" xlink:href="#MJX-5-TEX-N-69"></use><use data-c="6E" xlink:href="#MJX-5-TEX-N-6E" transform="translate(278,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(1435.5,0)"><use data-c="2264" xlink:href="#MJX-5-TEX-N-2264"></use></g><g data-mml-node="mi" transform="translate(2491.3,0)"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(3254.1,0)"><use data-c="3C" xlink:href="#MJX-5-TEX-N-3C"></use></g><g data-mml-node="msub" transform="translate(4309.8,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="72" xlink:href="#MJX-5-TEX-N-72"></use><use data-c="61" xlink:href="#MJX-5-TEX-N-61" transform="translate(392,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(892,0)"></use><use data-c="65" xlink:href="#MJX-5-TEX-N-65" transform="translate(1281,0)"></use><use data-c="64" xlink:href="#MJX-5-TEX-N-64" transform="translate(1725,0)"></use></g></g></g></g></g><g data-mml-node="mtr" transform="translate(0,-1698.1)"><g data-mml-node="mtd"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-5-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="72" xlink:href="#MJX-5-TEX-N-72"></use><use data-c="61" xlink:href="#MJX-5-TEX-N-61" transform="translate(392,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(892,0)"></use><use data-c="65" xlink:href="#MJX-5-TEX-N-65" transform="translate(1281,0)"></use><use data-c="64" xlink:href="#MJX-5-TEX-N-64" transform="translate(1725,0)"></use></g></g></g></g><g data-mml-node="mtd" transform="translate(8319.4,0)"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="72" xlink:href="#MJX-5-TEX-N-72"></use><use data-c="61" xlink:href="#MJX-5-TEX-N-61" transform="translate(392,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(892,0)"></use><use data-c="65" xlink:href="#MJX-5-TEX-N-65" transform="translate(1281,0)"></use><use data-c="64" xlink:href="#MJX-5-TEX-N-64" transform="translate(1725,0)"></use></g></g></g><g data-mml-node="mo" transform="translate(2458.7,0)"><use data-c="2264" xlink:href="#MJX-5-TEX-N-2264"></use></g><g data-mml-node="mi" transform="translate(3514.5,0)"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="mo" transform="translate(4277.2,0)"><use data-c="2264" xlink:href="#MJX-5-TEX-N-2264"></use></g><g data-mml-node="msub" transform="translate(5333,0)"><g data-mml-node="mi"><use data-c="1D463" xlink:href="#MJX-5-TEX-I-1D463"></use></g><g data-mml-node="TeXAtom" transform="translate(518,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mtext"><use data-c="6F" xlink:href="#MJX-5-TEX-N-6F"></use><use data-c="75" xlink:href="#MJX-5-TEX-N-75" transform="translate(500,0)"></use><use data-c="74" xlink:href="#MJX-5-TEX-N-74" transform="translate(1056,0)"></use></g></g></g></g></g></g><g data-mml-node="mo" transform="translate(16985,0) translate(0 250)"></g></g></g></g></svg></mjx-container>
+<p><strong>Hydro model:</strong></p>
+<ol>
+<li>Run-of-river assumption (limited storage)</li>
+<li>Seasonal streamflow patterns</li>
+<li>Weak correlation with recent precipitation</li>
+<li>Base capacity factor (~40-50% annual average)</li>
+</ol>
+<p><strong>Reference:</strong> Similar methodology to Western Wind and Solar Integration Study (NREL, 2013)</p>
+<p><strong>Generator allocation to buses:</strong></p>
+<ul>
+<li>Located at coastal areas (cooling water requirement)</li>
+<li>Major plants: Southeastern coast (Busan area), western coast (Taean area)</li>
+<li>Assigned to nearest bus in those regions</li>
+<li>Capacity matched to reported unit sizes</li>
+</ul>
+<p><strong>LNG generators:</strong></p>
+<ul>
+<li>More geographically distributed</li>
+<li>Located near major load centers</li>
+<li>Assigned based on reported plant locations</li>
+<li>Flexible generation for load following</li>
+</ul>
+<p><strong>Assignment validation:</strong></p>
+<ul>
+<li>Total capacity matches KEPCO statistics</li>
+<li>Geographic distribution realistic</li>
+<li>Generation mix: ~37% Coal, ~32% LNG, ~31% Nuclear</li>
+</ul>
+<h2 id="system-characteristics-preserved">System Characteristics Preserved</h2>
+<p><strong>1. Concentrated urban load:</strong></p>
+<ul>
+<li>Buses 7-18 (capital region area 1)</li>
+<li>~40% of total system load</li>
+<li>High bus density (detailed representation)</li>
+<li>Strong transmission network</li>
+</ul>
+<p><strong>Validation:</strong> Load distribution matches KEPCO regional statistics</p>
+<p><strong>2. Coastal generation concentration:</strong></p>
+<ul>
+<li>Buses around Busan area (Area 3)</li>
+<li>Multiple nuclear units (> 8 GW)</li>
+<li>Major coal plants co-located</li>
+</ul>
+<p><strong>Western Coal Belt:</strong></p>
+<ul>
+<li>Buses along western coast</li>
+<li>Large coal plants (multiple GW)</li>
+<li>Export power to capital region</li>
+</ul>
+<p><strong>Characteristic:</strong> Power flows long distances from coast to load centers, matching actual Korean grid pattern</p>
+<p><strong>3. Isolated grid structure:</strong></p>
+<ul>
+<li>Buses 187-193 (island)</li>
+<li>Isolated from mainland except HVDC</li>
+<li>1500 MVA HVDC link (Buses 183-190)</li>
+<li>Local generation and renewables</li>
+</ul>
+<p>Represents Korea’s limited interconnection (no international connections).</p>
+<p><strong>4. Low renewable penetration:</strong></p>
+<ul>
+<li>~10% installed capacity from renewables</li>
+<li>Concentrated in southwestern regions (best solar resource)</li>
+<li>Growing but still low compared to Europe/US</li>
+<li>Realistic starting point for decarbonization studies</li>
+</ul>
+<h2 id="validation">Validation</h2>
+<p>The clustered system validated through multiple methods:</p>
+<p><strong>Network feasibility:</strong></p>
+<ul>
+<li>AC power flow solved successfully for all hours</li>
+<li>Voltage magnitudes within limits (0.95-1.1 p.u.)</li>
+<li>No transmission overloads in base case</li>
+</ul>
+<p><strong>Solver:</strong> Ipopt (Interior Point Optimizer)</p>
+<p><strong>Unit commitment feasibility:</strong></p>
+<ul>
+<li>All days have feasible UC solutions</li>
+<li>Sufficient capacity to meet demand + reserves</li>
+<li>Commitment patterns realistic (baseload nuclear, flexible LNG)</li>
+</ul>
+<p><strong>Solver:</strong> HiGHS with 0.5% MIP gap</p>
+<p><strong>Demand-generation balance:</strong></p>
+<ul>
+<li>Total generation matches total demand + losses</li>
+<li>Adequate capacity margin (~20-30%)</li>
+<li>Peak load covered by available online capacity</li>
+</ul>
+<p><strong>Transmission adequacy:</strong></p>
+<ul>
+<li>Long-distance flows from coast to capital (realistic)</li>
+<li>HVDC enables Jeju Island supply/export</li>
+<li>No chronic bottlenecks in base topology</li>
+</ul>
+<h2 id="limitations-and-caveats">Limitations and Caveats</h2>
+<p><strong>1. Simplified network topology:</strong></p>
+<ul>
+<li>Reactive power compensation devices (SVC, STATCOM)</li>
+<li>Tap-changing transformers</li>
+<li>Detailed substation configurations</li>
+<li>Lower voltage (&#x3C; 154 kV) distribution</li>
+</ul>
+<p><strong>Impact:</strong> AC OPF may not perfectly replicate voltage control in actual grid</p>
+<p><strong>2. OSM data uncertainty:</strong></p>
+<ul>
+<li>OpenStreetMap update schedule uncertain</li>
+<li>Some connections may be outdated or incorrect</li>
+<li>Line parameters estimated, not measured</li>
+</ul>
+<p><strong>Mitigation:</strong> Validated against known transmission structure, corrected obvious errors</p>
+<p><strong>3. Reactive power assumptions:</strong></p>
+<ul>
+<li>Q_d = 0.1 × P_d assumption</li>
+<li>Actual reactive power varies more dynamically</li>
+<li>No load-dependent reactive power model</li>
+</ul>
+<p><strong>Impact:</strong> May not capture reactive power challenges in actual grid</p>
+<p><strong>4. Aggregation effects:</strong></p>
+<ul>
+<li>230 municipalities → 193 buses loses some detail</li>
+<li>Load diversity within clusters averaged out</li>
+<li>Some local network constraints not represented</li>
+</ul>
+<p><strong>Trade-off:</strong> Necessary for computational tractability in research studies</p>
+<p><strong>5. Temporal scope:</strong></p>
+<ul>
+<li>Weather patterns specific to 2022</li>
+<li>No multi-year variability</li>
+<li>Cannot study drought/flood impacts on long-term hydro</li>
+</ul>
+<p><strong>Extension:</strong> Can use different weather years with same network</p>
+<h2 id="comparison-to-other-test-systems">Comparison to Other Test Systems</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Test System</th><th>Buses</th><th>Region</th><th>Renewable</th><th>Open Data</th><th>Temporal</th></tr></thead><tbody><tr><td><strong>KPG 193</strong></td><td>193</td><td>Korea</td><td>10%</td><td>Yes (ODbL)</td><td>8760 hrs</td></tr><tr><td>IEEE 118</td><td>118</td><td>Generic</td><td>0%</td><td>Yes</td><td>Static</td></tr><tr><td>TX-123BT</td><td>123</td><td>Texas</td><td>~20%</td><td>Yes</td><td>5 years</td></tr><tr><td>RTS-96</td><td>73</td><td>Generic</td><td>0%</td><td>Yes</td><td>8760 hrs</td></tr><tr><td>PyPSA-Eur</td><td>1000+</td><td>Europe</td><td>High</td><td>Yes</td><td>8760 hrs</td></tr></tbody></table>
+<p><strong>KPG 193 niche:</strong></p>
+<ul>
+<li>Represents emerging economy grid (high coal, low renewable)</li>
+<li>Isolated system (no interconnections)</li>
+<li>Open data specifically for Asian grid studies</li>
+</ul>
+<h2 id="references">References</h2>
+<p>The complete methodology is detailed in:</p>
+<blockquote>
+<p><strong>Geonho Song and Jip Kim</strong>, “KPG 193: A Synthetic Korean Power Grid Test System for Decarbonization Studies,” <em>arXiv preprint arXiv:2411.14756</em>, 2024.</p>
+<p>Available at: <a href="https://arxiv.org/html/2411.14756v2">https://arxiv.org/html/2411.14756v2</a></p>
+</blockquote>
+<p><strong>Key sections in paper:</strong></p>
+<ul>
+<li><strong>Section II-A:</strong> Data Collection (topology, generators, weather, load)</li>
+<li><strong>Section II-B:</strong> Clustering and Data Processing</li>
+<li><strong>Section II-C:</strong> KPG 193 Test System Data</li>
+</ul>
+<p><strong>External data sources cited:</strong></p>
+<ul>
+<li>OpenStreetMap: <a href="https://www.openstreetmap.org">https://www.openstreetmap.org</a></li>
+<li>Korea Energy Agency: <a href="https://www.knrec.or.kr">https://www.knrec.or.kr</a></li>
+<li>Korea Power Exchange: <a href="https://www.kpx.or.kr">https://www.kpx.or.kr</a></li>
+<li>Korea Meteorological Administration: <a href="https://data.kma.go.kr">https://data.kma.go.kr</a></li>
+</ul>
+<p><strong>Related research:</strong></p>
+<ul>
+<li><strong>European grids:</strong> PyPSA-Eur (Hörsch et al., 2018), SciGrid (Medjroubi &#x26; Matke, 2015)</li>
+<li><strong>US grids:</strong> TX-123BT (Lu et al., 2023), TAMU synthetic grids (Xu et al., 2020)</li>
+<li><strong>Renewable modeling:</strong> Western Wind and Solar Integration Study (Lew &#x26; Brinkman, 2013)</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li><strong>Validation results:</strong> <a href="/documentation/kpg-test-system/validation-results">Validation Results →</a></li>
+<li><strong>Data specifications:</strong> <a href="/documentation/kpg-test-system/data-specifications">Data Specifications →</a></li>
+<li><strong>Network details:</strong> <a href="/documentation/kpg-test-system/network-structure">Network Files →</a></li>
+</ul><style>
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/documentation/kpg-test-system/profiles-timeseries/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Profiles &amp; Time Series</span> </span> </a> <a href="/documentation/kpg-test-system/validation-results/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Validation Results</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
