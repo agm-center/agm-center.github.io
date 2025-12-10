@@ -4,7 +4,7 @@
 		localStorage.setItem('starlight-theme', 'light');
 	}
 	document.documentElement.setAttribute('data-theme', 'light');
-</script> <!-- Include Starlight's default head tags --><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Solver Comparison | AGM Center</title><link rel="canonical" href="https://agm-center.github.io/documentation/kpg-run/formulations/solver-comparison/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.15.3"/><meta name="generator" content="Starlight v0.33.2"/><meta property="og:title" content="Solver Comparison"/><meta property="og:type" content="article"/><meta property="og:url" content="https://agm-center.github.io/documentation/kpg-run/formulations/solver-comparison/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Quick reference comparing ED, UC, DC-OPF, and AC-OPF models in KPG Run."/><meta property="og:site_name" content="AGM Center"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Quick reference comparing ED, UC, DC-OPF, and AC-OPF models in KPG Run."/><script>
+</script> <!-- Include Starlight's default head tags --><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Solver Comparison & Selection Guide | AGM Center</title><link rel="canonical" href="https://agm-center.github.io/documentation/kpg-run/formulations/solver-comparison/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.15.3"/><meta name="generator" content="Starlight v0.33.2"/><meta property="og:title" content="Solver Comparison &#38; Selection Guide"/><meta property="og:type" content="article"/><meta property="og:url" content="https://agm-center.github.io/documentation/kpg-run/formulations/solver-comparison/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Decision guide comparing all four optimization models to help choose the right solver for your analysis."/><meta property="og:site_name" content="AGM Center"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Decision guide comparing all four optimization models to help choose the right solver for your analysis."/><script>
 	// Set light mode before page renders to prevent system theme detection
 	(() => {
 		// Store light theme preference
@@ -15,7 +15,7 @@
 		document.documentElement.dataset.theme = 'light';
 	})();
 </script><link rel="stylesheet" href="/_astro/print.BL8QyxEA.css" media="print"><link rel="stylesheet" href="/_astro/index.E2-IImxL.css">
-<link rel="stylesheet" href="/_astro/index.DB35VJwr.css">
+<link rel="stylesheet" href="/_astro/index.Ck5zMH95.css">
 <style>:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-avdet4wd){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-avdet4wd){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-avdet4wd){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-avdet4wd){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-avdet4wd){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-avdet4wd){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-avdet4wd){vertical-align:middle}
 .card-grid:where(.astro-zntqmydn){display:grid;grid-template-columns:100%;gap:1rem}.card-grid:where(.astro-zntqmydn)>*{margin-top:0!important}@media (min-width: 50rem){.card-grid:where(.astro-zntqmydn){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-zntqmydn){--stagger-height: 5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-zntqmydn)>*:nth-child(2n){transform:translateY(var(--stagger-height))}}
 .card:where(.astro-v5tidmuc){--sl-card-border: var(--sl-color-purple);--sl-card-bg: var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);padding:clamp(1rem,calc(.125rem + 3vw),2.5rem);flex-direction:column;gap:clamp(.5rem,calc(.125rem + 1vw),1rem)}.card:where(.astro-v5tidmuc):nth-child(4n+1){--sl-card-border: var(--sl-color-orange);--sl-card-bg: var(--sl-color-orange-low)}.card:where(.astro-v5tidmuc):nth-child(4n+3){--sl-card-border: var(--sl-color-green);--sl-card-bg: var(--sl-color-green-low)}.card:where(.astro-v5tidmuc):nth-child(4n+4){--sl-card-border: var(--sl-color-red);--sl-card-bg: var(--sl-color-red-low)}.card:where(.astro-v5tidmuc):nth-child(4n+5){--sl-card-border: var(--sl-color-blue);--sl-card-bg: var(--sl-color-blue-low)}.title:where(.astro-v5tidmuc){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);gap:1rem;align-items:center}.card:where(.astro-v5tidmuc) .icon:where(.astro-v5tidmuc){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);padding:.2em;border-radius:.25rem}.card:where(.astro-v5tidmuc) .body:where(.astro-v5tidmuc){margin:0;font-size:clamp(var(--sl-text-sm),calc(.5rem + 1vw),var(--sl-text-body))}
@@ -91,12 +91,865 @@ Documentation
 		}
 		shortcut.style.display = '';
 	})();
-</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Solver Comparison</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <h1 id="solver-comparison">Solver Comparison</h1>
-<p>This page summarizes when to use each solver in KPG Run. Detailed comparative content will be restored soon.</p>
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#quick-decision-tree" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Quick Decision Tree</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#comprehensive-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Comprehensive Comparison</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#feature-matrix" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Feature Matrix</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#detailed-model-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Detailed Model Comparison</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#economic-dispatch-ed" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Economic Dispatch (ED)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#unit-commitment-uc" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Unit Commitment (UC)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#dc-optimal-power-flow-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">DC Optimal Power Flow (DC-OPF)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#ac-optimal-power-flow-ac-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">AC Optimal Power Flow (AC-OPF)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#selection-by-application" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Selection by Application</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#research-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Research Applications</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#operational-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Operational Applications</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#cost-and-accuracy-trade-offs" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Cost and Accuracy Trade-offs</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#accuracy-ladder" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Accuracy Ladder</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#solver-capabilities" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Solver Capabilities</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#what-each-model-can-answer" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">What Each Model Can Answer</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#speed-vs-accuracy" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Speed vs. Accuracy</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#pareto-frontier" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Pareto Frontier</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#best-practices" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Best Practices</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#model-selection-checklist" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Model Selection Checklist</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#validation-strategy" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Validation Strategy</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#quick-decision-tree" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Quick Decision Tree</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#comprehensive-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Comprehensive Comparison</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#feature-matrix" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Feature Matrix</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#detailed-model-comparison" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Detailed Model Comparison</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#economic-dispatch-ed" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Economic Dispatch (ED)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#unit-commitment-uc" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Unit Commitment (UC)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#dc-optimal-power-flow-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">DC Optimal Power Flow (DC-OPF)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#ac-optimal-power-flow-ac-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">AC Optimal Power Flow (AC-OPF)</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#selection-by-application" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Selection by Application</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#research-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Research Applications</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#operational-applications" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Operational Applications</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#cost-and-accuracy-trade-offs" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Cost and Accuracy Trade-offs</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#accuracy-ladder" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Accuracy Ladder</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#solver-capabilities" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Solver Capabilities</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#what-each-model-can-answer" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">What Each Model Can Answer</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#speed-vs-accuracy" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Speed vs. Accuracy</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#pareto-frontier" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Pareto Frontier</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#best-practices" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Best Practices</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#model-selection-checklist" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Model Selection Checklist</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#validation-strategy" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Validation Strategy</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Solver Comparison &amp; Selection Guide</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>Choosing the right optimization model is critical for balancing accuracy, computational speed, and analysis goals. This guide helps you select among ED, UC, DC-OPF, and AC-OPF.</p>
+<h2 id="quick-decision-tree">Quick Decision Tree</h2>
+<pre class="mermaid" dir="ltr">flowchart TD
+    A[Start] --> B{Need <br>commitment <br>decisions?}
+    
+    B -->|Yes| C{Network <br>constraints <br>matter?}
+    B -->|No| D{Network <br>constraints <br>matter?}
+    
+    C -->|Yes| E[UC + OPF <br>Chained]
+    C -->|No| F[Unit <br>Commitment]
+    
+    D -->|Yes| G{Voltage/reactive <br>critical?}
+    D -->|No| H[Economic <br>Dispatch]
+    
+    G -->|Yes| I[AC Optimal <br>Power Flow]
+    G -->|No| J[DC Optimal <br>Power Flow]
+    </pre>
+<h2 id="comprehensive-comparison">Comprehensive Comparison</h2>
+<h3 id="feature-matrix">Feature Matrix</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Problem Type</strong></td><td>LP/QP</td><td>MIP</td><td>LP/QP</td><td>NLP</td></tr><tr><td><strong>Network Model</strong></td><td>None</td><td>None</td><td>DC (linearized)</td><td><strong>AC (full)</strong></td></tr><tr><td><strong>Time Periods</strong></td><td>Single</td><td><strong>Multiple (24+)</strong></td><td>Single</td><td>Single</td></tr><tr><td><strong>Commitment Decisions</strong></td><td>✗</td><td><strong>✓ Binary</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Transmission Limits</strong></td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr><tr><td><strong>Voltage Constraints</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Reactive Power</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Transmission Losses</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Startup Costs</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Ramping Limits</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Min Up/Down Time</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Reserve Requirements</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Solving Speed</strong></td><td><strong>Fastest</strong></td><td><strong>Slow</strong></td><td><strong>Fast</strong></td><td><strong>Mediu</strong>m</td></tr></tbody></table>
+<h2 id="detailed-model-comparison">Detailed Model Comparison</h2>
+<h3 id="economic-dispatch-ed">Economic Dispatch (ED)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: Demand, Costs] --> B[ED Solver<br>LP/QP]
+    B --> C[Output: Dispatch]
+    
+    D[Ignores:<br>- Network<br>- Time<br>- Commitment]
+    </pre>
 <ul>
-<li><strong>ED:</strong> Fast cost-minimized dispatch without network constraints.</li>
-<li><strong>UC:</strong> Multi-period scheduling with commitment decisions.</li>
-<li><strong>DC-OPF:</strong> Network-constrained dispatch using linearized power flow.</li>
-<li><strong>AC-OPF:</strong> Full AC network model with voltage and reactive power.</li>
+<li>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>
+<p>Fastest solving speed</p>
+</li>
+<li>
+<p>Convex formulation</p>
+</li>
+<li>
+<p>Easy to understand</p>
+</li>
+<li>
+<p>Good for teaching</p>
+</li>
+<li>
+<p>Merit order analysis</p>
+</li>
 </ul>
-<p>More extensive guidance and examples will be added.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/documentation/kpg-run/formulations/acopf/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">AC Optimal Power Flow</span> </span> </a> <a href="/documentation/kpg-view/overview/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Overview</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+</li>
+<li>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>
+<p>No network constraints</p>
+</li>
+<li>
+<p>May be infeasible in reality</p>
+</li>
+<li>
+<p>Cost is lower bound only</p>
+</li>
+<li>
+<p>No temporal dynamics</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>
+<p>Screening studies</p>
+</li>
+<li>
+<p>Fuel cost sensitivity</p>
+</li>
+<li>
+<p>Technology comparisons</p>
+</li>
+<li>
+<p>Educational purposes</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/ed">→ ED Details</a></strong></p>
+<hr>
+<h3 id="unit-commitment-uc">Unit Commitment (UC)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A["Input: 24h Profile"] --> B[UC Solver <br>MIP]
+    B --> C["Output: Schedule"]
+    
+    D[Includes: <br>- Commitment u<sub>it</sub> <br>- Startup costs <br>- Ramping <br>- Reserves]
+    
+    E[Ignores: <br>- Network <br>- Voltage <br>- Reactive]
+    </pre>
+<ul>
+<li>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>
+<p>Realistic scheduling</p>
+</li>
+<li>
+<p>Startup/shutdown costs</p>
+</li>
+<li>
+<p>Temporal constraints</p>
+</li>
+<li>
+<p>Reserve provision</p>
+</li>
+<li>
+<p>Day-ahead markets</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>
+<p>No network constraints</p>
+</li>
+<li>
+<p>Slow (MIP)</p>
+</li>
+<li>
+<p>May not be AC feasible</p>
+</li>
+<li>
+<p>High memory usage</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>
+<p>Day-ahead planning</p>
+</li>
+<li>
+<p>Generator scheduling</p>
+</li>
+<li>
+<p>Cycling cost analysis</p>
+</li>
+<li>
+<p>Reserve studies</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/uc">→ UC Details</a></strong></p>
+<hr>
+<h3 id="dc-optimal-power-flow-dc-opf">DC Optimal Power Flow (DC-OPF)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: Network, Demand] --> B[DC-OPF Solver<br>LP]
+    B --> C[Output: Dispatch + Flows]
+    
+    D[Includes:<br>- Transmission limits<br>- Power flow<br>- LMPs<br>- Congestion]
+    
+    E[Ignores:<br>- Voltage<br>- Reactive Q<br>- Losses]
+    </pre>
+<ul>
+<li>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>
+<p>Network-aware</p>
+</li>
+<li>
+<p>Fast (LP)</p>
+</li>
+<li>
+<p>Locational prices (LMPs)</p>
+</li>
+<li>
+<p>Congestion analysis</p>
+</li>
+<li>
+<p>Always converges</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>
+<p>Voltage fixed <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.888ex" height="1.731ex" role="img" focusable="false" viewBox="0 -683 2602.6 765" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-1-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(1046.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(2102.6,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g></svg></mjx-container></p>
+</li>
+<li>
+<p>No reactive power</p>
+</li>
+<li>
+<p>Ignores losses</p>
+</li>
+<li>
+<p>DC approximation errors</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>
+<p>Market clearing</p>
+</li>
+<li>
+<p>LMP calculation</p>
+</li>
+<li>
+<p>Congestion studies</p>
+</li>
+<li>
+<p>Large-scale analysis</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/dcopf">→ DC-OPF Details</a></strong></p>
+<hr>
+<h3 id="ac-optimal-power-flow-ac-opf">AC Optimal Power Flow (AC-OPF)</h3>
+<pre class="mermaid" dir="ltr">graph TB
+    A[Input: Full Network] --> B[AC-OPF Solver<br>NLP]
+    B --> C[Output: Complete Solution]
+    
+    D[Includes:<br>- Full AC flow<br>- Voltages V<sub>b</sub><br>- Reactive Q<sub>i</sub><br>- Losses]
+    
+    E[Challenges:<br>- Nonlinear<br>- Local optima<br>- May not converge]
+    </pre>
+<ul>
+<li>
+<p><strong>Strengths:</strong></p>
+<ul>
+<li>
+<p>Complete physics</p>
+</li>
+<li>
+<p>Voltage and reactive</p>
+</li>
+<li>
+<p>Accurate losses</p>
+</li>
+<li>
+<p>True feasibility</p>
+</li>
+<li>
+<p>Highest accuracy</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Weaknesses:</strong></p>
+<ul>
+<li>
+<p>Slower (NLP)</p>
+</li>
+<li>
+<p>May not converge</p>
+</li>
+<li>
+<p>Local optima possible</p>
+</li>
+<li>
+<p>Sensitive to initialization</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Best for:</strong></p>
+<ul>
+<li>
+<p>Feasibility validation</p>
+</li>
+<li>
+<p>Voltage studies</p>
+</li>
+<li>
+<p>Reactive planning</p>
+</li>
+<li>
+<p>Detailed operations</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong><a href="/documentation/kpg-run/formulations/acopf">→ AC-OPF Details</a></strong></p>
+<h2 id="selection-by-application">Selection by Application</h2>
+<h3 id="research-applications">Research Applications</h3>
+<ul>
+<li>
+<p><strong>Decarbonization Studies</strong></p>
+<ul>
+<li>
+<p><strong>Primary:</strong> UC (capture cycling costs)</p>
+</li>
+<li>
+<p><strong>Secondary:</strong> DC-OPF (transmission needs)</p>
+</li>
+<li>
+<p><strong>Validation:</strong> AC-OPF (feasibility check)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Renewable Integration</strong></p>
+<ul>
+<li>
+<p><strong>Primary:</strong> UC (ramping, reserves)</p>
+</li>
+<li>
+<p><strong>Secondary:</strong> DC-OPF (congestion from variable generation)</p>
+</li>
+<li>
+<p><strong>Detailed:</strong> AC-OPF (voltage impact)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Transmission Planning</strong></p>
+<ul>
+<li>
+<p><strong>Primary:</strong> DC-OPF (congestion, LMPs)</p>
+</li>
+<li>
+<p><strong>Validation:</strong> AC-OPF (true flow limits)</p>
+</li>
+<li>
+<p><strong>Optional:</strong> UC (temporal patterns)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Market Design</strong></p>
+<ul>
+<li>
+<p><strong>Primary:</strong> DC-OPF (locational pricing)</p>
+</li>
+<li>
+<p><strong>UC:</strong> Day-ahead commitment</p>
+</li>
+<li>
+<p><strong>Validation:</strong> AC-OPF (deliverability)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="operational-applications">Operational Applications</h3>
+<ul>
+<li>
+<p><strong>Day-Ahead Markets</strong></p>
+<ul>
+<li>
+<p><strong>Stage 1:</strong> UC (commitment schedule)</p>
+</li>
+<li>
+<p><strong>Stage 2:</strong> DC-OPF (dispatch + LMPs)</p>
+</li>
+<li>
+<p><strong>Post-analysis:</strong> AC-OPF (feasibility)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Congestion Management</strong></p>
+<ul>
+<li>
+<p><strong>Primary:</strong> DC-OPF (identify constraints)</p>
+</li>
+<li>
+<p><strong>Validation:</strong> AC-OPF (verify relief)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="cost-and-accuracy-trade-offs">Cost and Accuracy Trade-offs</h2>
+<h3 id="accuracy-ladder">Accuracy Ladder</h3>
+<pre class="mermaid" dir="ltr">graph LR
+    A[ED <br>Lower Bound] -->|+Network| B[DC-OPF <br>Better]
+    B -->|+Losses/Voltage| C[AC-OPF <br>Accurate]
+    
+    D[UC <br>+Temporal] -->|+Network| E[UC+DC-OPF <br>Realistic]
+    E -->|+AC| F[UC+AC-OPF <br>Most Accurate]
+    </pre>
+<h2 id="solver-capabilities">Solver Capabilities</h2>
+<h3 id="what-each-model-can-answer">What Each Model Can Answer</h3>
+<h4 id="1-economic-dispatch-ed">1. Economic Dispatch (ED)</h4>
+<ul>
+<li>
+<p><strong>Questions ED can answer:</strong></p>
+<ul>
+<li>
+<p>What is the minimum possible generation cost?</p>
+</li>
+<li>
+<p>Which generators should run based on merit order?</p>
+</li>
+<li>
+<p>What is the system marginal price?</p>
+</li>
+<li>
+<p>How do fuel prices affect dispatch?</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Questions ED cannot answer:</strong></p>
+<ul>
+<li>
+<p>Is the dispatch AC feasible?</p>
+</li>
+<li>
+<p>Are transmission lines overloaded?</p>
+</li>
+<li>
+<p>What are the locational prices?</p>
+</li>
+<li>
+<p>How should units be scheduled over time?</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-unit-commitment-uc">2. Unit Commitment (UC)</h4>
+<ul>
+<li>
+<p><strong>Questions UC can answer:</strong></p>
+<ul>
+<li>
+<p>Which units should be online each hour?</p>
+</li>
+<li>
+<p>When should units start up and shut down?</p>
+</li>
+<li>
+<p>What are the total cycling costs?</p>
+</li>
+<li>
+<p>Are reserve requirements met?</p>
+</li>
+<li>
+<p>How much ramping capability is needed?</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Questions UC cannot answer:</strong></p>
+<ul>
+<li>
+<p>Are there transmission constraints?</p>
+</li>
+<li>
+<p>What are locational prices?</p>
+</li>
+<li>
+<p>Is reactive power adequate?</p>
+</li>
+<li>
+<p>Are voltages within limits?</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-dc-optimal-power-flow-dc-opf">3. DC Optimal Power Flow (DC-OPF)</h4>
+<ul>
+<li>
+<p><strong>Questions DC-OPF can answer:</strong></p>
+<ul>
+<li>
+<p>Which transmission lines are congested?</p>
+</li>
+<li>
+<p>What are locational marginal prices?</p>
+</li>
+<li>
+<p>Where should new transmission be built?</p>
+</li>
+<li>
+<p>How much does congestion cost?</p>
+</li>
+<li>
+<p>What is the optimal dispatch with network?</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Questions DC-OPF cannot answer:</strong></p>
+<ul>
+<li>
+<p>Are voltages acceptable?</p>
+</li>
+<li>
+<p>Is reactive power sufficient?</p>
+</li>
+<li>
+<p>What are the transmission losses?</p>
+</li>
+<li>
+<p>How should units be scheduled over time?</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-ac-optimal-power-flow-ac-opf">4. AC Optimal Power Flow (AC-OPF)</h4>
+<ul>
+<li>
+<p><strong>Questions AC-OPF can answer:</strong></p>
+<ul>
+<li>
+<p>Is the dispatch truly feasible?</p>
+</li>
+<li>
+<p>What are the actual voltages?</p>
+</li>
+<li>
+<p>How much reactive power is needed?</p>
+</li>
+<li>
+<p>What are the transmission losses?</p>
+</li>
+<li>
+<p>Are generator capability curves violated?</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Questions AC-OPF cannot answer:</strong></p>
+<ul>
+<li>
+<p>How should units be scheduled? (single period)</p>
+</li>
+<li>
+<p>What are startup costs? (no commitment)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="speed-vs-accuracy">Speed vs. Accuracy</h2>
+<h3 id="pareto-frontier">Pareto Frontier</h3>
+<pre class="mermaid" dir="ltr">graph TD
+    A["Trade-off Space"]
+    
+    B[ED<br>Fastest, Least Accurate]
+    C[DC-OPF<br>Fast, Medium Accuracy]
+    D[UC<br>Slow, Good Temporal]
+    E[AC-OPF<br>Medium, High Accuracy]
+    F[UC+AC-OPF<br>Slowest, Best Overall]
+    
+    B --> C
+    C --> E
+    D --> F
+    </pre>
+<h2 id="best-practices">Best Practices</h2>
+<h3 id="model-selection-checklist">Model Selection Checklist</h3>
+<ul>
+<li><strong>Ask yourself:</strong></li>
+</ul>
+<ol>
+<li>
+<p><strong>Time horizon?</strong></p>
+<ul>
+<li>Single period → OPF</li>
+<li>Multiple periods → UC</li>
+</ul>
+</li>
+<li>
+<p><strong>Network important?</strong></p>
+<ul>
+<li>No → ED/UC</li>
+<li>Yes → DC-OPF/AC-OPF</li>
+</ul>
+</li>
+<li>
+<p><strong>Voltage critical?</strong></p>
+<ul>
+<li>No → DC-OPF</li>
+<li>Yes → AC-OPF</li>
+</ul>
+</li>
+<li>
+<p><strong>Speed requirement?</strong></p>
+<ul>
+<li>Fast → ED/DC-OPF</li>
+<li>Moderate → AC-OPF</li>
+<li>Can wait → UC</li>
+</ul>
+</li>
+<li>
+<p><strong>Accuracy need?</strong></p>
+<ul>
+<li>Approximate → ED/DC-OPF</li>
+<li>High → AC-OPF</li>
+<li>Complete → UC + AC-OPF</li>
+</ul>
+</li>
+</ol>
+<h3 id="validation-strategy">Validation Strategy</h3>
+<pre class="mermaid" dir="ltr">flowchart LR
+    A[Simplest Model] --> B[Run &#x26; Analyze]
+    B --> C{Need more<br>accuracy?}
+    C -->|Yes| D[Next Complex Model]
+    C -->|No| E[Done]
+    D --> B
+    
+    F[ED] --> G[DC-OPF]
+    G --> H[AC-OPF]
+    
+    I[UC] --> J[UC + DC-OPF]
+    J --> K[UC + AC-OPF]
+    </pre>
+<ul>
+<li>
+<p><strong>Progressive refinement:</strong></p>
+<ol>
+<li>
+<p>Start simple (ED or DC-OPF)</p>
+</li>
+<li>
+<p>Check if results reasonable</p>
+</li>
+<li>
+<p>Add complexity if needed</p>
+</li>
+<li>
+<p>Validate with more accurate model</p>
+</li>
+<li>
+<p>Iterate until confidence achieved</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li><strong>Learn each model:</strong>
+<ul>
+<li><a href="/documentation/kpg-run/formulations/ed">Economic Dispatch →</a></li>
+<li><a href="/documentation/kpg-run/formulations/uc">Unit Commitment →</a></li>
+<li><a href="/documentation/kpg-run/formulations/dcopf">DC Optimal Power Flow →</a></li>
+<li><a href="/documentation/kpg-run/formulations/acopf">AC Optimal Power Flow →</a></li>
+</ul>
+</li>
+<li><strong>Start using KPG Run:</strong> <a href="/documentation/kpg-run/getting-started">Getting Started →</a></li>
+</ul><style>
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/documentation/kpg-run/formulations/acopf/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">AC Optimal Power Flow</span> </span> </a> <a href="/documentation/kpg-view/overview/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Overview</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
