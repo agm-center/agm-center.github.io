@@ -91,13 +91,14 @@ Documentation
 		}
 		shortcut.style.display = '';
 	})();
-</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#prerequisites" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Prerequisites</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#your-first-optimization" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Your First Optimization</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interface-overview" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interface Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running DC-OPF</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-unit-commitment" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running Unit Commitment</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#tips-and-tricks" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Tips and Tricks</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#selecting-representative-days" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Selecting Representative Days</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interpreting-results" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interpreting Results</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps-after-first-run" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps After First Run</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-explore-different-scenarios" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. Explore Different Scenarios</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-compare-solvers" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. Compare Solvers</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-visualize-in-kpg-view" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. Visualize in KPG View</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#common-mistakes" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Common Mistakes</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-1-wrong-day-selection" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 1: Wrong Day Selection</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-2-mismatched-test-system" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 2: Mismatched Test System</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-3-unrealistic-parameters" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 3: Unrealistic Parameters</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-4-ignoring-warnings" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 4: Ignoring Warnings</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#prerequisites" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Prerequisites</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#your-first-optimization" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Your First Optimization</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interface-overview" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interface Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running DC-OPF</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-unit-commitment" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running Unit Commitment</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#tips-and-tricks" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Tips and Tricks</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#selecting-representative-days" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Selecting Representative Days</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interpreting-results" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interpreting Results</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps-after-first-run" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps After First Run</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-explore-different-scenarios" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. Explore Different Scenarios</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-compare-solvers" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. Compare Solvers</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-visualize-in-kpg-view" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. Visualize in KPG View</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#common-mistakes" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Common Mistakes</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-1-wrong-day-selection" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 1: Wrong Day Selection</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-2-mismatched-test-system" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 2: Mismatched Test System</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-3-unrealistic-parameters" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 3: Unrealistic Parameters</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#mistake-4-ignoring-warnings" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Mistake 4: Ignoring Warnings</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Getting Started with KPG Run</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <h1 id="getting-started-with-kpg-run">Getting Started with KPG Run</h1>
-<p>This guide walks you through your first power system optimization using KPG Run, from launch to results analysis.</p>
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#prerequisites" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Prerequisites</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#your-first-optimization" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Your First Optimization</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interface-overview" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interface Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-dc-optimal-power-flow-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running DC Optimal Power Flow (DC-OPF)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-unit-commitment" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running Unit Commitment</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps-after-first-run" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps After First Run</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-explore-different-scenarios" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. Explore Different Scenarios</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-compare-solvers" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. Compare Solvers</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-visualize-in-kpg-view" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. Visualize in KPG View</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#prerequisites" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Prerequisites</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#your-first-optimization" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Your First Optimization</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interface-overview" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interface Overview</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-dc-optimal-power-flow-dc-opf" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running DC Optimal Power Flow (DC-OPF)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#tutorial-running-unit-commitment" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Tutorial: Running Unit Commitment</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps-after-first-run" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps After First Run</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-explore-different-scenarios" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. Explore Different Scenarios</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-compare-solvers" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. Compare Solvers</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-visualize-in-kpg-view" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. Visualize in KPG View</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#next-steps" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Next Steps</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Getting Started with KPG Run</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>This guide walks you through your first power system optimization using KPG Run, from launch to results analysis.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before starting, ensure you have:</p>
 <ul>
-<li><strong>KPG Run installed</strong> (<a href="https://agm-center.github.io/documentation/kpg-run/installation">Installation Guide →</a>)</li>
-<li><strong>Julia environment</strong> configured with the required Packages, Gurobi, and Ipopt</li>
+<li><strong>KPG Run</strong> installed</li>
+<li><strong>Julia environment</strong> configured with the required Packages</li>
+<li><strong>Solver Engines</strong>: Ipopt, Gurobi and KNITRO
+— Gurobi and KNITRO require valid license</li>
 <li><strong>Basic understanding</strong> of power systems (helpful but not required)</li>
 </ul>
 <h2 id="your-first-optimization">Your First Optimization</h2>
@@ -121,11 +122,11 @@ Documentation
     A[Select Solver] --> B[Configure Parameters]
     B --> C[Solve]
     C --> D[View Results]</pre>
-<h3 id="tutorial-running-dc-opf">Tutorial: Running DC-OPF</h3>
-<p>Let’s solve a DC Optimal Power Flow for the KPG193 system.</p>
+<h3 id="tutorial-running-dc-optimal-power-flow-dc-opf">Tutorial: Running DC Optimal Power Flow (DC-OPF)</h3>
+<p>Let’s solve a DC-OPF for the KPG193 system.</p>
 <h4 id="step-1-select-solver">Step 1: Select Solver</h4>
 <ul>
-<li>Click <strong>“DC-OPF”</strong> in the solver type selector (left panel)</li>
+<li>Click ‘DC-OPF’ in the solver type selector (left panel)</li>
 <li>The interface updates to show DC-OPF-specific options</li>
 </ul>
 <h4 id="step-2-configure-parameters">Step 2: Configure Parameters</h4>
@@ -135,12 +136,11 @@ Documentation
 </ul>
 <p><strong>Day Selection:</strong></p>
 <ul>
-<li>Enter <strong>“200”</strong> (summer peak day, mid-July).</li>
-<li>Profiles load for day 200.</li>
+<li>Enter ‘200’ (summer day, mid July).</li>
 </ul>
 <h4 id="step-3-solve">Step 3: Solve</h4>
 <ul>
-<li>Click <strong>“Solve”</strong> button</li>
+<li>Click ‘Solve’ button</li>
 <li>Watch console output in real-time:</li>
 </ul>
 <div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.ppgh1.css"><script type="module" src="/_astro/ec.p1z7b.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[DC-OPF] Starting DC Optimal Power Flow...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[DC-OPF] Test system: KPG193_ver1_4</span></div></div><div class="ec-line"><div class="code">
@@ -164,12 +164,12 @@ Documentation
 </ul>
 <p><strong>Day/Period Selection:</strong></p>
 <ul>
-<li>Day: 200 (same summer peak day)</li>
-<li>Period: 1 day</li>
+<li>Day: 200 (same summer day)</li>
+<li>Period: ‘1’ day</li>
 </ul>
 <h4 id="step-3-solve-1">Step 3: Solve</h4>
 <ul>
-<li>Click <strong>“Solve”</strong> button</li>
+<li>Click ‘Solve’ button</li>
 <li>Watch console output in real-time:</li>
 </ul>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Test system: KPG193_ver1_4 | Day: 200 | Period: 1 day(s) | Solver: Gurobi</span></div></div><div class="ec-line"><div class="code">
@@ -179,116 +179,37 @@ Documentation
 <ul>
 <li>When the view switches to the Results tab, review the results.</li>
 </ul>
-<h2 id="tips-and-tricks">Tips and Tricks</h2>
-<h3 id="selecting-representative-days">Selecting Representative Days</h3>
-<p><strong>For seasonal analysis:</strong></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<table><thead><tr><th>Day</th><th>Season</th><th>Load Pattern</th><th>Renewable</th><th>Purpose</th></tr></thead><tbody><tr><td>15</td><td>Winter</td><td>Evening peak</td><td>Low wind</td><td>Heating demand</td></tr><tr><td>75</td><td>Spring</td><td>Moderate</td><td>High solar/wind</td><td>Renewable integration</td></tr><tr><td>200</td><td>Summer</td><td>Afternoon peak</td><td>High solar</td><td>Cooling peak</td></tr><tr><td>290</td><td>Fall</td><td>Moderate</td><td>Medium</td><td>Shoulder season</td></tr></tbody></table>
-<p><strong>For extreme conditions:</strong></p>
-<ul>
-<li><strong>Maximum stress:</strong> Day 200-210 (peak summer)</li>
-<li><strong>Minimum load:</strong> Day 90-110 (spring nights)</li>
-<li><strong>High renewable:</strong> Day 80-100 (spring)</li>
-<li><strong>Low renewable:</strong> Day 350-365 (winter)</li>
-</ul>
-<h3 id="interpreting-results">Interpreting Results</h3>
-<p><strong>Cost reasonableness check:</strong></p>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Expected cost per MWh (2022 Korea):</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- Off-peak: 40-50 $/MWh</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- Mid-merit: 50-60 $/MWh</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- Peak: 60-80 $/MWh</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">If results far outside: check data</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="Expected cost per MWh (2022 Korea):- Off-peak: 40-50 $/MWh- Mid-merit: 50-60 $/MWh- Peak: 60-80 $/MWhIf results far outside: check data"><div></div></button></div></figure></div>
-<p><strong>Generation mix check:</strong></p>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Expected capacity factors:</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- Nuclear: >95% (baseload)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- Coal: 60-80% (mid-merit)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- LNG: 20-50% (peaking)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">- Renewables: 15-25% (variable)</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="Expected capacity factors:- Nuclear: >95% (baseload)- Coal: 60-80% (mid-merit)- LNG: 20-50% (peaking)- Renewables: 15-25% (variable)"><div></div></button></div></figure></div>
 <h2 id="next-steps-after-first-run">Next Steps After First Run</h2>
 <h3 id="1-explore-different-scenarios">1. Explore Different Scenarios</h3>
-<p><strong>Try different days:</strong></p>
+<p>Try different days:</p>
 <ul>
 <li>Day 15: Cold winter, evening peak</li>
 <li>Day 75: Moderate spring, high renewables</li>
 <li>Day 200: Hot summer, afternoon peak (you just ran this!)</li>
 <li>Day 290: Moderate fall, shoulder season</li>
 </ul>
-<p><strong>Try different hours:</strong></p>
+<p>Try different hours:</p>
 <ul>
 <li>Hour 3: Minimum load (test flexibility)</li>
 <li>Hour 12: Peak solar generation</li>
-<li>Hour 18: Evening peak (highest demand)</li>
+<li>Hour 18: Evening peak</li>
 </ul>
 <h3 id="2-compare-solvers">2. Compare Solvers</h3>
-<p><strong>Run same scenario with different models:</strong></p>
+<p>Run same scenario with different models:</p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53"># Same day, same hour</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">day = 200</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">hour = 18</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53"># Economic Dispatch (ignore network)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53"># DC-OPF (with network)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53"># AC-OPF (full AC network)</span></div></div><div class="ec-line"><div class="code">
 </div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53"># Compare costs</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="# Same day, same hourday = 200hour = 18# Economic Dispatch (ignore network)# DC-OPF (with network)# AC-OPF (full AC network)# Compare costs"><div></div></button></div></figure></div>
 <h3 id="3-visualize-in-kpg-view">3. Visualize in KPG View</h3>
-<p><strong>Export results to GeoJSON:</strong></p>
+<p>Export results to GeoJSON:</p>
 <ol>
 <li>Click <code dir="auto">Save to Folder</code> button</li>
 <li>Store file to your desired directory</li>
 <li>Visualize in KPG View</li>
 </ol>
 <p><strong><a href="https://agm-center.github.io/documentation/kpg-view/usage-guide">→ KPG View Guide</a></strong></p>
-<h2 id="common-mistakes">Common Mistakes</h2>
-<h3 id="mistake-1-wrong-day-selection">Mistake 1: Wrong Day Selection</h3>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Day 367 is invalid!</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Valid range: 1-365</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="Day 367 is invalid!Valid range: 1-365"><div></div></button></div></figure></div>
-<p><strong>Fix:</strong> Check day range (1-365)</p>
-<h3 id="mistake-2-mismatched-test-system">Mistake 2: Mismatched Test System</h3>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">UC solved with v1.2, trying to use v1.5 profiles</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Error: Bus count mismatch</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="UC solved with v1.2, trying to use v1.5 profilesError: Bus count mismatch"><div></div></button></div></figure></div>
-<p><strong>Fix:</strong> Use consistent version throughout</p>
-<h3 id="mistake-3-unrealistic-parameters">Mistake 3: Unrealistic Parameters</h3>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">UC with reserve = 50% of load</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">Result: Very expensive, many units online</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="UC with reserve = 50% of loadResult: Very expensive, many units online"><div></div></button></div></figure></div>
-<p><strong>Fix:</strong> Use realistic reserves (5-15%)</p>
-<h3 id="mistake-4-ignoring-warnings">Mistake 4: Ignoring Warnings</h3>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[WARNING] Generator 45 at minimum for all hours</span></div></div><div class="ec-line"><div class="code">
-</div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">[WARNING] Line 234 congested all hours</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="[WARNING] Generator 45 at minimum for all hours[WARNING] Line 234 congested all hours"><div></div></button></div></figure></div>
-<p><strong>Action:</strong> Investigate warnings, may indicate:</p>
-<ul>
-<li>Data issues</li>
-<li>Binding constraints</li>
-<li>System bottlenecks</li>
-</ul>
 <h2 id="next-steps">Next Steps</h2>
 <ul>
 <li><strong>Full installation:</strong> <a href="https://agm-center.github.io/documentation/kpg-run/installation">Installation Guide →</a></li>
 <li><strong>Learn the interface:</strong> <a href="https://agm-center.github.io/documentation/kpg-run/user-interface">User Interface Guide →</a></li>
-<li><strong>Understand math:</strong> <a href="https://agm-center.github.io/documentation/kpg-run/formulations/ed">Formulations →</a></li>
+<li><strong>Understand mathematical model:</strong> <a href="https://agm-center.github.io/documentation/kpg-run/formulations/ed">Formulations →</a></li>
 </ul> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/documentation/kpg-run/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Overview</span> </span> </a> <a href="/documentation/kpg-run/installation/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Installation</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
