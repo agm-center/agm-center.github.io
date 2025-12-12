@@ -213,68 +213,42 @@ Documentation
 
 
 
-<table><thead><tr><th>Feature</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Problem Type</strong></td><td>LP/QP</td><td>MIP</td><td>LP/QP</td><td>NLP</td></tr><tr><td><strong>Network Model</strong></td><td>None</td><td>None</td><td>DC (linearized)</td><td><strong>AC (full)</strong></td></tr><tr><td><strong>Time Periods</strong></td><td>Single</td><td><strong>Multiple (24+)</strong></td><td>Single</td><td>Single</td></tr><tr><td><strong>Commitment Decisions</strong></td><td>✗</td><td><strong>✓ Binary</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Transmission Limits</strong></td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr><tr><td><strong>Voltage Constraints</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Reactive Power</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Transmission Losses</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Startup Costs</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Ramping Limits</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Min Up/Down Time</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Reserve Requirements</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Solving Speed</strong></td><td><strong>Fastest</strong></td><td><strong>Slow</strong></td><td><strong>Fast</strong></td><td><strong>Mediu</strong>m</td></tr></tbody></table>
+<table><thead><tr><th>Feature</th><th>ED</th><th>UC</th><th>DC-OPF</th><th>AC-OPF</th></tr></thead><tbody><tr><td><strong>Problem Type</strong></td><td>LP/QP</td><td>MIP</td><td>LP/QP</td><td>NLP</td></tr><tr><td><strong>Network Model</strong></td><td>None</td><td>None</td><td>DC (linearized)</td><td><strong>AC (full)</strong></td></tr><tr><td><strong>Time Periods</strong></td><td>Single</td><td><strong>Multiple (24+)</strong></td><td>Single</td><td>Single</td></tr><tr><td><strong>Commitment Decisions</strong></td><td>✗</td><td><strong>✓ Binary</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Transmission Limits</strong></td><td>✗</td><td>✗</td><td>✓</td><td>✓</td></tr><tr><td><strong>Voltage Constraints</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Reactive Power</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Transmission Losses</strong></td><td>✗</td><td>✗</td><td>✗</td><td><strong>✓</strong></td></tr><tr><td><strong>Startup Costs</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Ramping Limits</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Min Up/Down Time</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Reserve Requirements</strong></td><td>✗</td><td><strong>✓</strong></td><td>✗</td><td>✗</td></tr><tr><td><strong>Solving Speed</strong></td><td><strong>Fastest</strong></td><td><strong>Slow</strong></td><td><strong>Fast</strong></td><td><strong>Medium</strong></td></tr></tbody></table>
 <h2 id="detailed-model-comparison">Detailed Model Comparison</h2>
 <h3 id="economic-dispatch-ed">Economic Dispatch (ED)</h3>
 <pre class="mermaid" dir="ltr">graph TB
-    A[Input: Demand, Costs] --> B[ED Solver<br>LP/QP]
+    A[Input: Demand, Costs] --> B["ED Solver (LP/QP)"]
     B --> C[Output: Dispatch]
     
-    D[Ignores:<br>- Network<br>- Time<br>- Commitment]
+    D[Ignores: <br>Network, <br>Time, <br>Commitment]
     </pre>
 <ul>
 <li>
 <p><strong>Strengths:</strong></p>
 <ul>
-<li>
-<p>Fastest solving speed</p>
-</li>
-<li>
-<p>Convex formulation</p>
-</li>
-<li>
-<p>Easy to understand</p>
-</li>
-<li>
-<p>Good for teaching</p>
-</li>
-<li>
-<p>Merit order analysis</p>
-</li>
+<li>Fastest solving speed</li>
+<li>Convex formulation</li>
+<li>Easy to understand</li>
+<li>Good for teaching</li>
+<li>Merit order analysis</li>
 </ul>
 </li>
 <li>
 <p><strong>Weaknesses:</strong></p>
 <ul>
-<li>
-<p>No network constraints</p>
-</li>
-<li>
-<p>May be infeasible in reality</p>
-</li>
-<li>
-<p>Cost is lower bound only</p>
-</li>
-<li>
-<p>No temporal dynamics</p>
-</li>
+<li>No network constraints</li>
+<li>May be infeasible in reality</li>
+<li>Cost is lower bound only</li>
+<li>No temporal dynamics</li>
 </ul>
 </li>
 <li>
 <p><strong>Best for:</strong></p>
 <ul>
-<li>
-<p>Screening studies</p>
-</li>
-<li>
-<p>Fuel cost sensitivity</p>
-</li>
-<li>
-<p>Technology comparisons</p>
-</li>
-<li>
-<p>Educational purposes</p>
-</li>
+<li>Screening studies</li>
+<li>Fuel cost sensitivity</li>
+<li>Technology comparisons</li>
+<li>Educational purposes</li>
 </ul>
 </li>
 </ul>
@@ -293,55 +267,29 @@ Documentation
 <li>
 <p><strong>Strengths:</strong></p>
 <ul>
-<li>
-<p>Realistic scheduling</p>
-</li>
-<li>
-<p>Startup/shutdown costs</p>
-</li>
-<li>
-<p>Temporal constraints</p>
-</li>
-<li>
-<p>Reserve provision</p>
-</li>
-<li>
-<p>Day-ahead markets</p>
-</li>
+<li>Realistic scheduling</li>
+<li>Startup/shutdown costs</li>
+<li>Temporal constraints</li>
+<li>Reserve provision</li>
+<li>Day-ahead markets</li>
 </ul>
 </li>
 <li>
 <p><strong>Weaknesses:</strong></p>
 <ul>
-<li>
-<p>No network constraints</p>
-</li>
-<li>
-<p>Slow (MIP)</p>
-</li>
-<li>
-<p>May not be AC feasible</p>
-</li>
-<li>
-<p>High memory usage</p>
-</li>
+<li>No network constraints</li>
+<li>Slow (MIP)</li>
+<li>May not be AC feasible</li>
+<li>High memory usage</li>
 </ul>
 </li>
 <li>
 <p><strong>Best for:</strong></p>
 <ul>
-<li>
-<p>Day-ahead planning</p>
-</li>
-<li>
-<p>Generator scheduling</p>
-</li>
-<li>
-<p>Cycling cost analysis</p>
-</li>
-<li>
-<p>Reserve studies</p>
-</li>
+<li>Day-ahead planning</li>
+<li>Generator scheduling</li>
+<li>Cycling cost analysis</li>
+<li>Reserve studies</li>
 </ul>
 </li>
 </ul>
@@ -360,55 +308,29 @@ Documentation
 <li>
 <p><strong>Strengths:</strong></p>
 <ul>
-<li>
-<p>Network-aware</p>
-</li>
-<li>
-<p>Fast (LP)</p>
-</li>
-<li>
-<p>Locational prices (LMPs)</p>
-</li>
-<li>
-<p>Congestion analysis</p>
-</li>
-<li>
-<p>Always converges</p>
-</li>
+<li>Network-aware</li>
+<li>Fast (LP)</li>
+<li>Locational prices (LMPs)</li>
+<li>Congestion analysis</li>
+<li>Always converges</li>
 </ul>
 </li>
 <li>
 <p><strong>Weaknesses:</strong></p>
 <ul>
-<li>
-<p>Voltage fixed <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.888ex" height="1.731ex" role="img" focusable="false" viewBox="0 -683 2602.6 765" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-1-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(1046.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(2102.6,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g></svg></mjx-container></p>
-</li>
-<li>
-<p>No reactive power</p>
-</li>
-<li>
-<p>Ignores losses</p>
-</li>
-<li>
-<p>DC approximation errors</p>
-</li>
+<li>Voltage fixed <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.186ex;" xmlns="http://www.w3.org/2000/svg" width="5.888ex" height="1.731ex" role="img" focusable="false" viewBox="0 -683 2602.6 765" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D449" d="M52 648Q52 670 65 683H76Q118 680 181 680Q299 680 320 683H330Q336 677 336 674T334 656Q329 641 325 637H304Q282 635 274 635Q245 630 242 620Q242 618 271 369T301 118L374 235Q447 352 520 471T595 594Q599 601 599 609Q599 633 555 637Q537 637 537 648Q537 649 539 661Q542 675 545 679T558 683Q560 683 570 683T604 682T668 681Q737 681 755 683H762Q769 676 769 672Q769 655 760 640Q757 637 743 637Q730 636 719 635T698 630T682 623T670 615T660 608T652 599T645 592L452 282Q272 -9 266 -16Q263 -18 259 -21L241 -22H234Q216 -22 216 -15Q213 -9 177 305Q139 623 138 626Q133 637 76 637H59Q52 642 52 648Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D449" xlink:href="#MJX-1-TEX-I-1D449"></use></g><g data-mml-node="mo" transform="translate(1046.8,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="mn" transform="translate(2102.6,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g></g></g></svg></mjx-container></li>
+<li>No reactive power</li>
+<li>Ignores losses</li>
+<li>DC approximation errors</li>
 </ul>
 </li>
 <li>
 <p><strong>Best for:</strong></p>
 <ul>
-<li>
-<p>Market clearing</p>
-</li>
-<li>
-<p>LMP calculation</p>
-</li>
-<li>
-<p>Congestion studies</p>
-</li>
-<li>
-<p>Large-scale analysis</p>
-</li>
+<li>Market clearing</li>
+<li>LMP calculation</li>
+<li>Congestion studies</li>
+<li>Large-scale analysis</li>
 </ul>
 </li>
 </ul>
@@ -427,55 +349,29 @@ Documentation
 <li>
 <p><strong>Strengths:</strong></p>
 <ul>
-<li>
-<p>Complete physics</p>
-</li>
-<li>
-<p>Voltage and reactive</p>
-</li>
-<li>
-<p>Accurate losses</p>
-</li>
-<li>
-<p>True feasibility</p>
-</li>
-<li>
-<p>Highest accuracy</p>
-</li>
+<li>Complete physics</li>
+<li>Voltage and reactive</li>
+<li>Accurate losses</li>
+<li>True feasibility</li>
+<li>Highest accuracy</li>
 </ul>
 </li>
 <li>
 <p><strong>Weaknesses:</strong></p>
 <ul>
-<li>
-<p>Slower (NLP)</p>
-</li>
-<li>
-<p>May not converge</p>
-</li>
-<li>
-<p>Local optima possible</p>
-</li>
-<li>
-<p>Sensitive to initialization</p>
-</li>
+<li>Slower (NLP)</li>
+<li>May not converge</li>
+<li>Local optima possible</li>
+<li>Sensitive to initialization</li>
 </ul>
 </li>
 <li>
 <p><strong>Best for:</strong></p>
 <ul>
-<li>
-<p>Feasibility validation</p>
-</li>
-<li>
-<p>Voltage studies</p>
-</li>
-<li>
-<p>Reactive planning</p>
-</li>
-<li>
-<p>Detailed operations</p>
-</li>
+<li>Feasibility validation</li>
+<li>Voltage studies</li>
+<li>Reactive planning</li>
+<li>Detailed operations</li>
 </ul>
 </li>
 </ul>
@@ -486,57 +382,33 @@ Documentation
 <li>
 <p><strong>Decarbonization Studies</strong></p>
 <ul>
-<li>
-<p><strong>Primary:</strong> UC (capture cycling costs)</p>
-</li>
-<li>
-<p><strong>Secondary:</strong> DC-OPF (transmission needs)</p>
-</li>
-<li>
-<p><strong>Validation:</strong> AC-OPF (feasibility check)</p>
-</li>
+<li><strong>Primary:</strong> UC (capture cycling costs)</li>
+<li><strong>Secondary:</strong> DC-OPF (transmission needs)</li>
+<li><strong>Validation:</strong> AC-OPF (feasibility check)</li>
 </ul>
 </li>
 <li>
 <p><strong>Renewable Integration</strong></p>
 <ul>
-<li>
-<p><strong>Primary:</strong> UC (ramping, reserves)</p>
-</li>
-<li>
-<p><strong>Secondary:</strong> DC-OPF (congestion from variable generation)</p>
-</li>
-<li>
-<p><strong>Detailed:</strong> AC-OPF (voltage impact)</p>
-</li>
+<li><strong>Primary:</strong> UC (ramping, reserves)</li>
+<li><strong>Secondary:</strong> DC-OPF (congestion from variable generation)</li>
+<li><strong>Detailed:</strong> AC-OPF (voltage impact)</li>
 </ul>
 </li>
 <li>
 <p><strong>Transmission Planning</strong></p>
 <ul>
-<li>
-<p><strong>Primary:</strong> DC-OPF (congestion, LMPs)</p>
-</li>
-<li>
-<p><strong>Validation:</strong> AC-OPF (true flow limits)</p>
-</li>
-<li>
-<p><strong>Optional:</strong> UC (temporal patterns)</p>
-</li>
+<li><strong>Primary:</strong> DC-OPF (congestion, LMPs)</li>
+<li><strong>Validation:</strong> AC-OPF (true flow limits)</li>
+<li><strong>Optional:</strong> UC (temporal patterns)</li>
 </ul>
 </li>
 <li>
 <p><strong>Market Design</strong></p>
 <ul>
-<li>
-<p><strong>Primary:</strong> DC-OPF (locational pricing)</p>
-</li>
-<li>
-<p><strong>UC:</strong> Day-ahead commitment</p>
-</li>
-<li>
-<p><strong>Validation:</strong> AC-OPF (deliverability)</p>
-</li>
+<li><strong>Primary:</strong> DC-OPF (locational pricing)</li>
+<li><strong>UC:</strong> Day-ahead commitment</li>
+<li><strong>Validation:</strong> AC-OPF (deliverability)</li>
 </ul>
 </li>
 </ul>
@@ -545,26 +417,16 @@ Documentation
 <li>
 <p><strong>Day-Ahead Markets</strong></p>
 <ul>
-<li>
-<p><strong>Stage 1:</strong> UC (commitment schedule)</p>
-</li>
-<li>
-<p><strong>Stage 2:</strong> DC-OPF (dispatch + LMPs)</p>
-</li>
-<li>
-<p><strong>Post-analysis:</strong> AC-OPF (feasibility)</p>
-</li>
+<li><strong>Stage 1:</strong> UC (commitment schedule)</li>
+<li><strong>Stage 2:</strong> DC-OPF (dispatch + LMPs)</li>
+<li><strong>Post-analysis:</strong> AC-OPF (feasibility)</li>
 </ul>
 </li>
 <li>
 <p><strong>Congestion Management</strong></p>
 <ul>
-<li>
-<p><strong>Primary:</strong> DC-OPF (identify constraints)</p>
-</li>
-<li>
-<p><strong>Validation:</strong> AC-OPF (verify relief)</p>
-</li>
+<li><strong>Primary:</strong> DC-OPF (identify constraints)</li>
+<li><strong>Validation:</strong> AC-OPF (verify relief)</li>
 </ul>
 </li>
 </ul>
@@ -584,35 +446,19 @@ Documentation
 <li>
 <p><strong>Questions ED can answer:</strong></p>
 <ul>
-<li>
-<p>What is the minimum possible generation cost?</p>
-</li>
-<li>
-<p>Which generators should run based on merit order?</p>
-</li>
-<li>
-<p>What is the system marginal price?</p>
-</li>
-<li>
-<p>How do fuel prices affect dispatch?</p>
-</li>
+<li>What is the minimum possible generation cost?</li>
+<li>Which generators should run based on merit order?</li>
+<li>What is the system marginal price?</li>
+<li>How do fuel prices affect dispatch?</li>
 </ul>
 </li>
 <li>
 <p><strong>Questions ED cannot answer:</strong></p>
 <ul>
-<li>
-<p>Is the dispatch AC feasible?</p>
-</li>
-<li>
-<p>Are transmission lines overloaded?</p>
-</li>
-<li>
-<p>What are the locational prices?</p>
-</li>
-<li>
-<p>How should units be scheduled over time?</p>
-</li>
+<li>Is the dispatch AC feasible?</li>
+<li>Are transmission lines overloaded?</li>
+<li>What are the locational prices?</li>
+<li>How should units be scheduled over time?</li>
 </ul>
 </li>
 </ul>
@@ -621,38 +467,20 @@ Documentation
 <li>
 <p><strong>Questions UC can answer:</strong></p>
 <ul>
-<li>
-<p>Which units should be online each hour?</p>
-</li>
-<li>
-<p>When should units start up and shut down?</p>
-</li>
-<li>
-<p>What are the total cycling costs?</p>
-</li>
-<li>
-<p>Are reserve requirements met?</p>
-</li>
-<li>
-<p>How much ramping capability is needed?</p>
-</li>
+<li>Which units should be online each hour?</li>
+<li>When should units start up and shut down?</li>
+<li>What are the total cycling costs?</li>
+<li>Are reserve requirements met?</li>
+<li>How much ramping capability is needed?</li>
 </ul>
 </li>
 <li>
 <p><strong>Questions UC cannot answer:</strong></p>
 <ul>
-<li>
-<p>Are there transmission constraints?</p>
-</li>
-<li>
-<p>What are locational prices?</p>
-</li>
-<li>
-<p>Is reactive power adequate?</p>
-</li>
-<li>
-<p>Are voltages within limits?</p>
-</li>
+<li>Are there transmission constraints?</li>
+<li>What are locational prices?</li>
+<li>Is reactive power adequate?</li>
+<li>Are voltages within limits?</li>
 </ul>
 </li>
 </ul>
@@ -661,38 +489,20 @@ Documentation
 <li>
 <p><strong>Questions DC-OPF can answer:</strong></p>
 <ul>
-<li>
-<p>Which transmission lines are congested?</p>
-</li>
-<li>
-<p>What are locational marginal prices?</p>
-</li>
-<li>
-<p>Where should new transmission be built?</p>
-</li>
-<li>
-<p>How much does congestion cost?</p>
-</li>
-<li>
-<p>What is the optimal dispatch with network?</p>
-</li>
+<li>Which transmission lines are congested?</li>
+<li>What are locational marginal prices?</li>
+<li>Where should new transmission be built?</li>
+<li>How much does congestion cost?</li>
+<li>What is the optimal dispatch with network?</li>
 </ul>
 </li>
 <li>
 <p><strong>Questions DC-OPF cannot answer:</strong></p>
 <ul>
-<li>
-<p>Are voltages acceptable?</p>
-</li>
-<li>
-<p>Is reactive power sufficient?</p>
-</li>
-<li>
-<p>What are the transmission losses?</p>
-</li>
-<li>
-<p>How should units be scheduled over time?</p>
-</li>
+<li>Are voltages acceptable?</li>
+<li>Is reactive power sufficient?</li>
+<li>What are the transmission losses?</li>
+<li>How should units be scheduled over time?</li>
 </ul>
 </li>
 </ul>
@@ -701,32 +511,18 @@ Documentation
 <li>
 <p><strong>Questions AC-OPF can answer:</strong></p>
 <ul>
-<li>
-<p>Is the dispatch truly feasible?</p>
-</li>
-<li>
-<p>What are the actual voltages?</p>
-</li>
-<li>
-<p>How much reactive power is needed?</p>
-</li>
-<li>
-<p>What are the transmission losses?</p>
-</li>
-<li>
-<p>Are generator capability curves violated?</p>
-</li>
+<li>Is the dispatch truly feasible?</li>
+<li>What are the actual voltages?</li>
+<li>How much reactive power is needed?</li>
+<li>What are the transmission losses?</li>
+<li>Are generator capability curves violated?</li>
 </ul>
 </li>
 <li>
 <p><strong>Questions AC-OPF cannot answer:</strong></p>
 <ul>
-<li>
-<p>How should units be scheduled? (single period)</p>
-</li>
-<li>
-<p>What are startup costs? (no commitment)</p>
-</li>
+<li>How should units be scheduled? (single period)</li>
+<li>What are startup costs? (no commitment)</li>
 </ul>
 </li>
 </ul>
@@ -735,11 +531,11 @@ Documentation
 <pre class="mermaid" dir="ltr">graph TD
     A["Trade-off Space"]
     
-    B[ED<br>Fastest, Least Accurate]
-    C[DC-OPF<br>Fast, Medium Accuracy]
-    D[UC<br>Slow, Good Temporal]
-    E[AC-OPF<br>Medium, High Accuracy]
-    F[UC+AC-OPF<br>Slowest, Best Overall]
+    B["ED (Fastest, Least Accurate)"]
+    C["DC-OPF (Fast, Medium Accuracy)"]
+    D["UC (Slow, Good Temporal)"]
+    E["AC-OPF (Medium, High Accuracy)"]
+    F["UC+AC-OPF (Slowest, Best Overall)"]
     
     B --> C
     C --> E
@@ -747,9 +543,6 @@ Documentation
     </pre>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="model-selection-checklist">Model Selection Checklist</h3>
-<ul>
-<li><strong>Ask yourself:</strong></li>
-</ul>
 <ol>
 <li>
 <p><strong>Time horizon?</strong></p>
@@ -804,24 +597,13 @@ Documentation
     J --> K[UC + AC-OPF]
     </pre>
 <ul>
-<li>
-<p><strong>Progressive refinement:</strong></p>
+<li><strong>Progressive refinement:</strong>
 <ol>
-<li>
-<p>Start simple (ED or DC-OPF)</p>
-</li>
-<li>
-<p>Check if results reasonable</p>
-</li>
-<li>
-<p>Add complexity if needed</p>
-</li>
-<li>
-<p>Validate with more accurate model</p>
-</li>
-<li>
-<p>Iterate until confidence achieved</p>
-</li>
+<li>Start simple (ED or DC-OPF)</li>
+<li>Check if results reasonable</li>
+<li>Add complexity if needed</li>
+<li>Validate with more accurate model</li>
+<li>Iterate until confidence achieved</li>
 </ol>
 </li>
 </ul>
