@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AI × Opt. in Power Systems — Part 2: OTS</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/index.CFHW--mq.css">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AI × Opt. in Power Systems — Part 2: OTS</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/index.DeZjU-G9.css">
 <style>.copy-link-btn:where(.astro-luj3ckct){background:none;border:none;padding:0;cursor:pointer}.paper-link:where(.astro-xazq6mwn){display:inline;margin-left:.5rem;color:#a27b5c!important;text-decoration:none!important;font-weight:500;transition:color .2s ease}.paper-link:where(.astro-xazq6mwn):hover{color:#8b6f47!important;text-decoration:underline!important}.prose:where(.astro-xazq6mwn) .paper-link:where(.astro-xazq6mwn){color:#a27b5c!important;text-decoration:none!important;border-bottom:none!important}.prose:where(.astro-xazq6mwn) .paper-link:where(.astro-xazq6mwn):hover{color:#8b6f47!important;text-decoration:underline!important;border-bottom:none!important}
 </style><script type="module" src="/_astro/page.CAeE1Kiy.js"></script></head> <body class="m-0 text-base leading-relaxed font-sans text-neutral-black bg-neutral-silver"> <div class="sticky top-0 z-50"> <nav class="agm-nav astro-xrw5jr27" style="height: 72px;"> <div class="agm-nav-container astro-xrw5jr27"> <div class="agm-nav-content astro-xrw5jr27">  <a href="/" class="flex items-center gap-2 text-xl font-semibold no-underline flex-shrink-0 astro-xrw5jr27"> <span class="text-neutral-black astro-xrw5jr27">AGM</span> <span class="text-brand-primary astro-xrw5jr27">Center</span> <span class="text-neutral-black astro-xrw5jr27">.</span> </a>  <div class="hidden md:flex items-center gap-6 lg:gap-8 astro-xrw5jr27"> <a href="/about" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
 About
@@ -51,8 +51,7 @@ But <strong>some transmission lines can be switched</strong> (opened or closed) 
 <li>reduce operating cost</li>
 <li>improve reliability</li>
 </ul>
-<p>In many cases, <em>opening a line</em> can even reduce total cost —<br>
-a counterintuitive effect known as <strong>Braess’s paradox</strong>.</p>
+<p>In many cases, <em>opening a line</em> can even reduce total cost —  a counterintuitive effect known as <strong>Braess’s paradox</strong>.</p>
 <div align="center">
 <img src="/images/research/DA_DNN/braess_paradox.png" width="600">
 <p><b>Figure 1. Switching certain lines can reduce congestion and redirect flows more efficiently.(Image source: <a href="https://medium.com/hackernoon/is-the-braess-paradox-related-to-dropout-in-neural-nets-270ecb97cdeb" target="_blank">Medium</a>)</b></p>
@@ -118,7 +117,7 @@ but ordinary AI struggles here too.</p>
 <p>It works in three steps:</p>
 <hr>
 <h2 id="1️⃣-the-network-predicts-relaxed-line-statuses">1️⃣ The network predicts relaxed line statuses</h2>
-<p>Instead of hard 0/1 decisions, the model predicts values in [0, 1]:</p>
+<p>Instead of hard 0/1 decisions, the model predicts values in <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="4.526ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 2000.7 1000" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-N-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path id="MJX-1-TEX-N-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><use data-c="5B" xlink:href="#MJX-1-TEX-N-5B"></use></g><g data-mml-node="mn" transform="translate(278,0)"><use data-c="30" xlink:href="#MJX-1-TEX-N-30"></use></g><g data-mml-node="mo" transform="translate(778,0)"><use data-c="2C" xlink:href="#MJX-1-TEX-N-2C"></use></g><g data-mml-node="mn" transform="translate(1222.7,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use></g><g data-mml-node="mo" transform="translate(1722.7,0)"><use data-c="5D" xlink:href="#MJX-1-TEX-N-5D"></use></g></g></g></svg></mjx-container>:</p>
 <ul>
 <li>values near 1 → keep the line</li>
 <li>values near 0 → open the line</li>
@@ -146,7 +145,7 @@ The model simply tries to make OPF cheaper:</p>
 <hr>
 <h1 id="-what-da-dnn-achieves">📈 What DA-DNN Achieves</h1>
 <h2 id="-real-time-feasibility">✔ Real-time feasibility</h2>
-<p>Since OPF is inside the model, <strong>every output is guaranteed feasible</strong>.</p>
+<p>The embedded OPF layer ensures that, regardless of the predicted topology, <strong>the resulting dispatch is always feasible</strong>.</p>
 <p>This is crucial for real-world operation.</p>
 <hr>
 <h2 id="-lower-cost-than-dc-opf">✔ Lower cost than DC-OPF</h2>
@@ -205,7 +204,123 @@ untrained DA-DNN with different weight and bias initialization.</b></p>
 </ul>
 <hr>
 <h2 id="-reference">📘 Reference</h2>
-<p>Kim, Minsoo, and Jip Kim. <strong>“Dispatch-Aware Deep Neural Network for Optimal Transmission Switching: Toward Real-Time and Feasibility Guaranteed Operation.”</strong> arXiv preprint arXiv:2507.17194 (2025). <a href="https://arxiv.org/abs/2507.17194" target="_blank" rel="noopener noreferrer" class="paper-link">[link]</a></p> </div> <!-- Back Navigation --> <div class="mt-16 pt-8 border-t border-neutral-border astro-xazq6mwn"> <a href="/research" class="inline-flex items-center gap-2 text-brand-primary hover:text-brand-primary-dark font-medium group astro-xazq6mwn"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-x-1 transition-transform astro-xazq6mwn" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" class="astro-xazq6mwn"></path> </svg>
+<p>Kim, Minsoo, and Jip Kim. <strong>“Dispatch-Aware Deep Neural Network for Optimal Transmission Switching: Toward Real-Time and Feasibility Guaranteed Operation.”</strong> arXiv preprint arXiv:2507.17194 (2025). <a href="https://arxiv.org/abs/2507.17194" target="_blank" rel="noopener noreferrer" class="paper-link">[link]</a></p><style>
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style> </div> <!-- Back Navigation --> <div class="mt-16 pt-8 border-t border-neutral-border astro-xazq6mwn"> <a href="/research" class="inline-flex items-center gap-2 text-brand-primary hover:text-brand-primary-dark font-medium group astro-xazq6mwn"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-x-1 transition-transform astro-xazq6mwn" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" class="astro-xazq6mwn"></path> </svg>
 Back to Research
 </a> </div> </div> </div> </article>  </main> <footer class="bg-neutral-footer text-white py-16 px-6"> <div class="max-w-7xl mx-auto"> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">  <div> <h3 class="text-xl font-semibold mb-4">AGM Center</h3> <p class="text-white/70 text-sm leading-relaxed">
 Advancing power systems for a sustainable future through research, tools, and collaboration.

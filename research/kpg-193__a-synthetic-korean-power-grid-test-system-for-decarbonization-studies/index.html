@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KPG 193 — A Synthetic Korean Power Grid for Decarbonization Studies</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/index.CFHW--mq.css">
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>KPG 193 — A Synthetic Korean Power Grid for Decarbonization Studies</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/index.DeZjU-G9.css">
 <style>.copy-link-btn:where(.astro-luj3ckct){background:none;border:none;padding:0;cursor:pointer}.paper-link:where(.astro-xazq6mwn){display:inline;margin-left:.5rem;color:#a27b5c!important;text-decoration:none!important;font-weight:500;transition:color .2s ease}.paper-link:where(.astro-xazq6mwn):hover{color:#8b6f47!important;text-decoration:underline!important}.prose:where(.astro-xazq6mwn) .paper-link:where(.astro-xazq6mwn){color:#a27b5c!important;text-decoration:none!important;border-bottom:none!important}.prose:where(.astro-xazq6mwn) .paper-link:where(.astro-xazq6mwn):hover{color:#8b6f47!important;text-decoration:underline!important;border-bottom:none!important}
 </style><script type="module" src="/_astro/page.CAeE1Kiy.js"></script></head> <body class="m-0 text-base leading-relaxed font-sans text-neutral-black bg-neutral-silver"> <div class="sticky top-0 z-50"> <nav class="agm-nav astro-xrw5jr27" style="height: 72px;"> <div class="agm-nav-container astro-xrw5jr27"> <div class="agm-nav-content astro-xrw5jr27">  <a href="/" class="flex items-center gap-2 text-xl font-semibold no-underline flex-shrink-0 astro-xrw5jr27"> <span class="text-neutral-black astro-xrw5jr27">AGM</span> <span class="text-brand-primary astro-xrw5jr27">Center</span> <span class="text-neutral-black astro-xrw5jr27">.</span> </a>  <div class="hidden md:flex items-center gap-6 lg:gap-8 astro-xrw5jr27"> <a href="/about" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
 About
@@ -37,6 +37,10 @@ Copied!
 					prose-li:marker:text-brand-primary
 					prose-blockquote:border-l-4 prose-blockquote:border-brand-primary prose-blockquote:bg-neutral-lightGrey prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-neutral-darkGrey astro-xazq6mwn"> <h1 id="-kpg-193-an-open-synthetic-korean-power-grid">🇰🇷 KPG 193: An Open Synthetic Korean Power Grid</h1>
 <p><em>A practical explanation of why KPG193 matters for Korea’s energy transition.</em></p>
+<div align="center">
+<img src="/images/research/KPG193/real_world_work.png" width="500">
+<p><b>Figure 1. Grid data is not publicly available!</b></p>
+</div>
 <p>Korea faces a unique challenge:<br>
 renewable penetration is still low, electricity demand is highly concentrated in Seoul,<br>
 and detailed grid data is <strong>not publicly available</strong>.</p>
@@ -69,7 +73,7 @@ researchers need a realistic network model.</p>
 <h1 id="-how-kpg-193-was-built-simple-explanation">🧠 How KPG 193 Was Built (Simple Explanation)</h1>
 <div align="center">
 <img src="/images/research/KPG193/data_flow.png" width="700">
-<p><b>Figure 1. Data workflow used to build the synthetic Korean power grid.</b></p>
+<p><b>Figure 2. Data workflow used to build the synthetic Korean power grid.</b></p>
 </div>
 <p>KPG193 was created by combining <strong>multiple open datasets</strong>, each with different spatial resolutions:</p>
 <ul>
@@ -97,12 +101,12 @@ without revealing sensitive information.</p>
 <li><strong>MATPOWER-formatted network data</strong></li>
 </ul>
 <h3 id="generation-mix-kpg193-vs-actual-2022">Generation Mix (KPG193 vs Actual 2022)</h3>
-<table style="width:100%; border-collapse:collapse; text-align:center; font-size:0.95rem; border:1px solid #d0d7de; margin:12px 0;">
+<table style="width:80%; border-collapse:collapse; text-align:center; font-size:0.95rem; border:1px solid #d0d7de; margin:12px 0;">
   <thead style="background:#f8f9fa;">
     <tr>
-      <th style="border:1px solid #d0d7de; padding:8px;">Fuel</th>
-      <th style="border:1px solid #d0d7de; padding:8px;">Actual</th>
-      <th style="border:1px solid #d0d7de; padding:8px;">KPG193</th>
+      <th style="border:1px solid #d0d7de; padding:8px;width:20%;text-align:center">Fuel</th>
+      <th style="border:1px solid #d0d7de; padding:8px;width:20%;text-align:center">Actual</th>
+      <th style="border:1px solid #d0d7de; padding:8px;width:20%;text-align:center">KPG193</th>
     </tr>
   </thead>
   <tbody>
@@ -133,7 +137,7 @@ without revealing sensitive information.</p>
 <h1 id="-key-geographic-characteristics-captured-realistically">🗺 Key Geographic Characteristics (Captured Realistically)</h1>
 <div align="center">
 <img src="/images/research/KPG193/representative_figure.png" width="500">
-<p><b>Figure 2. Network topology and generator locations in KPG193.</b></p>
+<p><b>Figure 3. Network topology and generator locations in KPG193.</b></p>
 </div>
 <p>KPG193 reflects the Korean grid’s core features:</p>
 <h3 id="-40-of-national-demand-is-concentrated-near-seoul">✔ 40% of national demand is concentrated near Seoul</h3>
@@ -144,8 +148,7 @@ without revealing sensitive information.</p>
 <p>Leads to <strong>overvoltage issues</strong> in weak-grid areas, also observed in real operation.</p>
 <h3 id="-long-transmission-distances-200300-km">✔ Long transmission distances (200–300 km)</h3>
 <p>A major challenge for Korea’s renewable expansion.</p>
-<p>These patterns appear clearly in KPG193’s ACOPF validation.<br>
-:contentReference[oaicite:2]{index="2"}</p>
+<p>These patterns appear clearly in KPG193’s ACOPF validation.</p>
 <hr>
 <h1 id="-validation-does-kpg193-behave-like-the-real-grid">🧪 Validation: Does KPG193 Behave Like the Real Grid?</h1>
 <p>The model was tested using:</p>
