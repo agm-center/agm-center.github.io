@@ -42,7 +42,7 @@ Copied!
 					prose-blockquote:border-l-4 prose-blockquote:border-brand-primary prose-blockquote:bg-neutral-lightGrey prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-neutral-darkGrey astro-xazq6mwn"> <h1 id="-making-p2p-energy-trading-fair-and-grid-friendly">🤝 Making P2P Energy Trading Fair and Grid-Friendly</h1>
 <div align="center">
 <img src="/images/research/Causality/p2p_edit.png" width="550">
-<p><b>Figure 1. Peer-to-peer enegy trading.(Image source: <a href="https://pulseenergy.io/blog/p2p-energy-trading-in-india-transforming-renewable-markets-in-2025" target="_blank">Pulse Energy</a>; modfied by Gemini)</b></p>
+<p><b>Figure 1. Peer-to-peer energy trading. (Image source: <a href="https://pulseenergy.io/blog/p2p-energy-trading-in-india-transforming-renewable-markets-in-2025" target="_blank">Pulse Energy</a>; modified by Gemini)</b></p>
 </div>
 <p>Peer-to-peer (P2P) energy trading lets small consumers and generators exchange electricity directly.<br>
 It promotes community energy use and renewable adoption — but it also interacts with the physical grid.</p>
@@ -57,7 +57,7 @@ It promotes community energy use and renewable adoption — but it also interact
 <li>increased system losses</li>
 <li>unfair cost allocation</li>
 </ul>
-<p>This paper introduces a <strong>causality-based cost allocation method</strong> that charges peers based on the <em>actual impact</em> their trades impose on the distribution network.</p>
+<p>This work introduces a <strong>causality-based cost allocation method</strong> that charges peers based on the <em>actual impact</em> their trades impose on the distribution network.</p>
 <hr>
 <h1 id="-why-existing-approaches-fall-short">⚡ Why Existing Approaches Fall Short</h1>
 <h3 id="1-universal-cost-allocation"><strong>1) Universal cost allocation</strong></h3>
@@ -95,6 +95,9 @@ Too restrictive. Prevents beneficial trades and lowers total welfare.</p>
 </blockquote>
 <p>No banning trades. No punishing everyone.<br>
 Just meaningful, physics-based price signals.</p>
+<p><strong>What “causality” means here:</strong><br>
+the network charge is based on the <em>marginal physical impact</em> of each peer’s net injection or withdrawal on losses, voltages, and line loading — not on distance, zones, or averaging.</p>
+<p>Practically, this impact is computed using <strong>power-flow sensitivities</strong>, i.e., how a small change in a peer’s net trade affects the grid around the current operating point.</p>
 <hr>
 <h1 id="-test-system-ieee-33-bus-distribution-feeder">🗺 Test System: IEEE 33-Bus Distribution Feeder</h1>
 <div align="center">
@@ -107,7 +110,6 @@ Just meaningful, physics-based price signals.</p>
 <li>long feeders</li>
 <li>congestion near the substation</li>
 </ul>
-<p>Perfect for evaluating grid-aware pricing.</p>
 <hr>
 <h1 id="-scenario-1--only-loss-cost-considered">📊 Scenario 1 — Only Loss Cost Considered</h1>
 <table style="width:60%; border-collapse:collapse; text-align:center; font-size:0.95rem; border:1px solid #d0d7de; margin:12px 0;">
@@ -146,7 +148,6 @@ Just meaningful, physics-based price signals.</p>
 <li>Causality-based charges reduce <strong>loss-causing trades only</strong>.</li>
 <li>Total system loss down <strong>22.8%</strong>, welfare up <strong>highest of all policies</strong>.</li>
 </ul>
-<p>Effective and fair.</p>
 <hr>
 <h1 id="-scenario-2--voltage-congestion-and-loss">📈 Scenario 2 — Voltage, Congestion, and Loss</h1>
 <table style="width:60%; border-collapse:collapse; text-align:center; font-size:0.95rem; border:1px solid #d0d7de; margin:12px 0;">
@@ -182,7 +183,8 @@ Just meaningful, physics-based price signals.</p>
 <h3 id="interpretation">Interpretation:</h3>
 <ul>
 <li>Universal overreacts → everyone trades less → grid underutilized.</li>
-<li>Causality-based policy signals <em>who</em> causes violations.
+<li>This happens because a uniform fee penalizes <em>all</em> trades equally, even those that barely affect the binding constraints.</li>
+<li>Causality-based pricing identifies <em>who</em> causes violations:
 <ul>
 <li>High-impact peers reduce trades.</li>
 <li>Low-impact peers trade more.</li>
@@ -192,12 +194,9 @@ Just meaningful, physics-based price signals.</p>
 </ul>
 <hr>
 <h1 id="-example-who-actually-pays-more">🔧 Example: Who Actually Pays More?</h1>
-<p>The method naturally identifies:</p>
-<ul>
-<li>Peers near congested lines → pay higher congestion cost</li>
-<li>Peers causing voltage drop → pay higher voltage cost</li>
-<li>Peers with minimal impact → pay almost nothing</li>
-</ul>
+<p><strong>Intuition example (one line bottleneck):</strong><br>
+If a line is close to its limit, a peer located electrically “behind” that line can noticeably increase line loading with additional trading — and therefore pays a higher congestion-related charge.<br>
+Meanwhile, a peer whose trade mostly circulates locally (small change in voltages and flows) pays close to zero, even if the traded energy (MWh) is similar.</p>
 <p>This is <strong>true cost causation</strong>, not approximation.</p>
 <hr>
 <h1 id="-why-this-matters">💡 Why This Matters</h1>
@@ -213,7 +212,8 @@ Just meaningful, physics-based price signals.</p>
 <p>Universal is simple but inefficient; causality-based is both principled and practical.</p>
 <hr>
 <h1 id="-reference">📘 Reference</h1>
-<p>Kim, H. J., Song, Y. H., &#x26; Kim, J.  <strong>“Causality-based cost allocation for peer-to-peer energy trading in distribution system.”</strong>  <em>Electric Power Systems Research</em>, 2024. <a href="https://www.sciencedirect.com/science/article/pii/S0378779624006357" target="_blank" rel="noopener noreferrer" class="paper-link">[link]</a></p> </div> <!-- Back Navigation --> <div class="mt-16 pt-8 border-t border-neutral-border astro-xazq6mwn"> <a href="/research" class="inline-flex items-center gap-2 text-brand-primary hover:text-brand-primary-dark font-medium group astro-xazq6mwn"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-x-1 transition-transform astro-xazq6mwn" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" class="astro-xazq6mwn"></path> </svg>
+<p>Kim, H. J., Song, Y. H., &#x26; Kim, J.  <strong>“Causality-based cost allocation for peer-to-peer energy trading in distribution system.”</strong>  <em>Electric Power Systems Research</em>, 2024.<br>
+<a href="https://www.sciencedirect.com/science/article/pii/S0378779624006357" target="_blank" rel="noopener noreferrer" class="paper-link">[link]</a></p> </div> <!-- Back Navigation --> <div class="mt-16 pt-8 border-t border-neutral-border astro-xazq6mwn"> <a href="/research" class="inline-flex items-center gap-2 text-brand-primary hover:text-brand-primary-dark font-medium group astro-xazq6mwn"> <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:-translate-x-1 transition-transform astro-xazq6mwn" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" class="astro-xazq6mwn"></path> </svg>
 Back to Research
 </a> </div> </div> </div> </article>  </main> <footer class="bg-neutral-footer text-white py-16 px-6"> <div class="max-w-7xl mx-auto"> <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">  <div> <h3 class="text-xl font-semibold mb-4">AGM Center</h3> <p class="text-white/70 text-sm leading-relaxed">
 Advancing power systems for a sustainable future through research, tools, and collaboration.
