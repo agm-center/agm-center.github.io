@@ -7,7 +7,7 @@
   if (!coreBtn || !showcaseBtn || !corePanel || !showcasePanel) return;
 
   const baseClass =
-    'px-5 py-2 rounded-full border text-sm font-semibold cursor-pointer transition-colors';
+    'inline-flex min-h-[66px] items-center justify-center px-5 py-2 rounded-full border text-sm font-semibold cursor-pointer transition-colors';
   const activeClass = `${baseClass} border-brand-primary bg-brand-primary text-white`;
   const inactiveClass = `${baseClass} border-neutral-border bg-white text-neutral-darkGrey hover:border-brand-primary hover:text-brand-primary`;
 
