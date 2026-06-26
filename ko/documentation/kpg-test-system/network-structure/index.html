@@ -1,0 +1,847 @@
+<!DOCTYPE html><html lang="ko" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><!-- Force light theme before any rendering --><script>
+	// Set light theme immediately - runs before page renders
+	if (typeof localStorage !== 'undefined') {
+		localStorage.setItem('starlight-theme', 'light');
+	}
+	document.documentElement.setAttribute('data-theme', 'light');
+</script> <!-- Include Starlight's default head tags --><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>네트워크 구조 | AGM Center</title><link rel="canonical" href="https://agm-center.github.io/ko/documentation/kpg-test-system/network-structure/"/><link rel="alternate" hreflang="en" href="https://agm-center.github.io/documentation/kpg-test-system/network-structure/"/><link rel="alternate" hreflang="ko" href="https://agm-center.github.io/ko/documentation/kpg-test-system/network-structure/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.15.3"/><meta name="generator" content="Starlight v0.33.2"/><meta property="og:title" content="네트워크 구조"/><meta property="og:type" content="article"/><meta property="og:url" content="https://agm-center.github.io/ko/documentation/kpg-test-system/network-structure/"/><meta property="og:locale" content="ko"/><meta property="og:description" content="Comprehensive system statistics, generator characteristics, and network parameters for KPG 193."/><meta property="og:site_name" content="AGM Center"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Comprehensive system statistics, generator characteristics, and network parameters for KPG 193."/><script>
+	// Set light mode before page renders to prevent system theme detection
+	(() => {
+		// Store light theme preference
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem('starlight-theme', 'light');
+		}
+		// Set theme immediately
+		document.documentElement.dataset.theme = 'light';
+	})();
+</script><link rel="stylesheet" href="/_astro/print.BL8QyxEA.css" media="print"><link rel="stylesheet" href="/_astro/index.nHVdFkMK.css">
+<link rel="stylesheet" href="/_astro/index.CcfNafRq.css">
+<style>:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-avdet4wd){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-avdet4wd){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-avdet4wd){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-avdet4wd){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-avdet4wd){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-avdet4wd){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-avdet4wd){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-avdet4wd){vertical-align:middle}
+.card-grid:where(.astro-zntqmydn){display:grid;grid-template-columns:100%;gap:1rem}.card-grid:where(.astro-zntqmydn)>*{margin-top:0!important}@media (min-width: 50rem){.card-grid:where(.astro-zntqmydn){grid-template-columns:1fr 1fr;gap:1.5rem}.stagger:where(.astro-zntqmydn){--stagger-height: 5rem;padding-bottom:var(--stagger-height)}.stagger:where(.astro-zntqmydn)>*:nth-child(2n){transform:translateY(var(--stagger-height))}}
+.card:where(.astro-v5tidmuc){--sl-card-border: var(--sl-color-purple);--sl-card-bg: var(--sl-color-purple-low);border:1px solid var(--sl-color-gray-5);background-color:var(--sl-color-black);padding:clamp(1rem,calc(.125rem + 3vw),2.5rem);flex-direction:column;gap:clamp(.5rem,calc(.125rem + 1vw),1rem)}.card:where(.astro-v5tidmuc):nth-child(4n+1){--sl-card-border: var(--sl-color-orange);--sl-card-bg: var(--sl-color-orange-low)}.card:where(.astro-v5tidmuc):nth-child(4n+3){--sl-card-border: var(--sl-color-green);--sl-card-bg: var(--sl-color-green-low)}.card:where(.astro-v5tidmuc):nth-child(4n+4){--sl-card-border: var(--sl-color-red);--sl-card-bg: var(--sl-color-red-low)}.card:where(.astro-v5tidmuc):nth-child(4n+5){--sl-card-border: var(--sl-color-blue);--sl-card-bg: var(--sl-color-blue-low)}.title:where(.astro-v5tidmuc){font-weight:600;font-size:var(--sl-text-h4);color:var(--sl-color-white);line-height:var(--sl-line-height-headings);gap:1rem;align-items:center}.card:where(.astro-v5tidmuc) .icon:where(.astro-v5tidmuc){border:1px solid var(--sl-card-border);background-color:var(--sl-card-bg);padding:.2em;border-radius:.25rem}.card:where(.astro-v5tidmuc) .body:where(.astro-v5tidmuc){margin:0;font-size:clamp(var(--sl-text-sm),calc(.5rem + 1vw),var(--sl-text-body))}
+svg:where(.astro-c6vsoqas){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1em;height:1em}
+.sl-steps{--bullet-size: calc(var(--sl-line-height) * 1rem);--bullet-margin: .375rem;list-style:none;counter-reset:steps-counter var(--sl-steps-start, 0);padding-inline-start:0}.sl-steps>li{counter-increment:steps-counter;position:relative;padding-inline-start:calc(var(--bullet-size) + 1rem);padding-bottom:1px;min-height:calc(var(--bullet-size) + var(--bullet-margin))}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);position:absolute;top:0;inset-inline-start:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);font-weight:600;text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);border-radius:99rem;box-shadow:inset 0 0 0 1px var(--sl-color-gray-5)}.sl-steps>li:after{--guide-width: 1px;content:"";position:absolute;top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2);width:var(--guide-width);background-color:var(--sl-color-hairline-light)}.sl-steps>li>:first-child{--lh: calc(1em * var(--sl-line-height));--shift-y: calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh: calc(1em * var(--sl-line-height-headings))}@supports (--prop: 1lh){.sl-steps>li>:first-child{--lh: 1lh}}
+.sl-link-button:where(.astro-xwgiixxa){align-items:center;border:1px solid transparent;border-radius:999rem;display:inline-flex;font-size:var(--sl-text-sm);gap:.5em;line-height:1.1875;outline-offset:.25rem;padding:.4375rem 1.125rem;text-decoration:none}.sl-link-button:where(.astro-xwgiixxa).primary{background:var(--sl-color-text-accent);border-color:var(--sl-color-text-accent);color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).primary:hover{color:var(--sl-color-black)}.sl-link-button:where(.astro-xwgiixxa).secondary{border-color:inherit;color:var(--sl-color-white)}.sl-link-button:where(.astro-xwgiixxa).minimal{color:var(--sl-color-white);padding-inline:0}.sl-link-button:where(.astro-xwgiixxa) svg{flex-shrink:0}@media (min-width: 50rem){.sl-link-button:where(.astro-xwgiixxa){font-size:var(--sl-text-base);padding:.9375rem 1.25rem}}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa){margin-inline-end:1rem}.sl-markdown-content .sl-link-button:where(.astro-xwgiixxa):not(:where(p *)){margin-block:1rem}
+</style><script type="module" src="/_astro/page.CgWbU0O-.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">컨텐츠로 건너뛰기</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><nav class="agm-nav astro-xrw5jr27" style="height: 72px;"> <div class="agm-nav-container astro-xrw5jr27"> <div class="agm-nav-content astro-xrw5jr27">  <a href="/" class="logo-container no-underline flex-shrink-0 astro-xrw5jr27" aria-label="AGM Center"> <img src="/images/brand/agm-center-logo.png" alt="AGM Center" class="agm-logo astro-xrw5jr27"> </a>  <div class="hidden md:flex items-center gap-6 lg:gap-8 astro-xrw5jr27"> <a href="/about" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+About
+</a> <a href="/research" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Research
+</a> <a href="/learning" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Learning
+</a>  <a href="/gallery" class="text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Gallery
+</a>  <div class="dropdown-container astro-xrw5jr27"> <button class="text-neutral-black hover:text-brand-primary transition-colors text-sm font-medium flex items-center gap-1 bg-transparent border-none cursor-pointer astro-xrw5jr27">
+KPG Platform
+<svg class="w-4 h-4 transition-transform dropdown-arrow astro-xrw5jr27" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" class="astro-xrw5jr27"></path> </svg> </button> <div class="dropdown-menu astro-xrw5jr27"> <a href="/download" class="block px-4 py-2 text-neutral-black hover:bg-neutral-100 hover:text-brand-primary transition-colors no-underline text-sm astro-xrw5jr27">
+Download
+</a> <a href="/documentation/introduction" class="block px-4 py-2 text-neutral-black hover:bg-neutral-100 hover:text-brand-primary transition-colors no-underline text-sm astro-xrw5jr27">
+Documentation
+</a>  </div> </div>  <button id="lang-toggle" class="flex items-center gap-1 text-sm font-medium text-neutral-black hover:text-brand-primary transition-colors bg-transparent border-none cursor-pointer astro-xrw5jr27" aria-label="Switch language"> <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 astro-xrw5jr27" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"> <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" class="astro-xrw5jr27"></path> </svg> <span id="lang-label" class="astro-xrw5jr27">EN</span> </button> </div>  <button id="mobile-menu-btn" class="md:hidden p-2 text-neutral-black hover:text-brand-primary transition-colors astro-xrw5jr27" aria-label="Toggle menu"> <svg class="w-6 h-6 astro-xrw5jr27" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" class="astro-xrw5jr27"></path> </svg> </button> </div> </div>  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-neutral-border astro-xrw5jr27"> <div class="px-6 py-4 space-y-3 astro-xrw5jr27"> <a href="/about" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+About
+</a> <a href="/research" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Research
+</a> <a href="/learning" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Learning
+</a>  <a href="/gallery" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm font-medium astro-xrw5jr27">
+Gallery
+</a>  <div class="mobile-dropdown astro-xrw5jr27"> <button id="mobile-platform-btn" class="flex items-center justify-between w-full py-2 text-neutral-black hover:text-brand-primary transition-colors text-sm font-medium bg-transparent border-none cursor-pointer text-left astro-xrw5jr27">
+KPG Platform
+<svg class="w-4 h-4 transition-transform mobile-dropdown-arrow astro-xrw5jr27" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" class="astro-xrw5jr27"></path> </svg> </button> <div id="mobile-platform-menu" class="hidden pl-4 space-y-2 mt-2 astro-xrw5jr27"> <a href="/download" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm astro-xrw5jr27">
+Download
+</a> <a href="/documentation/introduction" class="block py-2 text-neutral-black hover:text-brand-primary transition-colors no-underline text-sm astro-xrw5jr27">
+Documentation
+</a>  </div> </div> </div> </div> </nav>  <script type="module">const i=document.getElementById("mobile-menu-btn"),s=document.getElementById("mobile-menu");i?.addEventListener("click",()=>{s?.classList.toggle("hidden")});const t=document.querySelector(".dropdown-container"),a=t?.querySelector("button");a?.addEventListener("click",n=>{n.preventDefault(),t?.classList.toggle("active")});document.addEventListener("click",n=>{t&&!t.contains(n.target)&&t.classList.remove("active")});const o=document.getElementById("lang-toggle"),l=document.getElementById("lang-label"),e=window.location.pathname,c=e.startsWith("/ko"),d=e.startsWith("/documentation/")||e.startsWith("/ko/documentation/"),m=/^\/(?:ko\/)?research\/.+/.test(e);o&&(d||m)?o.style.display="none":(l&&(l.textContent=c?"KO":"EN"),o?.addEventListener("click",()=>{window.location.pathname=c?e.replace(/^\/ko/,"")||"/":"/ko"+e}));const r=document.getElementById("mobile-platform-btn"),g=document.getElementById("mobile-platform-menu"),u=document.querySelector(".mobile-dropdown");r?.addEventListener("click",()=>{g?.classList.toggle("hidden"),u?.classList.toggle("active")});</script></header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="메인"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="메뉴" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="139ih57" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ko/documentation/" aria-current="false" class="large astro-3ii7xxms"> <span class="astro-3ii7xxms">소개</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG 테스트 시스템</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">개요</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/limitations/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">제한사항</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/network-structure/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">네트워크 구조</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/profiles-timeseries/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">프로파일 및 시계열</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/reference-uc-solutions/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">참조 UC 솔루션</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/renewables/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">재생에너지</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-test-system/scheduled-outages/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">예정 정전</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG Run</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">개요</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/getting-started/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">시작하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/installation/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">설치</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/user-interface/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">사용자 인터페이스</span>  </a> </li><li class="astro-3ii7xxms"> <details class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">수식</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/formulations/ed/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">경제급전 (ED)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/formulations/uc/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">단위 약정 (UC)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/formulations/dcopf/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">DC 최적 조류 (DC-OPF)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/formulations/acopf/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">AC 최적 조류 (AC-OPF)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-run/formulations/solver-comparison/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">솔버 비교</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">KPG View</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-view/overview/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">개요</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-view/getting-started/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">시작하기</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/ko/documentation/kpg-view/user-interface/" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">사용자 인터페이스</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="sl-flex social-icons astro-wu23bvmt"> <a href="https://github.com/withastro/starlight" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a> </div> <script>
+	// Force light mode and store preference
+	// This runs inline to prevent flash of dark content
+	if (typeof localStorage !== 'undefined') {
+		localStorage.setItem('starlight-theme', 'light');
+	}
+	document.documentElement.dataset.theme = 'light';
+</script> <starlight-lang-select><label style="--sl-select-width: 7em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">언어 선택</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M8.516 3a.94.94 0 0 0-.941.94v1.15H2.94a.94.94 0 1 0 0 1.882h7.362a7.422 7.422 0 0 1-1.787 3.958 7.42 7.42 0 0 1-1.422-2.425.94.94 0 1 0-1.774.627 9.303 9.303 0 0 0 1.785 3.043 7.422 7.422 0 0 1-4.164 1.278.94.94 0 1 0 0 1.881 9.303 9.303 0 0 0 5.575-1.855 9.303 9.303 0 0 0 4.11 1.74l-.763 1.525a.968.968 0 0 0-.016.034l-1.385 2.77a.94.94 0 1 0 1.683.841l1.133-2.267h5.806l1.134 2.267a.94.94 0 0 0 1.683-.841l-1.385-2.769a.95.95 0 0 0-.018-.036l-3.476-6.951a.94.94 0 0 0-1.682 0l-1.82 3.639a7.423 7.423 0 0 1-3.593-1.256 9.303 9.303 0 0 0 2.27-5.203h1.894a.94.94 0 0 0 0-1.881H9.456V3.94A.94.94 0 0 0 8.516 3Zm6.426 11.794a1.068 1.068 0 0 1-.02.039l-.703 1.407h3.924l-1.962-3.924-1.24 2.478Z" clip-rule="evenodd"/></svg> <select value="/ko/documentation/kpg-test-system/network-structure/" autocomplete="off" class="astro-4yphtoen"> <option value="/documentation/kpg-test-system/network-structure/" class="astro-4yphtoen">English</option><option value="/ko/documentation/kpg-test-system/network-structure/" selected class="astro-4yphtoen">한국어</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label> </starlight-lang-select><script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <div class="sidebar-container astro-rl4sue7z">  <div class="search-minimal astro-rl4sue7z"> <site-search class="astro-rl4sue7z astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;검색&#34;}"> <button data-open-modal disabled aria-label="검색" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">검색</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="검색" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> 취소 </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.Dm9gtWSi.js"></script>   </div>  <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">이 페이지에서는<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#network-directory-structure" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Network Directory Structure</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#matpower-data-structure" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">MATPOWER Data Structure</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#base-mva-mpcbasemva" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Base MVA (mpc.baseMVA)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#bus-data-mpcbus" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Bus Data (mpc.bus)</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#area-definition" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Area definition</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#generator-data-mpcgen" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Generator Data (mpc.gen)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#branch-data-mpcbranch" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Branch Data (mpc.branch)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#cost-data-mpcgencost" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Cost Data (mpc.gencost)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#thermal-parameters-mpcgenthermal" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Thermal Parameters (mpc.genthermal)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#dc-line-data-mpcdcline" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">DC Line Data (mpc.dcline)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#geographic-location-data" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Geographic Location Data</span> </a>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">이 페이지에서는</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">개요</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#network-directory-structure" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Network Directory Structure</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#matpower-data-structure" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">MATPOWER Data Structure</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#base-mva-mpcbasemva" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Base MVA (mpc.baseMVA)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#bus-data-mpcbus" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Bus Data (mpc.bus)</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#area-definition" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Area definition</span> </a>  </li> </ul>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#generator-data-mpcgen" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Generator Data (mpc.gen)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#branch-data-mpcbranch" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Branch Data (mpc.branch)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#cost-data-mpcgencost" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Cost Data (mpc.gencost)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#thermal-parameters-mpcgenthermal" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Thermal Parameters (mpc.genthermal)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#dc-line-data-mpcdcline" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">DC Line Data (mpc.dcline)</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 0;"> <a href="#geographic-location-data" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Geographic Location Data</span> </a>  </li> </ul> </nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div>  </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="ko" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">네트워크 구조</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <p>The KPG 193 network data is provided in the <a href="https://matpower.org/"><strong>MATPOWER</strong></a> format, which is widely used in power system research. This page explains the structure of the MATPOWER network files and how to work with them.</p>
+<h3 id="network-directory-structure">Network Directory Structure</h3>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.ppgh1.css"><script type="module" src="/_astro/ec.p1z7b.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">network/</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">├── m/</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">│   └── KPG193_ver1_5.m          # MATPOWER case file (text format)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">├── mat/</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">│   └── KPG193_ver1_5.mat        # MATPOWER case file (MATLAB binary)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#d6deeb;--1:#403f53">└── location/</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#d6deeb;--1:#403f53">    </span></span><span style="--0:#d6deeb;--1:#403f53">└── bus_location.csv          # Geographic coordinates and names</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="network/├── m/│   └── KPG193_ver1_5.m          # MATPOWER case file (text format)├── mat/│   └── KPG193_ver1_5.mat        # MATPOWER case file (MATLAB binary)└── location/    └── bus_location.csv          # Geographic coordinates and names"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>File</th><th>Format</th><th>Purpose</th></tr></thead><tbody><tr><td><strong>KPG193_ver1_5.m</strong></td><td>m</td><td>Human-readable MATPOWER case</td></tr><tr><td><strong>KPG193_ver1_5.mat</strong></td><td>mat</td><td>Faster loading</td></tr><tr><td><strong>bus_location.csv</strong></td><td>CSV</td><td>Geographic data for visualization</td></tr></tbody></table>
+<h3 id="matpower-data-structure">MATPOWER Data Structure</h3>
+<p>The MATPOWER case file contains all electrical parameters of the power system organized as a MATLAB structure (<code dir="auto">mpc</code>).</p>
+<pre class="mermaid" dir="ltr">graph LR
+    A[KPG193_ver1_5.m/.mat] --> B[mpc structure]
+    B --> C[mpc.baseMVA]
+    B --> D[mpc.bus]
+    B --> E[mpc.gen]
+    B --> F[mpc.branch]
+    B --> G[mpc.gencost]
+    B --> H[mpc.genthermal]
+    B --> I[mpc.dcline]</pre>
+<h2 id="base-mva-mpcbasemva">Base MVA (mpc.baseMVA)</h2>
+<p>The system-wide power base for per-unit calculations.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.baseMVA = </span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">;  </span><span style="--0:#919F9F;--1:#5F636F">% All power values are in units of 100 MVA</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.baseMVA = 100;  % All power values are in units of 100 MVA"><div></div></button></div></figure></div>
+<p><strong>Per-unit conversion:</strong></p>
+<ul>
+<li><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.65ex;" xmlns="http://www.w3.org/2000/svg" width="25.017ex" height="2.195ex" role="img" focusable="false" viewBox="0 -683 11057.5 970.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-1-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-1-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-1-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-1-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-1-TEX-I-1D440" d="M289 629Q289 635 232 637Q208 637 201 638T194 648Q194 649 196 659Q197 662 198 666T199 671T201 676T203 679T207 681T212 683T220 683T232 684Q238 684 262 684T307 683Q386 683 398 683T414 678Q415 674 451 396L487 117L510 154Q534 190 574 254T662 394Q837 673 839 675Q840 676 842 678T846 681L852 683H948Q965 683 988 683T1017 684Q1051 684 1051 673Q1051 668 1048 656T1045 643Q1041 637 1008 637Q968 636 957 634T939 623Q936 618 867 340T797 59Q797 55 798 54T805 50T822 48T855 46H886Q892 37 892 35Q892 19 885 5Q880 0 869 0Q864 0 828 1T736 2Q675 2 644 2T609 1Q592 1 592 11Q592 13 594 25Q598 41 602 43T625 46Q652 46 685 49Q699 52 704 61Q706 65 742 207T813 490T848 631L654 322Q458 10 453 5Q451 4 449 3Q444 0 433 0Q418 0 415 7Q413 11 374 317L335 624L267 354Q200 88 200 79Q206 46 272 46H282Q288 41 289 37T286 19Q282 3 278 1Q274 0 267 0Q265 0 255 0T221 1T157 2Q127 2 95 1T58 0Q43 0 39 2T35 11Q35 13 38 25T43 40Q45 46 65 46Q135 46 154 86Q158 92 223 354T289 629Z"></path><path id="MJX-1-TEX-I-1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path><path id="MJX-1-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-1-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-1-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-1-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D456" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-1-TEX-I-1D460" d="M131 289Q131 321 147 354T203 415T300 442Q362 442 390 415T419 355Q419 323 402 308T364 292Q351 292 340 300T328 326Q328 342 337 354T354 372T367 378Q368 378 368 379Q368 382 361 388T336 399T297 405Q249 405 227 379T204 326Q204 301 223 291T278 274T330 259Q396 230 396 163Q396 135 385 107T352 51T289 7T195 -10Q118 -10 86 19T53 87Q53 126 74 143T118 160Q133 160 146 151T160 120Q160 94 142 76T111 58Q109 57 108 57T107 55Q108 52 115 47T146 34T201 27Q237 27 263 38T301 66T318 97T323 122Q323 150 302 164T254 181T195 196T148 231Q131 256 131 289Z"></path><path id="MJX-1-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-1-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-1-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-1-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(466,0)"><use data-c="1D465" xlink:href="#MJX-1-TEX-I-1D465"></use></g><g data-mml-node="mi" transform="translate(1038,0)"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1399,0)"><g data-mml-node="mi"><use data-c="1D440" xlink:href="#MJX-1-TEX-I-1D440"></use></g><g data-mml-node="mi" transform="translate(1051,0)"><use data-c="1D44A" xlink:href="#MJX-1-TEX-I-1D44A"></use></g></g></g></g><g data-mml-node="mo" transform="translate(3476.2,0)"><use data-c="3D" xlink:href="#MJX-1-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(4532,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-1-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-1-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(466,0)"><use data-c="1D465" xlink:href="#MJX-1-TEX-I-1D465"></use></g><g data-mml-node="mi" transform="translate(1038,0)"><use data-c="1D461" xlink:href="#MJX-1-TEX-I-1D461"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1399,0)"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-1-TEX-I-1D45D"></use></g><g data-mml-node="mo" transform="translate(503,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use></g><g data-mml-node="mi" transform="translate(781,0)"><use data-c="1D462" xlink:href="#MJX-1-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(1353,0)"><use data-c="2E" xlink:href="#MJX-1-TEX-N-2E"></use></g></g></g></g><g data-mml-node="mi" transform="translate(7399.5,0)"><use data-c="1D456" xlink:href="#MJX-1-TEX-I-1D456"></use></g><g data-mml-node="mi" transform="translate(7744.5,0)"><use data-c="1D45A" xlink:href="#MJX-1-TEX-I-1D45A"></use></g><g data-mml-node="mi" transform="translate(8622.5,0)"><use data-c="1D452" xlink:href="#MJX-1-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(9088.5,0)"><use data-c="1D460" xlink:href="#MJX-1-TEX-I-1D460"></use></g><g data-mml-node="mn" transform="translate(9557.5,0)"><use data-c="31" xlink:href="#MJX-1-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-1-TEX-N-30" transform="translate(1000,0)"></use></g></g></g></svg></mjx-container></li>
+<li><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.65ex;" xmlns="http://www.w3.org/2000/svg" width="21.266ex" height="2.347ex" role="img" focusable="false" viewBox="0 -750 9399.5 1037.2" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-2-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path><path id="MJX-2-TEX-I-1D452" d="M39 168Q39 225 58 272T107 350T174 402T244 433T307 442H310Q355 442 388 420T421 355Q421 265 310 237Q261 224 176 223Q139 223 138 221Q138 219 132 186T125 128Q125 81 146 54T209 26T302 45T394 111Q403 121 406 121Q410 121 419 112T429 98T420 82T390 55T344 24T281 -1T205 -11Q126 -11 83 42T39 168ZM373 353Q367 405 305 405Q272 405 244 391T199 357T170 316T154 280T149 261Q149 260 169 260Q282 260 327 284T373 353Z"></path><path id="MJX-2-TEX-I-1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path id="MJX-2-TEX-I-1D461" d="M26 385Q19 392 19 395Q19 399 22 411T27 425Q29 430 36 430T87 431H140L159 511Q162 522 166 540T173 566T179 586T187 603T197 615T211 624T229 626Q247 625 254 615T261 596Q261 589 252 549T232 470L222 433Q222 431 272 431H323Q330 424 330 420Q330 398 317 385H210L174 240Q135 80 135 68Q135 26 162 26Q197 26 230 60T283 144Q285 150 288 151T303 153H307Q322 153 322 145Q322 142 319 133Q314 117 301 95T267 48T216 6T155 -11Q125 -11 98 4T59 56Q57 64 57 83V101L92 241Q127 382 128 383Q128 385 77 385H26Z"></path><path id="MJX-2-TEX-I-1D45D" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path id="MJX-2-TEX-N-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path id="MJX-2-TEX-I-1D462" d="M21 287Q21 295 30 318T55 370T99 420T158 442Q204 442 227 417T250 358Q250 340 216 246T182 105Q182 62 196 45T238 27T291 44T328 78L339 95Q341 99 377 247Q407 367 413 387T427 416Q444 431 463 431Q480 431 488 421T496 402L420 84Q419 79 419 68Q419 43 426 35T447 26Q469 29 482 57T512 145Q514 153 532 153Q551 153 551 144Q550 139 549 130T540 98T523 55T498 17T462 -8Q454 -10 438 -10Q372 -10 347 46Q345 45 336 36T318 21T296 6T267 -6T233 -11Q189 -11 155 7Q103 38 103 113Q103 170 138 262T173 379Q173 380 173 381Q173 390 173 393T169 400T158 404H154Q131 404 112 385T82 344T65 302T57 280Q55 278 41 278H27Q21 284 21 287Z"></path><path id="MJX-2-TEX-N-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path id="MJX-2-TEX-I-1D440" d="M289 629Q289 635 232 637Q208 637 201 638T194 648Q194 649 196 659Q197 662 198 666T199 671T201 676T203 679T207 681T212 683T220 683T232 684Q238 684 262 684T307 683Q386 683 398 683T414 678Q415 674 451 396L487 117L510 154Q534 190 574 254T662 394Q837 673 839 675Q840 676 842 678T846 681L852 683H948Q965 683 988 683T1017 684Q1051 684 1051 673Q1051 668 1048 656T1045 643Q1041 637 1008 637Q968 636 957 634T939 623Q936 618 867 340T797 59Q797 55 798 54T805 50T822 48T855 46H886Q892 37 892 35Q892 19 885 5Q880 0 869 0Q864 0 828 1T736 2Q675 2 644 2T609 1Q592 1 592 11Q592 13 594 25Q598 41 602 43T625 46Q652 46 685 49Q699 52 704 61Q706 65 742 207T813 490T848 631L654 322Q458 10 453 5Q451 4 449 3Q444 0 433 0Q418 0 415 7Q413 11 374 317L335 624L267 354Q200 88 200 79Q206 46 272 46H282Q288 41 289 37T286 19Q282 3 278 1Q274 0 267 0Q265 0 255 0T221 1T157 2Q127 2 95 1T58 0Q43 0 39 2T35 11Q35 13 38 25T43 40Q45 46 65 46Q135 46 154 86Q158 92 223 354T289 629Z"></path><path id="MJX-2-TEX-I-1D44A" d="M436 683Q450 683 486 682T553 680Q604 680 638 681T677 682Q695 682 695 674Q695 670 692 659Q687 641 683 639T661 637Q636 636 621 632T600 624T597 615Q597 603 613 377T629 138L631 141Q633 144 637 151T649 170T666 200T690 241T720 295T759 362Q863 546 877 572T892 604Q892 619 873 628T831 637Q817 637 817 647Q817 650 819 660Q823 676 825 679T839 682Q842 682 856 682T895 682T949 681Q1015 681 1034 683Q1048 683 1048 672Q1048 666 1045 655T1038 640T1028 637Q1006 637 988 631T958 617T939 600T927 584L923 578L754 282Q586 -14 585 -15Q579 -22 561 -22Q546 -22 542 -17Q539 -14 523 229T506 480L494 462Q472 425 366 239Q222 -13 220 -15T215 -19Q210 -22 197 -22Q178 -22 176 -15Q176 -12 154 304T131 622Q129 631 121 633T82 637H58Q51 644 51 648Q52 671 64 683H76Q118 680 176 680Q301 680 313 683H323Q329 677 329 674T327 656Q322 641 318 637H297Q236 634 232 620Q262 160 266 136L501 550L499 587Q496 629 489 632Q483 636 447 637Q428 637 422 639T416 648Q416 650 418 660Q419 664 420 669T421 676T424 680T428 682T436 683Z"></path><path id="MJX-2-TEX-N-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path><path id="MJX-2-TEX-N-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path id="MJX-2-TEX-N-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-2-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-2-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(466,0)"><use data-c="1D465" xlink:href="#MJX-2-TEX-I-1D465"></use></g><g data-mml-node="mi" transform="translate(1038,0)"><use data-c="1D461" xlink:href="#MJX-2-TEX-I-1D461"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1399,0)"><g data-mml-node="mi"><use data-c="1D45D" xlink:href="#MJX-2-TEX-I-1D45D"></use></g><g data-mml-node="mo" transform="translate(503,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use></g><g data-mml-node="mi" transform="translate(781,0)"><use data-c="1D462" xlink:href="#MJX-2-TEX-I-1D462"></use></g><g data-mml-node="mo" transform="translate(1353,0)"><use data-c="2E" xlink:href="#MJX-2-TEX-N-2E"></use></g></g></g></g><g data-mml-node="mo" transform="translate(3145.3,0)"><use data-c="3D" xlink:href="#MJX-2-TEX-N-3D"></use></g><g data-mml-node="msub" transform="translate(4201.1,0)"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-2-TEX-I-1D443"></use></g><g data-mml-node="TeXAtom" transform="translate(675,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mi"><use data-c="1D452" xlink:href="#MJX-2-TEX-I-1D452"></use></g><g data-mml-node="mi" transform="translate(466,0)"><use data-c="1D465" xlink:href="#MJX-2-TEX-I-1D465"></use></g><g data-mml-node="mi" transform="translate(1038,0)"><use data-c="1D461" xlink:href="#MJX-2-TEX-I-1D461"></use></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(1399,0)"><g data-mml-node="mi"><use data-c="1D440" xlink:href="#MJX-2-TEX-I-1D440"></use></g><g data-mml-node="mi" transform="translate(1051,0)"><use data-c="1D44A" xlink:href="#MJX-2-TEX-I-1D44A"></use></g></g></g></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(7399.5,0)"><g data-mml-node="mo"><use data-c="2F" xlink:href="#MJX-2-TEX-N-2F"></use></g></g><g data-mml-node="mn" transform="translate(7899.5,0)"><use data-c="31" xlink:href="#MJX-2-TEX-N-31"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(500,0)"></use><use data-c="30" xlink:href="#MJX-2-TEX-N-30" transform="translate(1000,0)"></use></g></g></g></svg></mjx-container></li>
+</ul>
+<h2 id="bus-data-mpcbus">Bus Data (mpc.bus)</h2>
+<p>Bus data defines network nodes representing substations and load centers. <strong>193 buses</strong> total.</p>
+<p>Each row represents one bus with 13 columns:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.bus = [</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F">% bus_i  type  Pd    Qd   Gs  Bs  area  Vm   Va    baseKV  zone  Vmax  Vmin  ...</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">60.1</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">8.5</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1.05</span><span style="--0:#D6DEEB;--1:#403F53"> -</span><span style="--0:#F78C6C;--1:#AA0982">0.02</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">154</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1.1</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">0.9</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">2</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">77.9</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">10.3</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1.05</span><span style="--0:#D6DEEB;--1:#403F53"> -</span><span style="--0:#F78C6C;--1:#AA0982">0.03</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">345</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1.05</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0.95</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.bus = [    % bus_i  type  Pd    Qd   Gs  Bs  area  Vm   Va    baseKV  zone  Vmax  Vmin  ...      1      1     60.1  8.5  0   0   1     1.05 -0.02 154     1     1.1   0.9   ...      2      1     77.9  10.3 0   0   1     1.05 -0.03 345     1     1.05  0.95  ...    ...];"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Name</th><th>Unit</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td><code dir="auto">bus_i</code></td><td>-</td><td><strong>Bus number</strong> (1-193, unique identifier)</td></tr><tr><td>2</td><td><code dir="auto">type</code></td><td>-</td><td><strong>Bus type:</strong> 1=PQ (load), 2=PV (generator), 3=Slack/Ref</td></tr><tr><td>3</td><td><code dir="auto">Pd</code></td><td>MW</td><td><strong>Active power demand</strong> (real power load)</td></tr><tr><td>4</td><td><code dir="auto">Qd</code></td><td>MVAr</td><td><strong>Reactive power demand</strong> (reactive power load)</td></tr><tr><td>5</td><td><code dir="auto">Gs</code></td><td>MW</td><td><strong>Shunt conductance</strong> (typically 0)</td></tr><tr><td>6</td><td><code dir="auto">Bs</code></td><td>MVAr</td><td><strong>Shunt susceptance</strong> (typically 0)</td></tr><tr><td>7</td><td><code dir="auto">area</code></td><td>-</td><td><strong>Area number</strong> (1-5 for regional grouping)</td></tr><tr><td>8</td><td><code dir="auto">Vm</code></td><td>p.u.</td><td><strong>Voltage magnitude</strong> (per-unit, typically ~1.0)</td></tr><tr><td>9</td><td><code dir="auto">Va</code></td><td>rad</td><td><strong>Voltage angle</strong> (radians)</td></tr><tr><td>10</td><td><code dir="auto">baseKV</code></td><td>kV</td><td><strong>Base voltage level</strong> (154, 345, 765 kV)</td></tr><tr><td>11</td><td><code dir="auto">zone</code></td><td>-</td><td><strong>Loss zone</strong> (usually 1)</td></tr><tr><td>12</td><td><code dir="auto">Vmax</code></td><td>p.u.</td><td><strong>Maximum voltage limit</strong></td></tr><tr><td>13</td><td><code dir="auto">Vmin</code></td><td>p.u.</td><td><strong>Minimum voltage limit</strong></td></tr></tbody></table>
+<h3 id="area-definition">Area definition</h3>
+<p>The KPG 193 system groups buses into five geographic areas.
+Each area corresponds to a contiguous range of bus IDs:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Area</th><th>Region (in English)</th><th>Region (in Korean)</th><th>Bus ID Range</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>Capital Region</td><td>수도권</td><td>1-51</td></tr><tr><td><strong>2</strong></td><td>Central</td><td>중부권</td><td>52-64</td></tr><tr><td><strong>3</strong></td><td>Gangwon</td><td>강원권</td><td>65-95</td></tr><tr><td><strong>4</strong></td><td>Honam</td><td>호남권</td><td>96-145</td></tr><tr><td><strong>5</strong></td><td>Yeongnam</td><td>영남권</td><td>146-193</td></tr></tbody></table>
+<h2 id="generator-data-mpcgen">Generator Data (mpc.gen)</h2>
+<p>Generator data defines the characteristics of all <strong>122 thermal generators</strong> (coal, LNG, nuclear).</p>
+<p>Each row represents one generator with 21 columns:</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.gen = [</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F">% bus  Pg   Qg   Qmax Qmin Vg   mBase status Pmax Pmin ...</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  -</span><span style="--0:#F78C6C;--1:#AA0982">46</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">440</span><span style="--0:#D6DEEB;--1:#403F53">  -</span><span style="--0:#F78C6C;--1:#AA0982">440</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">1.0</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">334</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#7FDBCA;--1:#096E72">...</span><span style="--0:#919F9F;--1:#5F636F">  % LNG</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">40</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">794</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">169</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">550</span><span style="--0:#D6DEEB;--1:#403F53">  -</span><span style="--0:#F78C6C;--1:#AA0982">550</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">1.0</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#F78C6C;--1:#AA0982">1100</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">440</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#7FDBCA;--1:#096E72">...</span><span style="--0:#919F9F;--1:#5F636F">  % Coal</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">82</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">1000</span><span style="--0:#D6DEEB;--1:#403F53"> -</span><span style="--0:#F78C6C;--1:#AA0982">38</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">500</span><span style="--0:#D6DEEB;--1:#403F53">  -</span><span style="--0:#F78C6C;--1:#AA0982">500</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">1.0</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#F78C6C;--1:#AA0982">1000</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">950</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#7FDBCA;--1:#096E72">...</span><span style="--0:#919F9F;--1:#5F636F">  % Nuclear</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.gen = [    % bus  Pg   Qg   Qmax Qmin Vg   mBase status Pmax Pmin ...      3    880  -46  440  -440 1.0  100   1      880  334  ...  % LNG      40   794  169  550  -550 1.0  100   1      1100 440  ...  % Coal      82   1000 -38  500  -500 1.0  100   1      1000 950  ...  % Nuclear    ...];"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Name</th><th>Unit</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td><code dir="auto">bus</code></td><td>-</td><td><strong>Bus number</strong> where generator is connected</td></tr><tr><td>2</td><td><code dir="auto">Pg</code></td><td>MW</td><td><strong>Active power output</strong> (real power generation)</td></tr><tr><td>3</td><td><code dir="auto">Qg</code></td><td>MVAr</td><td><strong>Reactive power output</strong></td></tr><tr><td>4</td><td><code dir="auto">Qmax</code></td><td>MVAr</td><td><strong>Maximum reactive power capability</strong></td></tr><tr><td>5</td><td><code dir="auto">Qmin</code></td><td>MVAr</td><td><strong>Minimum reactive power capability</strong></td></tr><tr><td>6</td><td><code dir="auto">Vg</code></td><td>p.u.</td><td><strong>Voltage setpoint</strong></td></tr><tr><td>7</td><td><code dir="auto">mBase</code></td><td>MVA</td><td><strong>Generator MVA base</strong> (typically 100)</td></tr><tr><td>8</td><td><code dir="auto">status</code></td><td>-</td><td><strong>Status:</strong> 1=online, 0=offline</td></tr><tr><td>9</td><td><code dir="auto">Pmax</code></td><td>MW</td><td><strong>Maximum real power capacity</strong></td></tr><tr><td>10</td><td><code dir="auto">Pmin</code></td><td>MW</td><td><strong>Minimum stable generation level</strong></td></tr></tbody></table>
+<p><strong>Note:</strong> Generator types (Coal, LNG, Nuclear) are indicated in comments at the end of each row in the <code dir="auto">.m</code> file.</p>
+<h2 id="branch-data-mpcbranch">Branch Data (mpc.branch)</h2>
+<p>Branch data defines transmission lines and transformers connecting buses. <strong>358 AC lines</strong> total.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.branch = [</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F">% fbus tbus r      x      b      rateA  rateB  rateC  ratio angle status ...</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">2</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0.002</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0.018</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0.058</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">904</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">904</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">904</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">2</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0.0002</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">0.002</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0.208</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">2172</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">2172</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">2172</span><span style="--0:#D6DEEB;--1:#403F53">   </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">      </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.branch = [    % fbus tbus r      x      b      rateA  rateB  rateC  ratio angle status ...      1    2    0.002  0.018  0.058  904    904    904    0     0     1      ...      2    3    0.0002 0.002  0.208  2172   2172   2172   0     0     1      ...    ...];"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Name</th><th>Unit</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td><code dir="auto">fbus</code></td><td>-</td><td><strong>From bus</strong> number</td></tr><tr><td>2</td><td><code dir="auto">tbus</code></td><td>-</td><td><strong>To bus</strong> number</td></tr><tr><td>3</td><td><code dir="auto">r</code></td><td>p.u.</td><td><strong>Resistance</strong> (per-unit)</td></tr><tr><td>4</td><td><code dir="auto">x</code></td><td>p.u.</td><td><strong>Reactance</strong> (per-unit)</td></tr><tr><td>5</td><td><code dir="auto">b</code></td><td>p.u.</td><td><strong>Total line charging susceptance</strong></td></tr><tr><td>6</td><td><code dir="auto">rateA</code></td><td>MVA</td><td><strong>Normal thermal rating</strong></td></tr><tr><td>7</td><td><code dir="auto">rateB</code></td><td>MVA</td><td><strong>Short-term emergency rating</strong></td></tr><tr><td>8</td><td><code dir="auto">rateC</code></td><td>MVA</td><td><strong>Long-term emergency rating</strong></td></tr><tr><td>9</td><td><code dir="auto">ratio</code></td><td>-</td><td><strong>Transformer tap ratio</strong> (0 if not a transformer)</td></tr><tr><td>10</td><td><code dir="auto">angle</code></td><td>deg</td><td><strong>Transformer phase shift angle</strong></td></tr><tr><td>11</td><td><code dir="auto">status</code></td><td>-</td><td><strong>Line status:</strong> 1=in-service, 0=out-of-service</td></tr></tbody></table>
+<h2 id="cost-data-mpcgencost">Cost Data (mpc.gencost)</h2>
+<p>Generator cost functions define fuel costs and startup costs for economic dispatch and unit commitment.</p>
+<p>Each generator has a quadratic cost function:</p>
+<span class="mathjax-error" style="color:#cc0000" title="TypeError: Cannot read properties of null (reading &#x27;4&#x27;)">	ext{Cost}(1000\	ext{₩}/h) = c_2 P^2 + c_1 P + c_0</span>
+<p>Where <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.699ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 751 683" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path id="MJX-3-TEX-I-1D443" d="M287 628Q287 635 230 637Q206 637 199 638T192 648Q192 649 194 659Q200 679 203 681T397 683Q587 682 600 680Q664 669 707 631T751 530Q751 453 685 389Q616 321 507 303Q500 302 402 301H307L277 182Q247 66 247 59Q247 55 248 54T255 50T272 48T305 46H336Q342 37 342 35Q342 19 335 5Q330 0 319 0Q316 0 282 1T182 2Q120 2 87 2T51 1Q33 1 33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM645 554Q645 567 643 575T634 597T609 619T560 635Q553 636 480 637Q463 637 445 637T416 636T404 636Q391 635 386 627Q384 621 367 550T332 412T314 344Q314 342 395 342H407H430Q542 342 590 392Q617 419 631 471T645 554Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><use data-c="1D443" xlink:href="#MJX-3-TEX-I-1D443"></use></g></g></g></svg></mjx-container> is power output in MW.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.branch = [</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F">% Model  startup  shutdown  n  c(n-1)  ...  c0</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">2</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">47398.56</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0.004601045</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">50.24290385</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">5213.283648</span><span style="--0:#D6DEEB;--1:#403F53">  ;  </span><span style="--0:#919F9F;--1:#5F636F">%  LNG</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">2</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">47398.56</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">0.005189187</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">56.66535106</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">5879.686989</span><span style="--0:#D6DEEB;--1:#403F53">  ;  </span><span style="--0:#919F9F;--1:#5F636F">%  LNG</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.branch = [    % Model  startup  shutdown  n  c(n-1)  ...  c0      2  47398.56  0  3  0.004601045  50.24290385  5213.283648  ;  %  LNG      2  47398.56  0  3  0.005189187  56.66535106  5879.686989  ;  %  LNG    ...];"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Name</th><th>Unit</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td><code dir="auto">Model</code></td><td>-</td><td><strong>Cost model</strong> (2 if polynomial)</td></tr><tr><td>2</td><td><code dir="auto">startup</code></td><td>1,000 ₩</td><td><strong>Startup cost</strong></td></tr><tr><td>3</td><td><code dir="auto">shutdown</code></td><td>1,000 ₩</td><td><strong>Shutdown cost</strong></td></tr><tr><td>4</td><td><code dir="auto">n</code></td><td>-</td><td><strong>n-th</strong> order polynomial cost function</td></tr><tr><td>5</td><td><code dir="auto">c2</code></td><td>1,000 ₩/(MW)^2</td><td><strong>Quadratic</strong> cost coefficient</td></tr><tr><td>6</td><td><code dir="auto">c1</code></td><td>1,000 ₩/MW</td><td><strong>Linear</strong> cost coefficient</td></tr><tr><td>7</td><td><code dir="auto">c0</code></td><td>1,000 ₩</td><td><strong>Constant</strong> cost coefficient</td></tr></tbody></table>
+<h2 id="thermal-parameters-mpcgenthermal">Thermal Parameters (mpc.genthermal)</h2>
+<p>Unit commitment parameters including minimum up/down times and ramping limits.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.branch = [</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F">% type_thermal, UT, DT, inistate, initialpower, ramp_up, ramp_down, startup_limit, shutdown_limit, startup1, startup2, startup3, startupdelay1, startupdelay2, startupdelay3</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">4</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">24</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">47398.56</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">52138.416</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">56878.272</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">6</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">12</span><span style="--0:#D6DEEB;--1:#403F53">  ;  </span><span style="--0:#919F9F;--1:#5F636F">%  LNG</span></div></div><div class="ec-line"><div class="code"><span class="indent">      </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">4</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">24</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">880</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">47398.56</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">52138.416</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">56878.272</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">3</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">6</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">12</span><span style="--0:#D6DEEB;--1:#403F53">  ;  </span><span style="--0:#919F9F;--1:#5F636F">%  LNG</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.branch = [    % type_thermal, UT, DT, inistate, initialpower, ramp_up, ramp_down, startup_limit, shutdown_limit, startup1, startup2, startup3, startupdelay1, startupdelay2, startupdelay3      3  4  3  24  880  880  880  880  880  47398.56  52138.416  56878.272  3  6  12  ;  %  LNG      3  4  3  24  880  880  880  880  880  47398.56  52138.416  56878.272  3  6  12  ;  %  LNG    ...];"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Name</th><th>Unit</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td><code dir="auto">type_thermal</code></td><td>-</td><td>Thermal unit flag (3 if default)</td></tr><tr><td>2</td><td><code dir="auto">UT</code></td><td>hour</td><td><strong>Minimum up time</strong></td></tr><tr><td>3</td><td><code dir="auto">DT</code></td><td>hour</td><td><strong>Minimum down time</strong></td></tr><tr><td>4</td><td><code dir="auto">inistate</code></td><td>hour</td><td><strong>Initial on/off state duration</strong></td></tr><tr><td>5</td><td><code dir="auto">initialpower</code></td><td>MW</td><td><strong>Initial power output</strong></td></tr><tr><td>6</td><td><code dir="auto">ramp_up</code></td><td>MW/h</td><td><strong>Ramp-up limit</strong></td></tr><tr><td>7</td><td><code dir="auto">ramp_down</code></td><td>MW/h</td><td><strong>Ramp-down limit</strong></td></tr><tr><td>8</td><td><code dir="auto">startup_limit</code></td><td>MW</td><td><strong>Start-up ramp limit</strong></td></tr><tr><td>9</td><td><code dir="auto">shutdown_limit</code></td><td>MW</td><td><strong>Shut-down ramp limit</strong></td></tr><tr><td>10</td><td><code dir="auto">startup1</code></td><td>1,000 ₩</td><td><strong>Startup cost</strong> (fast)</td></tr><tr><td>11</td><td><code dir="auto">startup2</code></td><td>1,000 ₩</td><td><strong>Startup cost</strong> (warm)</td></tr><tr><td>12</td><td><code dir="auto">startup3</code></td><td>1,000 ₩</td><td><strong>Startup cost</strong> (cold)</td></tr><tr><td>13</td><td><code dir="auto">startupdelay1</code></td><td>hour</td><td><strong>Delay threshold</strong> for fast start</td></tr><tr><td>14</td><td><code dir="auto">startupdelay2</code></td><td>hour</td><td><strong>Delay threshold</strong> for warm start</td></tr><tr><td>15</td><td><code dir="auto">startupdelay3</code></td><td>hour</td><td><strong>Delay threshold</strong> for cold start</td></tr></tbody></table>
+<h2 id="dc-line-data-mpcdcline">DC Line Data (mpc.dcline)</h2>
+<p>The KPG 193 includes <strong>1 HVDC line</strong> connecting Jeju Island to the mainland.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="matlab"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">mpc.dcline = [</span></div></div><div class="ec-line"><div class="code"><span class="indent">    </span><span style="--0:#919F9F;--1:#5F636F">%  fbus  tbus   status  Pf   Pt   Qf   Qt   Vf   Vt   Pmin  Pmax  ...</span></div></div><div class="ec-line"><div class="code"><span class="indent">       </span><span style="--0:#F78C6C;--1:#AA0982">51</span><span style="--0:#D6DEEB;--1:#403F53">     </span><span style="--0:#F78C6C;--1:#AA0982">53</span><span style="--0:#D6DEEB;--1:#403F53">       </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">0</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">    </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">   -</span><span style="--0:#F78C6C;--1:#AA0982">1500</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#F78C6C;--1:#AA0982">1500</span><span style="--0:#D6DEEB;--1:#403F53">  </span><span style="--0:#7FDBCA;--1:#096E72">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mpc.dcline = [    %  fbus  tbus   status  Pf   Pt   Qf   Qt   Vf   Vt   Pmin  Pmax  ...       51     53       1    0    0    0    0    1    1   -1500  1500  ...];"><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Name</th><th>Unit</th><th>Description</th></tr></thead><tbody><tr><td>1</td><td><code dir="auto">fbus</code></td><td>-</td><td><strong>From busr</strong> number</td></tr><tr><td>2</td><td><code dir="auto">tbus</code></td><td>-</td><td><strong>To busr</strong> number</td></tr><tr><td>3</td><td><code dir="auto">status</code></td><td>-</td><td><strong>Line status:</strong> 1=in-service, 0=out-of-service</td></tr><tr><td>4</td><td><code dir="auto">Pf</code></td><td>MW</td><td><strong>Real power flow</strong> at from bus</td></tr><tr><td>5</td><td><code dir="auto">Pt</code></td><td>MW</td><td><strong>Real power flow</strong> at to bus</td></tr><tr><td>6</td><td><code dir="auto">Qf</code></td><td>MVAr</td><td><strong>Reactive power flow</strong> at from bus</td></tr><tr><td>7</td><td><code dir="auto">Qt</code></td><td>MVAr</td><td><strong>Reactive power flow</strong> at to bus</td></tr><tr><td>8</td><td><code dir="auto">Vf</code></td><td>p.u.</td><td><strong>Voltage magnitude setpoint</strong> at from bus</td></tr><tr><td>9</td><td><code dir="auto">Vt</code></td><td>p.u.</td><td><strong>Voltage magnitude setpoint</strong> at to bus</td></tr><tr><td>10</td><td><code dir="auto">Pmin</code></td><td>MW</td><td><strong>Lower limit</strong> of power flow</td></tr><tr><td>11</td><td><code dir="auto">Pmax</code></td><td>MW</td><td><strong>Upper limit</strong> of power flow</td></tr></tbody></table>
+<h2 id="geographic-location-data">Geographic Location Data</h2>
+<p>The <code dir="auto">bus_location.csv</code> file provides geographic coordinates and names for all buses.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="csv"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">bus_id,</span><span style="--0:#C792EA;--1:#8844AE">Latitude,</span><span style="--0:#82AAFF;--1:#3B61B0">Longitude,</span><span style="--0:#919F9F;--1:#5F636F">name_Korean,</span><span style="--0:#ECC48D;--1:#3B61B0">name_English</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">1,</span><span style="--0:#C792EA;--1:#8844AE">38.1476054,</span><span style="--0:#82AAFF;--1:#3B61B0">127.302627,</span><span style="--0:#919F9F;--1:#5F636F">철원,</span><span style="--0:#ECC48D;--1:#3B61B0">Cheorwon</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">2,</span><span style="--0:#C792EA;--1:#8844AE">38.0155011,</span><span style="--0:#82AAFF;--1:#3B61B0">127.0712073,</span><span style="--0:#919F9F;--1:#5F636F">연천,</span><span style="--0:#ECC48D;--1:#3B61B0">Yeoncheon</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">3,</span><span style="--0:#C792EA;--1:#8844AE">37.8903061,</span><span style="--0:#82AAFF;--1:#3B61B0">127.1952799,</span><span style="--0:#919F9F;--1:#5F636F">포천,</span><span style="--0:#ECC48D;--1:#3B61B0">Pocheon</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">...</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="bus_id,Latitude,Longitude,name_Korean,name_English1,38.1476054,127.302627,철원,Cheorwon2,38.0155011,127.0712073,연천,Yeoncheon3,37.8903061,127.1952799,포천,Pocheon..."><div></div></button></div></figure></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Column</th><th>Description</th><th>Example</th></tr></thead><tbody><tr><td><code dir="auto">bus_id</code></td><td>Bus number (1-193)</td><td>1</td></tr><tr><td><code dir="auto">Latitude</code></td><td>Latitude in degrees</td><td>38.1476054</td></tr><tr><td><code dir="auto">Longitude</code></td><td>Longitude in degrees</td><td>127.302627</td></tr><tr><td><code dir="auto">name_Korean</code></td><td>Korean place name</td><td>철원</td></tr><tr><td><code dir="auto">name_English</code></td><td>English place name</td><td>Cheorwon</td></tr></tbody></table><style>
+mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+  min-height: 1px;
+  min-width: 1px;
+}
+
+mjx-container[jax="SVG"] > svg a {
+  fill: blue;
+  stroke: blue;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line], svg[data-table] > g > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame], svg[data-table] > g > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed, svg[data-table] > g > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted, svg[data-table] > g > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > g > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"] path[data-c], mjx-container[jax="SVG"] use[data-c] {
+  stroke-width: 3;
+}
+</style> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/ko/documentation/kpg-test-system/limitations/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> 이전 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">제한사항</span> </span> </a> <a href="/ko/documentation/kpg-test-system/profiles-timeseries/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> 다음 <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">프로파일 및 시계열</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
